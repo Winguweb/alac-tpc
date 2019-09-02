@@ -1,0 +1,11 @@
+table
+  thead
+    tr
+      th pregunta
+      th respuesta
+   
+  tbody
+    - @questions.each_with_index do |data, index|
+      tr
+        td =@questions[index]
+        td =@answers[index]

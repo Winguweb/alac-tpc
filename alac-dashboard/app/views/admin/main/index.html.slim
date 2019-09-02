@@ -1,0 +1,17 @@
+table
+  thead
+    tr
+      th id reporte
+      th recivertip_id
+      th 
+      th
+   
+  tbody
+    - @reports.each do |report|
+      tr 
+        td 
+          = link_to report[0],admin_path(report[1])
+        td 
+          = link_to report[1],admin_path(report[1])
+        td
+          = link_to "Editar",admin_path(report[1])

@@ -1,0 +1,68 @@
+# version: '2'
+# services:
+
+#   # The RAILS Application
+#   app:
+#     build:
+#       context: ./alac-dashboard
+#       dockerfile: app.dockerfile
+#     working_dir: /data/alac
+#     volumes:
+#       - ./alac-dashboard:/data/alac
+#     environment:
+#       DB_PORT: 5432
+#       DB_HOST: database
+#     ports:
+#       - 5000:5000
+#       - 3035:3035
+
+#   database:
+#     restart: always
+#     image: postgres:9.6
+#     environment:
+#       POSTGRES_DATABASE: alac
+#       POSTGRES_USER: alac
+#       POSTGRES_PASSWORD: alac
+#     ports:
+#       - "5433:5432"
+#     volumes:
+#       - ./dbdata/database/:/var/lib/postgresql
+#       - ./db-init-scripts/:/docker-entrypoint-initdb.d
+
+version: '2'
+services:
+
+  # The Application
+  globaleaks:
+    container_name: alac-gl
+    build:
+      context: ./
+      dockerfile: appgl.dockerfile
+    working_dir: /data/globaleaks
+    image: globaleaks/globaleaks
+    ports:
+      - '80:80'
+      - '443:443'
+  app:
+    container_name: alac-dashboard
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /data/alac
+    volumes:
+      - ./alac-dashboard:/data/alac
+    environment:
+      DB_PORT: 5432
+    ports:
+      - 5000:5000
+      - 3000:3000
+    volumes_from:
+      - globaleaks
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./dbdata/database/:/var/lib/postgresql/data
+
+# --volumes-from Container1 ubuntu

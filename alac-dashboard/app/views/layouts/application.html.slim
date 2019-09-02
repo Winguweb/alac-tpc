@@ -1,0 +1,16 @@
+doctype html
+html.desktop.no-js lang=I18n.locale.to_s xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xml:lang=I18n.locale.to_s
+  head
+    title = "alac"
+    = favicon_link_tag 'favicon.png', type: 'image/png'
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = yield :css
+
+    = javascript_pack_tag 'application'
+    = yield :js
+
+  body id=body_id class=body_class
+    = yield
