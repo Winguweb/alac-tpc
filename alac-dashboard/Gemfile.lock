@@ -55,7 +55,13 @@ GEM
     autoprefixer-rails (9.4.9)
       execjs
     bcrypt (3.1.12)
+    better_errors (2.5.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (11.0.0)
     capybara (2.18.0)
@@ -67,10 +73,12 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
+    debug_inspector (0.0.3)
     devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -233,6 +241,8 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  better_errors
+  binding_of_caller
   byebug
   capybara (~> 2.13)
   devise
