@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190329174201) do
+ActiveRecord::Schema.define(version: 20190906184519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,19 +20,32 @@ ActiveRecord::Schema.define(version: 20190329174201) do
   create_table "actors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "last_name"
-    t.string "individual_actor_type"
-    t.string "individual_actor_cat_1"
-    t.string "individual_actor_cat_2"
-    t.string "colective_actor_type"
-    t.string "colective_actor_cat_1"
-    t.string "colective_actor_cat_2"
+    t.string "general_type"
+    t.string "type"
+    t.string "subtype"
+    t.string "subtype_2"
     t.string "institution"
     t.string "public_branch"
     t.string "position"
     t.string "entity"
     t.boolean "public_auth"
-    t.boolean "no_name"
     t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "report_id"
+    t.string "responsability_class"
+    t.string "type"
+    t.string "crime"
+    t.string "category"
+    t.string "sector"
+    t.string "ambit"
+    t.string "rights"
+    t.boolean "present_auth"
+    t.string "authority"
+    t.string "other"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
