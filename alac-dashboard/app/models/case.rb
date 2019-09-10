@@ -1,0 +1,4 @@
+class Case < ApplicationRecord
+
+  
+end
