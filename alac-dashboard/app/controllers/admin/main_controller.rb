@@ -4,6 +4,11 @@ module Admin
 
       def index
         @reports = get_index_reports()
+        
+        @reports.each do | report|
+          report.push(get_info_report(report[1])[0][0])
+          report.push(get_info_report(report[1])[0][1])
+        end
         # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
 
 
@@ -39,6 +44,12 @@ module Admin
         end
       end
       private
+    
+      def get_info_report(id)
+        run_query("select status,creation_date from internaltip where id = '#{id}'")
+         # run_query("select id from internaltip Limit 1")
+      end
+
       def get_title_option(id)
 
         # /([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)/.match(a)
