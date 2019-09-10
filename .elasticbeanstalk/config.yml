@@ -1,0 +1,24 @@
+branch-defaults:
+  elastic:
+    environment: null
+    group_suffix: null
+  master:
+    environment: tpc-alac
+environment-defaults:
+  alac-tpc:
+    branch: null
+    repository: null
+global:
+  application_name: app
+  branch: null
+  default_ec2_keyname: null
+  default_platform: docker
+  default_region: us-east-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: git
+  workspace_type: Application
