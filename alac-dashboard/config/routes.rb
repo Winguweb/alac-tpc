@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users
     resources :actors
     resources :cases
+    resources :evolutions
     root to: "main#index"
     # get '/' => 'main#index'
     get '/reports/:id' => 'main#show'

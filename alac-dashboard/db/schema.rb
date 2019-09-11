@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190906184519) do
+ActiveRecord::Schema.define(version: 20190910172420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(version: 20190906184519) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "evolutions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "case_id"
+    t.date "presentation_date"
+    t.string "kind_investigation"
+    t.string "stage"
+    t.string "situation"
+    t.string "fault"
+    t.string "authority"
+    t.string "crime"
+    t.text "details"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_evolutions_on_case_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +84,5 @@ ActiveRecord::Schema.define(version: 20190906184519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "evolutions", "cases"
 end
