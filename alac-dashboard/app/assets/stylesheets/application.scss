@@ -9,7 +9,16 @@
 @import "neat";
 @import "normalize";
 
+
 /* ===============================
-2. VIEWS
+3. VIEWS
 =============================== */
 @import "./views/**/*";
+
+/* ===============================
+4. Bootstrap  STYLES
+=============================== */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
