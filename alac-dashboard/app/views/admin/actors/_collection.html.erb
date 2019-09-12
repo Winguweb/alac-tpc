@@ -18,13 +18,14 @@ to display a collection of resources in an HTML table.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
 
-<table aria-labelledby="<%= table_title %>">
-  <thead>
+<table aria-labelledby="<%= table_title %>" class="table table-striped">
+  <thead class="thead-dark bg-secondary">
     <tr>
       <% collection_presenter.attribute_types.each do |attr_name, attr_type| %>
         <th class="cell-label
         cell-label--<%= attr_type.html_class %>
-        cell-label--<%= collection_presenter.ordered_html_class(attr_name) %>"
+        cell-label--<%= collection_presenter.ordered_html_class(attr_name) %>
+        bg-secondary"
         scope="col"
         role="columnheader"
         aria-sort="<%= sort_order(collection_presenter.ordered_html_class(attr_name)) %>">
@@ -47,7 +48,7 @@ to display a collection of resources in an HTML table.
       <% end %>
       <% [valid_action?(:edit, collection_presenter.resource_name),
           valid_action?(:destroy, collection_presenter.resource_name)].count(true).times do %>
-        <th scope="col"></th>
+        <th scope="col" class="bg-secondary"></th>
       <% end %>
     </tr>
   </thead>
