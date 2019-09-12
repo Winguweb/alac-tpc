@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190910172420) do
+ActiveRecord::Schema.define(version: 20190912123931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,38 +21,50 @@ ActiveRecord::Schema.define(version: 20190910172420) do
     t.string "name"
     t.string "last_name"
     t.string "general_type"
-    t.string "type"
+    t.string "category"
     t.string "subtype"
     t.string "subtype_2"
     t.string "institution"
     t.string "public_branch"
     t.string "position"
     t.string "entity"
-    t.boolean "public_auth"
-    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "report_id"
-    t.string "responsability_class"
-    t.string "type"
-    t.string "crime"
-    t.string "category"
-    t.string "sector"
-    t.string "ambit"
-    t.string "rights"
-    t.boolean "present_auth"
+  create_table "advisories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "characterization_id"
+    t.date "tracking_date"
+    t.string "kind_answer"
+    t.text "summary"
+    t.index ["characterization_id"], name: "index_advisories_on_characterization_id"
+  end
+
+  create_table "characterizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "case_id", null: false
+    t.text "summary"
+    t.string "status"
+    t.boolean "known_authotity"
     t.string "authority"
-    t.string "other"
+    t.boolean "has_tool"
+    t.string "tool"
+    t.string "scope"
+    t.string "kind_corruption"
+    t.string "affected_area"
+    t.string "affected_sector"
+    t.string "rights_violated"
+    t.boolean "kind_responsability"
+    t.string "crime"
+    t.boolean "have_material"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "evolutions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "case_id"
+    t.uuid "characterization_id"
+    t.uuid "actor_id"
     t.date "presentation_date"
+    t.date "sanction_date"
     t.string "kind_investigation"
     t.string "stage"
     t.string "situation"
@@ -63,7 +75,31 @@ ActiveRecord::Schema.define(version: 20190910172420) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["case_id"], name: "index_evolutions_on_case_id"
+    t.index ["actor_id"], name: "index_evolutions_on_actor_id"
+    t.index ["characterization_id"], name: "index_evolutions_on_characterization_id"
+  end
+
+  create_table "relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "actor_id"
+    t.uuid "characterization_id"
+    t.string "participation_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_relationships_on_actor_id"
+    t.index ["characterization_id"], name: "index_relationships_on_characterization_id"
+  end
+
+  create_table "tools", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "advisory_id"
+    t.string "tools_used"
+    t.boolean "go_entity?"
+    t.string "entity"
+    t.date "radication_date"
+    t.date "deadline"
+    t.boolean "have_answer?"
+    t.date "answer_date"
+    t.string "document"
+    t.index ["advisory_id"], name: "index_tools_on_advisory_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -84,5 +120,10 @@ ActiveRecord::Schema.define(version: 20190910172420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "evolutions", "cases"
+  add_foreign_key "advisories", "characterizations"
+  add_foreign_key "evolutions", "actors"
+  add_foreign_key "evolutions", "characterizations"
+  add_foreign_key "relationships", "actors"
+  add_foreign_key "relationships", "characterizations"
+  add_foreign_key "tools", "advisories"
 end

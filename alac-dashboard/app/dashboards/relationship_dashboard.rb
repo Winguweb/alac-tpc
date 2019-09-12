@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class EvolutionDashboard < Administrate::BaseDashboard
+class RelationshipDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,16 +11,7 @@ class EvolutionDashboard < Administrate::BaseDashboard
     actor: Field::BelongsTo,
     characterization: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    presentation_date: Field::DateTime,
-    sanction_date: Field::DateTime,
-    kind_investigation: Field::String,
-    stage: Field::String,
-    situation: Field::String,
-    fault: Field::String,
-    authority: Field::String,
-    crime: Field::String,
-    details: Field::Text,
-    comment: Field::Text,
+    participation_type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -34,7 +25,7 @@ class EvolutionDashboard < Administrate::BaseDashboard
     :actor,
     :characterization,
     :id,
-    :presentation_date,
+    :participation_type,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,16 +34,7 @@ class EvolutionDashboard < Administrate::BaseDashboard
     :actor,
     :characterization,
     :id,
-    :presentation_date,
-    :sanction_date,
-    :kind_investigation,
-    :stage,
-    :situation,
-    :fault,
-    :authority,
-    :crime,
-    :details,
-    :comment,
+    :participation_type,
     :created_at,
     :updated_at,
   ].freeze
@@ -63,22 +45,13 @@ class EvolutionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :actor,
     :characterization,
-    :presentation_date,
-    :sanction_date,
-    :kind_investigation,
-    :stage,
-    :situation,
-    :fault,
-    :authority,
-    :crime,
-    :details,
-    :comment,
+    :participation_type,
   ].freeze
 
-  # Overwrite this method to customize how evolutions are displayed
+  # Overwrite this method to customize how relationships are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(evolution)
-  #   "Evolution ##{evolution.id}"
+  # def display_resource(relationship)
+  #   "Relationship ##{relationship.id}"
   # end
 end

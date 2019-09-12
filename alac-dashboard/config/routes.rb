@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :actors
-    resources :cases
+    resources :characterizations
     resources :evolutions
+    resources :relationships
+    resources :advisories
+    resources :tools
     root to: "main#index"
     # get '/' => 'main#index'
     get '/reports/:id' => 'main#show'

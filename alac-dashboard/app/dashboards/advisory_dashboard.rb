@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class EvolutionDashboard < Administrate::BaseDashboard
+class AdvisoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,21 +8,12 @@ class EvolutionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    actor: Field::BelongsTo,
+    tools: Field::HasMany,
     characterization: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
-    presentation_date: Field::DateTime,
-    sanction_date: Field::DateTime,
-    kind_investigation: Field::String,
-    stage: Field::String,
-    situation: Field::String,
-    fault: Field::String,
-    authority: Field::String,
-    crime: Field::String,
-    details: Field::Text,
-    comment: Field::Text,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    tracking_date: Field::DateTime,
+    kind_answer: Field::String,
+    summary: Field::Text,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,54 +22,38 @@ class EvolutionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :actor,
+    :tools,
     :characterization,
     :id,
-    :presentation_date,
+    :tracking_date,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :actor,
+    :tools,
     :characterization,
     :id,
-    :presentation_date,
-    :sanction_date,
-    :kind_investigation,
-    :stage,
-    :situation,
-    :fault,
-    :authority,
-    :crime,
-    :details,
-    :comment,
-    :created_at,
-    :updated_at,
+    :tracking_date,
+    :kind_answer,
+    :summary,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :actor,
+    :tools,
     :characterization,
-    :presentation_date,
-    :sanction_date,
-    :kind_investigation,
-    :stage,
-    :situation,
-    :fault,
-    :authority,
-    :crime,
-    :details,
-    :comment,
+    :tracking_date,
+    :kind_answer,
+    :summary,
   ].freeze
 
-  # Overwrite this method to customize how evolutions are displayed
+  # Overwrite this method to customize how advisories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(evolution)
-  #   "Evolution ##{evolution.id}"
+  # def display_resource(advisory)
+  #   "Advisory ##{advisory.id}"
   # end
 end
