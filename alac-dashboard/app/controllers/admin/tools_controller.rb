@@ -1,18 +1,18 @@
 module Admin
-  class CasesController < Admin::ApplicationController
+  class ToolsController < Admin::ApplicationController
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
-    def index
-      super
-      @resources = Case.
-        page(params[:page]).
-        per(10)
-    end
+    # def index
+    #   super
+    #   @resources = Tool.
+    #     page(params[:page]).
+    #     per(10)
+    # end
 
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
-    #   Case.find_by!(slug: param)
+    #   Tool.find_by!(slug: param)
     # end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
