@@ -21,13 +21,15 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "name"
     t.string "last_name"
     t.string "general_type"
-    t.string "category"
+    t.string "type"
     t.string "subtype"
     t.string "subtype_2"
     t.string "institution"
     t.string "public_branch"
     t.string "position"
     t.string "entity"
+    t.boolean "public_auth"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +40,22 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "kind_answer"
     t.text "summary"
     t.index ["characterization_id"], name: "index_advisories_on_characterization_id"
+  end
+
+  create_table "cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "report_id"
+    t.string "responsability_class"
+    t.string "type"
+    t.string "crime"
+    t.string "category"
+    t.string "sector"
+    t.string "ambit"
+    t.string "rights"
+    t.boolean "present_auth"
+    t.string "authority"
+    t.string "other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "characterizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -61,10 +79,8 @@ ActiveRecord::Schema.define(version: 20190912123931) do
   end
 
   create_table "evolutions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "characterization_id"
-    t.uuid "actor_id"
+    t.uuid "case_id"
     t.date "presentation_date"
-    t.date "sanction_date"
     t.string "kind_investigation"
     t.string "stage"
     t.string "situation"
@@ -75,8 +91,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["actor_id"], name: "index_evolutions_on_actor_id"
-    t.index ["characterization_id"], name: "index_evolutions_on_characterization_id"
+    t.index ["case_id"], name: "index_evolutions_on_case_id"
   end
 
   create_table "relationships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -121,8 +136,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
   end
 
   add_foreign_key "advisories", "characterizations"
-  add_foreign_key "evolutions", "actors"
-  add_foreign_key "evolutions", "characterizations"
+  add_foreign_key "evolutions", "cases"
   add_foreign_key "relationships", "actors"
   add_foreign_key "relationships", "characterizations"
   add_foreign_key "tools", "advisories"
