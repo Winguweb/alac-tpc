@@ -1,19 +1,16 @@
-table
-  thead
+table.table.table-striped
+  thead.thead-dark
     tr
-      th id reporte
-      th status
-      th fecha
-      th
+      th.bg-primary style="width:33%" #
+      th.bg-primary style="width:33%" Estado
+      th.bg-primary style="width:33%" Fecha de creación
    
   tbody
     - @reports.each do |report|
       tr 
-        td 
-          = link_to report[1],admin_path(report[1])
-        td 
-          = link_to report[2],admin_path(report[1])
-        td 
-          = link_to report[3],admin_path(report[1])
         td
-          = link_to "Ver",admin_path(report[1])
+          = link_to report[1],admin_path(report[1])
+        td
+          = link_to report[2],admin_path(report[1])
+        td
+          = link_to report[3],admin_path(report[1])
