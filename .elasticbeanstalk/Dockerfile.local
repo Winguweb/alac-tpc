@@ -1,0 +1,2 @@
+FROM carloswingu/ubuntu-custom:v0.1
+EXPOSE 3000

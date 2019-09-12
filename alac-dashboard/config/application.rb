@@ -10,6 +10,12 @@ module ALAC
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+
+    # In order to load all the locales tree
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+
+    config.i18n.default_locale = :es
+
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end
