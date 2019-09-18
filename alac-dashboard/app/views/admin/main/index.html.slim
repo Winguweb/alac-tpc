@@ -1,9 +1,11 @@
-table.table.table-striped
+header.main-content__header.bg-primary
+  h1.text-white Listado de casos
+table.table
   thead.thead-dark
     tr
-      th.bg-primary style="width:33%" #
-      th.bg-primary style="width:33%" Estado
-      th.bg-primary style="width:33%" Fecha de creación
+      th.bg-secondary.border-0 style="width:33%" #
+      th.bg-secondary.border-0 style="width:33%" Estado
+      th.bg-secondary.border-0 style="width:33%" Fecha de creación
    
   tbody
     - @reports.each do |report|
