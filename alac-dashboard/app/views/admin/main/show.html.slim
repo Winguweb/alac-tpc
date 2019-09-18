@@ -1,9 +1,12 @@
-h3 Detalle del caso
-table
-  thead
+header.main-content__header.bg-primary.mb-5
+  h1.text-white Caso # #{request.path_parameters[:id]}
+
+div.bg-primary.text-white.p-3.font-weight-bold Identidad del reporte
+table.table.table-striped.mb-5
+  thead.thead-dark.bg-secondary
     tr
-      th pregunta
-      th respuesta
+      th.bg-secondary Pregunta
+      th.bg-secondary Respuesta
    
   tbody
     - @data.each do |data|
@@ -21,5 +24,7 @@ table
       tr
         td =doc[0]
 
+div.border-bottom.border-secondary.mb-5
 
- 
+
+= render partial: 'admin/characterizations/form', id: request.path_parameters[:id] 
