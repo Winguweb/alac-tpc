@@ -1,3 +1,4 @@
+h3 Detalle del caso
 table
   thead
     tr
@@ -5,7 +6,20 @@ table
       th respuesta
    
   tbody
-    - @questions.each_with_index do |data, index|
+    - @data.each do |data|
       tr
-        td =@questions[index]
-        td =@answers[index]
+        td =data[0]
+        td =data[1]
+
+h3 Lista de Documentos
+table
+  thead
+    tr
+      th Documentos
+  tbody
+    - @documents.each do |doc|
+      tr
+        td =doc[0]
+
+
+ 
