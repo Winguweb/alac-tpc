@@ -14,7 +14,7 @@ config.webpacker.check_yarn_integrity = true
 
   # Show full error reports.
   config.consider_all_requests_local = true
-  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
