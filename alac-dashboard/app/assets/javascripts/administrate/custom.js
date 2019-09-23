@@ -29,4 +29,28 @@ $(document).ready(function(){
     console.log(selected.val());
   });
 
+  // Characterizations form
+  // Show select when known authority is selected
+  $('#true_known_authotity').click(function() {
+    $('.select-known-authority').removeClass('d-none');
+  });
+
+  $('.known-authority').on('change', function() {
+    const value = this.value;
+    if (value === 'otro') {
+      $('.known-authority-input').removeClass('d-none');
+    }
+  });
+
+    // Show select when has_tool is selected
+    $('#true_has_tool').click(function() {
+      $('.has-tool-select').removeClass('d-none');
+    });
+  
+    $('.has-tool').on('change', function() {
+      const value = this.value;
+      if (value === 'otro') {
+        $('.has-tool-input').removeClass('d-none');
+      }
+    });
 });
