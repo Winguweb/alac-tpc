@@ -1,25 +1,30 @@
-h3 Detalle del caso
-table
-  thead
-    tr
-      th pregunta
-      th respuesta
-   
-  tbody
-    - @data.each do |data|
+.container-fluid
+  h3 Detalle del caso
+  table
+    thead
       tr
-        td =data[0]
-        td =data[1]
+        th pregunta
+        th respuesta
+    
+    tbody
+      - @data.each do |data|
+        tr
+          td =data[0]
+          td =data[1]
 
-h3 Lista de Documentos
-table
-  thead
-    tr
-      th Documentos
-  tbody
-    - @documents.each do |doc|
+  h3 Lista de Documentos
+  table
+    thead
       tr
-        td =doc[0]
+        th Documentos
+    tbody
+      - @documents.each do |doc|
+        tr
+          td =doc[0]
+
+  h3 Actores
+  = render partial: 'admin/actors/partials/form'
+  = render partial: 'admin/actors/partials/table'
 
 
  
