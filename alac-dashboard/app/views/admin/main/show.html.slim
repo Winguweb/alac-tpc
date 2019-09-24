@@ -1,40 +1,44 @@
 
 .container-fluid
   header.main-content__header.bg-primary.mb-5
-  h1.text-white Caso # #{request.path_parameters[:id]}
+    h1.text-white Caso # #{request.path_parameters[:id]}
 
-  div.bg-primary.text-white.p-3.font-weight-bold Identidad del reporte
-  table.table.table-striped.mb-5
-    thead.thead-dark.bg-secondary
+  div.text-primary.p-3.font-weight-bold Identidad del reporte
+  table.table.mb-5
+    thead
       tr
-        th.bg-secondary Pregunta
-        th.bg-secondary Respuesta
+        th Pregunta
+        th Respuesta
 
         - @data.each do |data|
           tr
             td =data[0]
             td =data[1]
-
-    h3 Lista de Documentos
-    table
-      thead
-        tr
-          th Documentos
-      tbody
-        - @documents.each do |doc|
-          tr
-            td =doc[0]
   div.border-bottom.border-secondary.mb-5
 
+  div.text-primary.p-3.font-weight-bold Adjuntos del caso en Global Leaks
+  table
+    thead
+      tr
+      th Documentos
+    tbody
+      - @documents.each do |doc|
+        tr
+          td =doc[0]
 
-    = render partial: 'admin/characterizations/partials/form'
+  div.border-bottom.border-secondary.my-5
+
   .py-md-2
-    h3 Actores
+    = render partial: 'admin/characterizations/partials/form'
+
+  div.border-bottom.border-secondary.my-5
+  .py-md-2
+    .text-primary.p-3.font-weight-bold Actores
     = render partial: 'admin/actors/partials/form'
     = render partial: 'admin/actors/partials/table'
-
+  div.border-bottom.border-secondary.my-5
   .py-md-2
-    .border-bottom.border-secondary.my-4
     = render partial: 'admin/characterizations/partials/select_form'
+  div.border-bottom.border-secondary.my-5
 
   
