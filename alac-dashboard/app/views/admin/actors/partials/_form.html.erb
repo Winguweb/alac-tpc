@@ -1,0 +1,22 @@
+<% form_tag("/actors", :method => "POST") %>
+  <div>
+    <div class="py-md-2">
+      <button class="btn btn-primary outline bg-white text-primary px-md-5 mr-md-3">Buscar</button>
+      <button class="btn btn-primary px-md-5 ">Crear</button>
+    </div>
+    <div class="row py-md-2">
+      <div class="col">
+        <label> nombre</label> 
+        <input type="text" class="form-control" placeholder="Nombre del actor">
+      </div>
+      <div class="col">
+        <label>Tipo de participacion </label>
+        <select class="form-control form-control">
+          <option>tipo</option>
+        </select>
+      </div>
+    </div>
+    <div class="py-md-2">
+      <button class="btn btn-primary">agregar actor</button>
+    </div>
+  </div>
