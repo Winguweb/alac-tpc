@@ -4,7 +4,7 @@ class CreateCharacterization < ActiveRecord::Migration[5.1]
       t.string   :case_id, null: false
       t.text   :summary
       t.string   :status
-      t.boolean   :known_authotity
+      t.boolean   :known_authority
       t.string   :authority
       t.boolean   :has_tool
       t.string   :tool

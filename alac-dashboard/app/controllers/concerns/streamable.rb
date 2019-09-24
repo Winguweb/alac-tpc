@@ -89,7 +89,7 @@ module Streamable
     xlsx.write_worksheet 'Herramientas' do |sheet|
       sheet << ["ID de la Asesoría",  "Herramientas legales utilizadas por ALAC","Se radicó ante la entidad o aurotidad a quien iba digirida?","La autoridad o entidad a quien iba diriga dio respuesta?"]
       Tool.all.each do |tool|
-        sheet << [tool.advisory.id,tool.tools_used,tool.go_entity?,tool.have_answer?]
+        sheet << [tool.advisory.id,tool.tools_used,tool.go_entity,tool.have_answer]
       end
     end
    

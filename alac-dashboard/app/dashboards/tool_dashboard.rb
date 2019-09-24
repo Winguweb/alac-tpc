@@ -11,11 +11,11 @@ class ToolDashboard < Administrate::BaseDashboard
     advisory: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
     tools_used: Field::String,
-    go_entity?: Field::Boolean,
+    go_entity: Field::Boolean,
     entity: Field::String,
     radication_date: Field::DateTime,
     deadline: Field::DateTime,
-    have_answer?: Field::Boolean,
+    have_answer: Field::Boolean,
     answer_date: Field::DateTime,
     document: Field::String,
   }.freeze
@@ -29,7 +29,7 @@ class ToolDashboard < Administrate::BaseDashboard
     :advisory,
     :id,
     :tools_used,
-    :go_entity?,
+    :go_entity,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,11 +38,11 @@ class ToolDashboard < Administrate::BaseDashboard
     :advisory,
     :id,
     :tools_used,
-    :go_entity?,
+    :go_entity,
     :entity,
     :radication_date,
     :deadline,
-    :have_answer?,
+    :have_answer,
     :answer_date,
     :document,
   ].freeze
@@ -53,11 +53,11 @@ class ToolDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :advisory,
     :tools_used,
-    :go_entity?,
+    :go_entity,
     :entity,
     :radication_date,
     :deadline,
-    :have_answer?,
+    :have_answer,
     :answer_date,
     :document,
   ].freeze
