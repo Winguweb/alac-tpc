@@ -1,4 +1,5 @@
 header.main-content__header.bg-primary
+  = link_to "Descargar", admin_download_data_path(format: "csv"), class: "button"
   h1.text-white Listado de casos
 table.table
   thead.thead-dark
@@ -11,8 +12,12 @@ table.table
     - @reports.each do |report|
       tr 
         td
-          = link_to report[1],admin_path(report[1])
+          = link_to report[0],admin_path(report[0])
         td
-          = link_to report[2],admin_path(report[1])
+          = link_to report[1],admin_path(report[0])
         td
-          = link_to report[3],admin_path(report[1])
+          = link_to report[2],admin_path(report[0])
+
+
+
+
