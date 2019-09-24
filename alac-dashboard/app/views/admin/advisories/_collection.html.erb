@@ -17,12 +17,41 @@ to display a collection of resources in an HTML table.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
-<table aria-labelledby="advisories-table">
-  <thead>
-    <tr scope="col">#</tr>
-    <tr scope="col">Fecha</tr>
-    <tr scope="col">Tipo de respuesta</tr>
-    <tr scope="col">Resumen</tr>
-    <tr scope="col">Opciones</tr>
-  </thead>
-</table>
+<section class="main-content__body">
+  <div class="row">
+    <table class="table" aria-labelledby="advisories-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo de respuesta</th>
+          <th scope="col">Resumen</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>15/12/1990</td>
+          <td>Escrita</td>
+          <td>Resumen...</td>
+          <td>Hola</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>15/12/1990</td>
+          <td>Escrita</td>
+          <td>Resumen...</td>
+          <td>Hola</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>15/12/1990</td>
+          <td>Escrita</td>
+          <td>Resumen...</td>
+          <td>Hola</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
