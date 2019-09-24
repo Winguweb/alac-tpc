@@ -1,0 +1,107 @@
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Procesos Judiciales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% form_tag("/actors", :method => "POST") %>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Fecha de presentación de la denuncia</label> 
+                <input class="form-control" type="date" >
+              </div>
+              <div class="col">
+                <label>Fecha de sanción</label>
+                <input class="form-control" type="date" >
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Actor investigado</label> 
+                <select id="corruption-types" class="selectpicker">
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+              <div class="col">
+                <label>Tipos de investigacion</label>
+                <select id="corruption-types" class="selectpicker">
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+              <div class="col">
+                <label>Etapa Procesal</label>
+                <select id="corruption-types" class="selectpicker">
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Situacion del investigado</label> 
+                <select id="corruption-types" class="selectpicker">
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+              <div class="col">
+                <div>
+                  <label>Presunta falta</label>
+                </div>
+                <select id="corruption-types" class="selectpicker" multiple>
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Situacion del investigado</label> 
+                <input type="text">
+              </div>
+              <div class="col">
+                <div>
+                  <label>Presunta falta</label>
+                </div>
+                <select id="corruption-types" class="selectpicker" multiple>
+                  <option>Corrupcion Administrativa</option>
+                  <option>Corrupcion Gris</option>
+                  <option>Corrupcion Judicial</option>
+                </select> 
+              </div>
+            </div>
+          </div> 
+          <div>
+            <label for="">Detalle de la sanción</label>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
+          <div>
+            <label for="">Detalle de la sanción</label>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
