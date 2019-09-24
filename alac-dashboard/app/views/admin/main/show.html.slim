@@ -24,17 +24,17 @@
         - @documents.each do |doc|
           tr
             td =doc[0]
-
-    .py-md-2
-      h3 Actores
-      = render partial: 'admin/actors/partials/form'
-      = render partial: 'admin/actors/partials/table'
-
-    .py-md-2
-      .border.border-top.my-md-2
-      = render partial: 'admin/main/partials/characterization'
-
   div.border-bottom.border-secondary.mb-5
 
 
-  = render partial: 'admin/characterizations/form'
+    = render partial: 'admin/characterizations/partials/form'
+  .py-md-2
+    h3 Actores
+    = render partial: 'admin/actors/partials/form'
+    = render partial: 'admin/actors/partials/table'
+
+  .py-md-2
+    .border-bottom.border-secondary.my-4
+    = render partial: 'admin/characterizations/partials/select_form'
+
+  
