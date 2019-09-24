@@ -1,6 +1,5 @@
 module Admin
   class MainController < Admin::ApplicationController
-    require 'csv'
     include MainHelper
     include Streamable
 
