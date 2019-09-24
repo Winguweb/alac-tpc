@@ -1,0 +1,99 @@
+<%#
+# Form Partial
+
+This partial is rendered on a resource's `new` and `edit` pages,
+and renders all form fields for a resource's editable attributes.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Form][1].
+  Contains helper methods to display a form,
+  and knows which attributes should be displayed in the resource's form.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
+%>
+<div class="bg-primary text-white p-3 font-weight-bold">
+  Caracterización del Reporte
+</div>
+
+<section class="main-content__body">
+  <%= form_for("characterizations", html: { class: "form" }) do |f| %>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="summary">Resumen del reporte</label>
+          <textarea class="form-control" id="summary" name="characterization[summary]" rows="6"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="status">Estado de caso</label>
+          <select class="form-control" id="status" name="characterization[status]">
+            <option>Procede</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="known_authotity" style="min-height: 50px;">¿Caso conocido por autoridades con anterioridad al reporte?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="characterization[known_authotity]" id="true_known_authotity" value=true>
+            <label class="form-check-label" for="true_known_authotity">Sí</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="characterization[known_authotity]" id="false_known_authotity" value=false>
+            <label class="form-check-label" for="false_known_authotity">No</label>
+          </div>
+        </div>
+        <div class="form-group d-none select-known-authority">
+          <label>¿Cuál?</label>
+          <select class="form-control known-authority">
+            <option>Fiscalía</option>
+            <option>Procuraduría</option>
+            <option value="otro">Otra</option>
+          </select>
+        </div>
+        <div class="form-group known-authority-input d-none">
+          <input type="text" class="form-control" placeholder="Detalle cuál">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label style="min-height: 50px;">Herramientas jurídicas previas al ALAC</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="characterization[has_tool]" id="true_has_tool" value=true>
+            <label class="form-check-label" for="true_has_tool">Sí</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="characterization[has_tool]" id="false_has_tool" value=false>
+            <label class="form-check-label" for="false_has_tool">No</label>
+          </div>
+        </div>
+        <div class="form-group has-tool-select d-none">
+          <label>¿Cuál?</label>
+          <select class="form-control has-tool">
+            <option>Fiscalía</option>
+            <option>Procuraduría</option>
+            <option value="otro">Otra</option>
+          </select>
+        </div>
+        <div class="form-group has-tool-input d-none">
+          <input type="text" class="form-control" placeholder="Detalle cuál">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="scope" style="min-height: 50px;">Alcance del Caso</label>
+          <select id="scope" name="characterization[scope]" class="form-control">
+            <option>Local</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
