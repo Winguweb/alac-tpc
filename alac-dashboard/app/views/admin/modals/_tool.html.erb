@@ -8,6 +8,63 @@
         </button>
       </div>
       <div class="modal-body">
+        <% form_tag("/tools", :method => "POST") %>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label style="min-height: 50px;">Herramientas legales utilizadas</label>
+                <select class="custom-select">
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label style="min-height: 50px;">¿Se radicó ante la entidad o autoridad a la que iba dirigido?</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline1">Sí</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline2">No</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Entidad de destino</label>
+                <select multiple class="custom-select">
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <input type="text" class="form-control mt-3">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Fecha de radicación</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Término legal para dar respuesta</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+              </div>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
