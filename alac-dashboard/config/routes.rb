@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     root to: "main#index"
     # get '/' => 'main#index'
     get '/reports/:id' => 'main#show'
+
+    get 'download_data' => 'main#download', via: :get
   end
 
   devise_for :users

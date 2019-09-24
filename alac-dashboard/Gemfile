@@ -18,7 +18,7 @@ gem 'webpacker' # Transpile app-like JavaScript. Read more: https://github.com/r
 gem 'sqlite3'
 gem "administrate"
 gem 'kaminari'
-
+gem 'xlsxtream'
 gem 'pry', '~> 0.12.2'
 gem "better_errors"
 gem "binding_of_caller"
