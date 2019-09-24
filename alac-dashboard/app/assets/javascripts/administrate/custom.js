@@ -30,7 +30,7 @@ $(document).ready(function(){
 
   // Characterizations form
   // Show select when known authority is selected
-  $('#true_known_authotity').click(function() {
+  $('#true_known_authority').click(function() {
     $('.select-known-authority').removeClass('d-none');
   });
 
