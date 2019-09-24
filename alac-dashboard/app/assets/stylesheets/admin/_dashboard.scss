@@ -17,3 +17,17 @@
 input:focus, textarea:focus, select:focus{
   outline: none !important;
 }
+
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 80vw !important;
+  }
+}
+
+.modal-content{
+  width: 80vw !important;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+  width: 100% !important;
+}
