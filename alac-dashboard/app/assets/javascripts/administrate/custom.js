@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   // Actors form
   // Show charge field when individual actor type is selected
   $('.actors-type-checkbox').click(function(){

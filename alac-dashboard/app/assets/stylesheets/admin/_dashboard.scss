@@ -10,3 +10,10 @@
   align-items: center;
 }
 
+.w-30{
+  width: 30%;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none !important;
+}
