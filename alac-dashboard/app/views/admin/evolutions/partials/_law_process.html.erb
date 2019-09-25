@@ -8,6 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
+<<<<<<< HEAD
         <%= form_with(url: admin_evolutions_path, model: evolution, method: "post") do %>
           <div>
             <%= hidden_field_tag 'evolution[characterization_id]', characterization_id %>
@@ -19,6 +20,18 @@
               <div class="col">
                 <%= label_tag('evolution[sanction_date]', "Fecha de sanción") %>
                 <%= date_field(:evolution, :sanction_date) %>  
+=======
+        <%= form_with(url: admin_evolutions_path, method: "post") do %>
+          <div>
+            <div class="row py-md-2">
+              <div class="col"> 
+                <%= label_tag(:presentation_date, "Fecha de presentación de la denuncia") %>
+                <%= date_field(:presentation_date, :presentation_date) %>
+              </div>
+              <div class="col">
+                <%= label_tag(:sanction_date, "Fecha de sanción") %>
+                <%= date_field(:sanction_date, :sanction_date) %>
+>>>>>>> fixes in evolution modal
               </div>
             </div>
           </div>
@@ -27,17 +40,15 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Actor investigados</label> 
-                <%= select_tag('evolution[actor_id]', options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker"}) %>
+                <%= select_tag(:actor, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
               </div>
               <div class="col">
                 <label>Tipos de investigacion</label> 
-                <%= select_tag('evolution[kind_investigation]', raw('<option value="penal">penal</option><option value="fiscal">fiscal</option><option value="disciplinaria">disciplinaria</option>'), {class: "selectpicker kind_investigation"}) %>
+                <%= select_tag(:kind_investigation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
               </div>
               <div class="col">
                 <label>Etapa Procesal</label> 
-                <%= select_tag('evolution[stage]',options_for_select(get_options['penal_stage_options']) , { class: "selectpicker penal_stage_options"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker fiscal_stage_options hide"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+                <%= select_tag(:stage, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
               </div>
             </div>
           </div>
@@ -46,15 +57,13 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Situacion del investigado</label> 
-                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options']) , { class: "selectpicker penal_situation_options"}) %>
-                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options']) , { class: "selectpicker fiscal_situation_options hide"}) %>
-                <%= select_tag('evolution[situation]',options_for_select(get_options['disciplinary_situation_options']) , { class: "selectpicker disciplinary_situation_options hide"}) %>
+                <%= select_tag(:situation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
               </div>
-              <div class="col hide fault_select">
+              <div class="col">
                 <div>
                   <label>Presunta falta</label>
                 </div>
-                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  {class: "selectpicker"}) %>
+                <%= select_tag(:fault, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
@@ -62,23 +71,23 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Autoridad de conocimiento</label> 
-                <%= text_field_tag('evolution[authority]') %>
+                <%= text_field_tag(:authority) %>
               </div>
-              <div class="col crime_select">
+              <div class="col">
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('evolution[crime]', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag(:authority, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
           <div>
             <label for="">Detalle de la sanción</label>
-            <%= text_area_tag('evolution[details]', "", size: "24x6") %>
+            <%= text_area_tag(:details, "", size: "24x6") %>
           </div>
           <div>
             <label for="">Commentarios</label>
-            <%= text_area_tag('evolution[comment]', "", size: "24x6") %>
+            <%= text_area_tag(:comments, "", size: "24x6") %>
           </div>
 
           <div class="py-md-3">

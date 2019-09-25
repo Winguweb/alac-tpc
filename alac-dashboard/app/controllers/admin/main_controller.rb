@@ -40,9 +40,6 @@ module Admin
 
       @get_options = get_options
 
-
-
-
     end
 
     def download
