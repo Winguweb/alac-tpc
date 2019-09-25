@@ -32,7 +32,10 @@ and renders all form fields for a resource's editable attributes.
         <div class="form-group">
           <label for="status">Estado de caso</label>
           <select class="form-control" id="status" name="characterization[status]">
-            <option>Procede</option>
+            <option value="procede">Procede</option>
+            <option value="no-procede">No procede</option>
+            <option value="archivado">Archivado</option>
+            <option value="duplicado">Duplicado</option>
           </select>
         </div>
       </div>
@@ -53,8 +56,9 @@ and renders all form fields for a resource's editable attributes.
         <div class="form-group d-none select-known-authority">
           <label>¿Cuál?</label>
           <select class="form-control known-authority">
-            <option>Fiscalía</option>
-            <option>Procuraduría</option>
+            <option value="fiscalia">Fiscalía</option>
+            <option value="procuraduria">Procuraduría</option>
+            <option value="contraloria">Contraloría</option>
             <option value="otro">Otra</option>
           </select>
         </div>
@@ -77,8 +81,14 @@ and renders all form fields for a resource's editable attributes.
         <div class="form-group has-tool-select d-none">
           <label>¿Cuál?</label>
           <select class="form-control has-tool">
-            <option>Fiscalía</option>
-            <option>Procuraduría</option>
+            <option value="queja">Queja</option>
+            <option value="denuncia">Denuncia</option>
+            <option value="accion-de-tutela">Acción de tutela</option>
+            <option value="accion-de-grupo">Acción de grupo</option>
+            <option value="accion-popular">Acción popular</option>
+            <option value="accion-de-cumplimiento">Acción de cumplimiento</option>
+            <option value="consulta-previa">Consulta previa</option>
+             <option value="solicitud-revocatoria-directa">Solicitud de Revocatoria directa</option>
             <option value="otro">Otra</option>
           </select>
         </div>
