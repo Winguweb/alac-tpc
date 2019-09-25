@@ -1,0 +1,86 @@
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Procesos Judiciales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(url: admin_evolutions_path, method: "post") do %>
+          <div>
+            <div class="row py-md-2">
+              <div class="col"> 
+                <%= label_tag(:presentation_date, "Fecha de presentación de la denuncia") %>
+                <%= date_field(:presentation_date, :presentation_date) %>
+              </div>
+              <div class="col">
+                <%= label_tag(:sanction_date, "Fecha de sanción") %>
+                <%= date_field(:sanction_date, :sanction_date) %>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Actor investigados</label> 
+                <%= select_tag(:actor, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
+              </div>
+              <div class="col">
+                <label>Tipos de investigacion</label> 
+                <%= select_tag(:kind_investigation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
+              </div>
+              <div class="col">
+                <label>Etapa Procesal</label> 
+                <%= select_tag(:stage, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Situacion del investigado</label> 
+                <%= select_tag(:situation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
+              </div>
+              <div class="col">
+                <div>
+                  <label>Presunta falta</label>
+                </div>
+                <%= select_tag(:fault, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Autoridad de conocimiento</label> 
+                <%= text_field_tag(:authority) %>
+              </div>
+              <div class="col">
+                <div>
+                  <label>Presunto delito</label>
+                </div>
+                <%= select_tag(:authority, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="">Detalle de la sanción</label>
+            <%= text_area_tag(:details, "", size: "24x6") %>
+          </div>
+          <div>
+            <label for="">Commentarios</label>
+            <%= text_area_tag(:comments, "", size: "24x6") %>
+          </div>
+
+          <div class="py-md-3">
+            <%= submit_tag("Search") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

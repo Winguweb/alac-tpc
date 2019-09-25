@@ -28,6 +28,7 @@ module Admin
       end
    
       @documents = get_files(params[:id])
+      # binding.pry
     end
 
     def download
