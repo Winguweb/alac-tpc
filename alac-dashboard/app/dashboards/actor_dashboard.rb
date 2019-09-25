@@ -17,7 +17,7 @@ class ActorDashboard < Administrate::BaseDashboard
     category: Field::String,
     subtype: Field::String,
     subtype_2: Field::String,
-    institution: Field::String,
+    institution: Field::Select.with_options(collection: ['opcion1', 'opcion2']),
     public_branch: Field::String,
     position: Field::String,
     entity: Field::String,
