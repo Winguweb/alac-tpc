@@ -62,13 +62,79 @@
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
+                <label style="min-height: 50px;">¿Entidad o autoridad emitió la respuesta?</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline1">Sí</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline2">No</label>
+                </div>
               </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label style="min-height: 50px;">Fecha de respuesta</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label style="min-height: 50px;">Subir herramienta</label>
+                <input type="file" class="form-control-file">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <button type="button" class="btn btn-primary">Agregar herramienta</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="modal-title my-5">Herramientas</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table" aria-labelledby="tools-table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Herramienta legal</th>
+                    <th scope="col">Radicación</th>
+                    <th scope="col">Entidad de destino</th>
+                    <th scope="col">Fecha de radicación</th>
+                    <th scope="col">Término legal para dar respuesta</th>
+                    <th scope="col">Respuesta</th>
+                    <th scope="col">Fecha de respuesta</th>
+                    <th scope="col">Opción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th scope="row">1</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Tools buttons">
+                    <button class="btn btn-link">Editar</button>
+                    <button class="btn btn-link">Borrar</button>
+                    <button class="btn btn-link">Ver</button>
+                    </div>
+                  </td>
+                </tbody>
+              </table>
             </div>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Crear</button>
       </div>
     </div>
   </div>
