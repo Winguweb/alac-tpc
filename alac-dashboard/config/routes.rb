@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  root 'main#index'
+  root to: "admin/main#index"
 
   # namespace :admin, defaults: { format: 'html' } do
   #   get '/' => 'main#index'

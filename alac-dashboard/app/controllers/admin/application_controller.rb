@@ -9,6 +9,10 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
+      unless current_user.present? and current_user.admin?
+        #flash[:alert] = "You are not authorized to view that page."
+        redirect_to new_user_session_path
+      end
       # TODO Add authentication logic here.
     end
 
