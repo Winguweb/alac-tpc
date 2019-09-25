@@ -17,7 +17,7 @@
   div.border-bottom.border-secondary.mb-5
 
   div.text-primary.p-3.font-weight-bold Adjuntos del caso en Global Leaks
-  table
+  table.table
     thead
       tr
       th Documentos
@@ -45,6 +45,11 @@
     button.btn.btn-primary data-toggle="modal" data-target="#exampleModalLong"
       = "Agregar investigación"
     = render partial: 'admin/modals/law_process'
+  div.border-bottom.border-secondary.my-5
+  .py-md-2
+    = render partial: 'admin/advisories/form'
+
+= render partial: 'admin/advisories/collection'
 
 
   
