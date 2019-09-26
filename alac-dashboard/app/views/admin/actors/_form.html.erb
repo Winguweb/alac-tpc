@@ -1,5 +1,4 @@
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
-  <%= page.resource %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
       <h2>
