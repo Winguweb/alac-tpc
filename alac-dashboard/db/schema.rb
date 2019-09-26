@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "case_id", null: false
     t.text "summary"
     t.string "status"
-    t.boolean "known_authority"
+    t.boolean "known_authotity"
     t.string "authority"
     t.boolean "has_tool"
     t.string "tool"
@@ -92,11 +92,11 @@ ActiveRecord::Schema.define(version: 20190912123931) do
   create_table "tools", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "advisory_id"
     t.string "tools_used"
-    t.boolean "go_entity"
+    t.boolean "go_entity?"
     t.string "entity"
     t.date "radication_date"
     t.date "deadline"
-    t.boolean "have_answer"
+    t.boolean "have_answer?"
     t.date "answer_date"
     t.string "document"
     t.index ["advisory_id"], name: "index_tools_on_advisory_id"

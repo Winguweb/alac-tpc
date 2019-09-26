@@ -1,17 +1,19 @@
-<% form_tag("/relationships", :method => "POST") %>
+<%= form_with(url: '/admin/relationships', model: relationship, method: "post") do |form| %>
   <div>
     <div class="row py-md-2">
-      <%= hidden_field_tag 'relationship[characterization_id]', characterization_id %>
       <div class="col">
-        <label>Nombre</label> 
-        <%= select_tag('relationship[actor_id]', options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker form-control"}) %>
+        <%= form.label('characterization', "Tipo de participación") %>
+        <%%= form.text_field :characterization value: characterization_id >
+        <%= form.label('actor_id', "Nombre") %>
+        <%= form.select('actor_id', options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker form-control"}) %>
       </div>
       <div class="col">
-        <label>Tipo de participacion </label>
-        <%= select_tag('relationship[participation_type]', options_for_select([['Actor beneficiado'], ['Actor de conocimiento'], ['Actor denunciante'], ['Actor involucrado'], ['No disponible']]), {class: "selectpicker form-control"}) %>
+        <%= form.label('participation_type', "Tipo de participación") %>
+        <%= form.select('participation_type', options_for_select([['Actor beneficiado'], ['Actor de conocimiento'], ['Actor denunciante'], ['Actor involucrado'], ['No disponible']]), {class: "selectpicker form-control"}) %>
       </div>
     </div>
     <div class="py-md-2">
-      <button class="btn btn-primary">Agregar actor</button>
+       <%= form.submit %>
     </div>
   </div>
+<% end %>

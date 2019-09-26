@@ -38,6 +38,12 @@ module Admin
    
       @documents = get_files(params[:id])
 
+
+      @relationships = Relationship.where(characterization_id: params[:id])
+
+      @relationship = Relationship.new
+
+
       @get_options = get_options
 
     end
