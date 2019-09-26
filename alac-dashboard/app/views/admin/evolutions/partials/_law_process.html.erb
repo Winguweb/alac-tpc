@@ -40,15 +40,17 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Actor investigados</label> 
-                <%= select_tag(:actor, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
+                <%= select_tag(:actor, options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker"}) %>
               </div>
               <div class="col">
                 <label>Tipos de investigacion</label> 
-                <%= select_tag(:kind_investigation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), {class: "selectpicker"}) %>
+                <%= select_tag(:kind_investigation, raw('<option value="penal">penal</option><option value="fiscal">fiscal</option><option value="disciplinaria">disciplinaria</option>'), {class: "selectpicker"}) %>
               </div>
               <div class="col">
                 <label>Etapa Procesal</label> 
-                <%= select_tag(:stage, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
+                <%= select_tag(:stage,options_for_select(penal_options) , { class: "selectpicker penal_stage_options"}) %>
+                <%= select_tag(:stage,options_for_select(fiscal_options) , { class: "selectpicker fiscal_stage_options hide"}) %>
+                <%= select_tag(:stage,options_for_select(disciplinary_options) , { class: "selectpicker disciplinary_stage_options hide"}) %>
               </div>
             </div>
           </div>
