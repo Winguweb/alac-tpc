@@ -34,9 +34,9 @@
               </div>
               <div class="col">
                 <label>Etapa Procesal</label> 
-                <%= select_tag(:stage,options_for_select(penal_options) , { class: "selectpicker penal_stage_options"}) %>
-                <%= select_tag(:stage,options_for_select(fiscal_options) , { class: "selectpicker fiscal_stage_options hide"}) %>
-                <%= select_tag(:stage,options_for_select(disciplinary_options) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+                <%= select_tag(:stage,options_for_select(penal_stage_options) , { class: "selectpicker penal_stage_options"}) %>
+                <%= select_tag(:stage,options_for_select(fiscal_stage_options) , { class: "selectpicker fiscal_stage_options hide"}) %>
+                <%= select_tag(:stage,options_for_select(disciplinary_stage_options) , { class: "selectpicker disciplinary_stage_options hide"}) %>
               </div>
             </div>
           </div>
@@ -45,13 +45,15 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Situacion del investigado</label> 
-                <%= select_tag(:situation, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'), { class: "selectpicker"}) %>
+                <%= select_tag(:situation,options_for_select(penal_situation_options) , { class: "selectpicker penal_situation_options"}) %>
+                <%= select_tag(:situation,options_for_select(fiscal_situation_options) , { class: "selectpicker fiscal_situation_options hide"}) %>
+                <%= select_tag(:situation,options_for_select(disciplinary_situation_options) , { class: "selectpicker disciplinary_situation_options hide"}) %>
               </div>
-              <div class="col">
+              <div class="col hide fault_select">
                 <div>
                   <label>Presunta falta</label>
                 </div>
-                <%= select_tag(:fault, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag(:fault, raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
@@ -61,11 +63,11 @@
                 <label>Autoridad de conocimiento</label> 
                 <%= text_field_tag(:authority) %>
               </div>
-              <div class="col">
+              <div class="col crime_select">
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag(:authority, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag(:crime, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
