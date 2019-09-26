@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#kind_investigation').on('change', function() {
+  $('.kind_investigation').on('change', function() {
     if(this.value == 'penal'){
       $('.fiscal_stage_options').addClass('hide')
       $('.disciplinary_stage_options').addClass('hide')
