@@ -48,7 +48,7 @@ header.main-content__header.bg-primary.mb-5
     .text-primary.p-3.font-weight-bold Proceso Judicial
     button.btn.btn-primary.mb-5 data-toggle="modal" data-target="#exampleModalLong"
       = "Agregar investigación"
-    = render partial: 'admin/evolutions/partials/law_process', locals: { actors_select:@actors_select, penal_stage_options: @penal_stage_options, fiscal_stage_options: @fiscal_stage_options, disciplinary_stage_options: @disciplinary_stage_options, penal_situation_options: @penal_situation_options, fiscal_situation_options: @fiscal_situation_options, disciplinary_situation_options: @disciplinary_situation_options, crime_options: @crime_options } 
+    = render partial: 'admin/evolutions/partials/law_process', locals: { evolution: @evolution, actors_select:@actors_select, penal_stage_options: @penal_stage_options, fiscal_stage_options: @fiscal_stage_options, disciplinary_stage_options: @disciplinary_stage_options, penal_situation_options: @penal_situation_options, fiscal_situation_options: @fiscal_situation_options, disciplinary_situation_options: @disciplinary_situation_options, crime_options: @crime_options } 
     = render partial: 'admin/evolutions/collection'
   div.border-bottom.border-secondary.my-5
       

@@ -32,6 +32,8 @@ module Admin
       @actors = Characterization.where(case_id: params[:id]).first.actors
       @actors_select = Actor.all
 
+      @evolution = Evolution.new
+
       @penal_stage_options = penal_stage_options
       @fiscal_stage_options = fiscal_stage_options
       @disciplinary_stage_options = disciplinary_stage_options
@@ -41,6 +43,7 @@ module Admin
       @disciplinary_situation_options = disciplinary_situation_options
 
       @crime_options = crime_options
+
 
 
 
