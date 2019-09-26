@@ -13,11 +13,11 @@
             <div class="row py-md-2">
               <div class="col"> 
                 <%= label_tag(:presentation_date, "Fecha de presentación de la denuncia") %>
-                <input type="date" name="evolution[presentation_date]">
+                <%= date_field(:evolution, :presentation_date) %>  
               </div>
               <div class="col">
                 <%= label_tag('evolution[sanction_date]', "Fecha de sanción") %>
-                <input type="date" name="evolution[sanction_date]">
+                <%= date_field(:evolution, :sanction_date) %>  
               </div>
             </div>
           </div>
