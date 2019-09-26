@@ -67,7 +67,7 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag(:crime, raw('<option value="1">actor 1</option><option value="2">actor 2</option><option value="3">actor 3</option>'),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag(:crime, options_for_select(crime_options),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>

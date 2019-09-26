@@ -40,6 +40,8 @@ module Admin
       @fiscal_situation_options = fiscal_situation_options
       @disciplinary_situation_options = disciplinary_situation_options
 
+      @crime_options = crime_options
+
 
 
     end
