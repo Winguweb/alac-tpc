@@ -42,6 +42,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :advisories,
     :relationships,
     :actors,
+    :crime
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

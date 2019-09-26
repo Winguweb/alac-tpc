@@ -9,6 +9,8 @@ module Admin
       @reports.each do | report|
         report.push(get_info_report(report[0])[0][0])
         report.push(get_info_report(report[0])[0][1])
+      
+      
       end
       # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
     end
@@ -23,6 +25,7 @@ module Admin
       end
    
       @documents = get_files(params[:id])
+      @actors_select = Actor.all
     end
 
     def download
