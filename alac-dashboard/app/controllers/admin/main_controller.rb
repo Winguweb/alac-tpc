@@ -14,6 +14,11 @@ module Admin
     end
 
     def show
+      @characterization = Characterization.where(case_id: params[:id]).first
+      if @characterization.blank?
+        @characterization = Characterization.create(case_id: params[:id])
+      end
+
       @data = []
       elements = get_report_detail(params[:id])
       index = elements.each_index.select{|i| elements[i][1] != '-'} 
