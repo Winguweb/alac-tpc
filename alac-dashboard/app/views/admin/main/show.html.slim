@@ -48,10 +48,10 @@ header.main-content__header.bg-primary.mb-5
     .text-primary.p-3.font-weight-bold Proceso Judicial
     button.btn.btn-primary.mb-5 data-toggle="modal" data-target="#exampleModalLong"
       = "Agregar investigación"
-    = render partial: 'admin/evolutions/partials/law_process'
+    = render partial: 'admin/evolutions/partials/law_process', locals: { actors_select:@actors_select, penal_options: @penal_options, fiscal_options: @fiscal_options, disciplinary_options: @disciplinary_options } 
     = render partial: 'admin/evolutions/collection'
   div.border-bottom.border-secondary.my-5
       
 
 
-  
+
