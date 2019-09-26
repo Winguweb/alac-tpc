@@ -1,6 +1,7 @@
-header.main-content__header.bg-primary
-  = link_to "Descargar", admin_download_data_path(format: "csv"), class: "button"
-  h1.text-white Listado de casos
+header.main-content__header.bg-primary.d-flex.justify-content-between
+    h1.text-white Listado de casos
+    div
+      = link_to "Descargar", admin_download_data_path(format: "csv"), class: "button btn btn-danger"
 table.table
   thead.thead-dark
     tr
