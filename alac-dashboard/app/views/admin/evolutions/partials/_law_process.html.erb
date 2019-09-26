@@ -10,6 +10,7 @@
       <div class="modal-body">
         <%= form_with(url: admin_evolutions_path, model: evolution, method: "post") do %>
           <div>
+            <%= hidden_field_tag 'evolution[characterization_id]', characterization_id %>
             <div class="row py-md-2">
               <div class="col"> 
                 <%= label_tag(:presentation_date, "Fecha de presentación de la denuncia") %>

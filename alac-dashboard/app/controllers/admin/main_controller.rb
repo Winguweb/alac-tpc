@@ -29,6 +29,7 @@ module Admin
       end
    
       @documents = get_files(params[:id])
+      @characterization_id = Characterization.where(case_id: params[:id]).first.id
       @actors = Characterization.where(case_id: params[:id]).first.actors
       @actors_select = Actor.all
 
