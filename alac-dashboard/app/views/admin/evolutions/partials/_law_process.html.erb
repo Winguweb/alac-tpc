@@ -35,9 +35,9 @@
               </div>
               <div class="col">
                 <label>Etapa Procesal</label> 
-                <%= select_tag('evolution[stage]',options_for_select(penal_stage_options) , { class: "selectpicker penal_stage_options"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(fiscal_stage_options) , { class: "selectpicker fiscal_stage_options hide"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(disciplinary_stage_options) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['penal_stage_options']) , { class: "selectpicker penal_stage_options"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker fiscal_stage_options hide"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
               </div>
             </div>
           </div>
@@ -46,9 +46,9 @@
             <div class="row py-md-2">
               <div class="col">
                 <label>Situacion del investigado</label> 
-                <%= select_tag('evolution[situation]',options_for_select(penal_situation_options) , { class: "selectpicker penal_situation_options"}) %>
-                <%= select_tag('evolution[situation]',options_for_select(fiscal_situation_options) , { class: "selectpicker fiscal_situation_options hide"}) %>
-                <%= select_tag('evolution[situation]',options_for_select(disciplinary_situation_options) , { class: "selectpicker disciplinary_situation_options hide"}) %>
+                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options']) , { class: "selectpicker penal_situation_options"}) %>
+                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options']) , { class: "selectpicker fiscal_situation_options hide"}) %>
+                <%= select_tag('evolution[situation]',options_for_select(get_options['disciplinary_situation_options']) , { class: "selectpicker disciplinary_situation_options hide"}) %>
               </div>
               <div class="col hide fault_select">
                 <div>
@@ -68,7 +68,7 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('evolution[crime]', options_for_select(crime_options),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag('evolution[crime]', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>

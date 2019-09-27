@@ -19,6 +19,10 @@ module Admin
       if @characterization.blank?
         @characterization = Characterization.create(case_id: params[:id])
       end
+      @characterization_id = @characterization.id
+      @actors = @characterization.actors
+      @actors_select = Actor.all
+      @evolution = Evolution.new
 
       @data = []
       elements = get_report_detail(params[:id])
@@ -29,21 +33,8 @@ module Admin
       end
    
       @documents = get_files(params[:id])
-      @characterization_id = Characterization.where(case_id: params[:id]).first.id
-      @actors = Characterization.where(case_id: params[:id]).first.actors
-      @actors_select = Actor.all
 
-      @evolution = Evolution.new
-
-      @penal_stage_options = penal_stage_options
-      @fiscal_stage_options = fiscal_stage_options
-      @disciplinary_stage_options = disciplinary_stage_options
-
-      @penal_situation_options = penal_situation_options
-      @fiscal_situation_options = fiscal_situation_options
-      @disciplinary_situation_options = disciplinary_situation_options
-
-      @crime_options = crime_options
+      @get_options = get_options
 
 
 
