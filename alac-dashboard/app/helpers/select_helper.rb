@@ -174,5 +174,20 @@ module SelectHelper
     }
   end
 
+  def participation_options
+    participation_select = [
+      'Actor beneficiado', 
+      'Actor de conocimiento', 
+      'Actor denunciante', 
+      'Actor involucrado', 
+      'No disponible'
+    ]
+  end
+  def kind_answer_options
+    kind_answer_select = [
+      'Escrita',
+      'Telefónica',
+      'Personal'
+    ]
+  end 
 end
-

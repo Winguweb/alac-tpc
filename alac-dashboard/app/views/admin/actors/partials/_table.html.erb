@@ -7,33 +7,29 @@
       <th scope="col">Institucion</th>
       <th scope="col">Cargo</th>
       <th scope="col">Rama del poder</th>
-      <th scope="col">Autoridad publica</th>
       <th scope="col">Partido politico</th>
       <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Nombre</td>
-      <td>tipo</td>
-      <td>institucion</td>
-      <td>cargo</td>
-      <td>rama</td>
-      <td>autoridad</td>
-      <td>pp</td>
-      <td>editar/eliminar</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-        <td>Nombre</td>
-      <td>tipo</td>
-      <td>institucion</td>
-      <td>cargo</td>
-      <td>rama</td>
-      <td>autoridad</td>
-      <td>pp</td>
-      <td>editar/eliminar</td>
-    </tr>
+    <% relationships.each.with_index(1) do |relationship, index| %>
+      <tr>
+        <th scope="row"><%= index %></th>
+        <td><%= relationship.actor.name %></td>
+        <td><%= relationship.participation_type %></td>
+        <td><%= relationship.actor.institution%></td>
+        <td><%= relationship.actor.position%></td>
+        <td><%= relationship.actor.public_branch%></td>
+        <td><%= relationship.actor.entity%></td>
+        <td>
+          <%= link_to(
+            "Eliminar",
+            admin_relationship_path(relationship.id),
+            class: "action-edit",
+            method: :delete,
+            data: { confirm: t("administrate.actions.confirm") }
+          ) %></td>
+      </tr>
+    <%  end %>
   </tbody>
 </table>

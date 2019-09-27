@@ -143,6 +143,5 @@ module MainHelper
       con_proceso.push(["Genero", eval(lbl.last.last)[:es] ] )
     end
     return con_proceso
-  end 
-
+  end
 end

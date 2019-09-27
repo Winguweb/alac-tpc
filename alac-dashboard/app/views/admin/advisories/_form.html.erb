@@ -1,35 +1,33 @@
-<div class="text-primary p-3 font-weight-bold">
-  Asesoría legal
-</div>
-
 <section class="main-content__body">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label style="min-height: 50px;">Fecha del seguimiento:</label>
-        <input type="date" class="form-control">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label style="min-height: 50px;">Tipo de respuesta que se dio al reportante:</label>
-        <select multiple class="form-control">
-          <option>Escrita</option>
-          <option>Telefónica</option>
-          <option>Personal</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label style="min-height: 50px;">Cuadro del resumen de la actuacion:</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
-    </div>
+  <div class="text-primary font-weight-bold mb-3">
+    Asesoría legal
   </div>
-  <div class="row">
-    <div class="col-md-4">
-      <button class="btn btn-primary">Crear / Editar seguimiento</button>
+  <%= form_with(url: '/admin/advisories', model: advisory, method: "post") do %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= hidden_field_tag 'advisory[characterization_id]', characterization_id %>
+          <%= label_tag("advisory[tracking_date]", "Fecha del seguimiento:", :style => "min-height: 50px;") %>
+          <%= date_field("advisory", "tracking_date", :class => "form-control") %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag("advisory[kind_answer]", "Tipo de respuesta que se dio al reportante:", :style => "min-height: 50px;") %>
+          <%= select_tag("advisory[kind_answer]", options_for_select(kind_answer_options),  { class: "selectpicker"}) %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+           <%= label_tag("advisory[summary]", "Cuadro del resumen de la actuacion:", :style => "min-height: 50px;") %>
+          <%= text_area(:advisory, :summary, rows: 3, :class => "form-control") %>
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-md-4">
+             <%= submit_tag("Crear seguimiento", :class =>"btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
 </section>
