@@ -60,4 +60,10 @@ $(document).ready(function(){
         $('.entity_text').addClass('hide')
       }
     })
+
+    $('body').on('shown.bs.modal', '#toolModal', function (e) {
+      var id = $(e.relatedTarget).data('id');
+      
+      $('#tool_advisory_id').val(id)
+     });
 });
