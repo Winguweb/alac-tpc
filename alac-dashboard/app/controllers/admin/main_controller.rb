@@ -1,6 +1,7 @@
 module Admin
   class MainController < Admin::ApplicationController
     include MainHelper
+    include SelectHelper
     include Streamable
 
     def index
@@ -19,6 +20,10 @@ module Admin
       if @characterization.blank?
         @characterization = Characterization.create(case_id: params[:id])
       end
+      @characterization_id = @characterization.id
+      @actors = @characterization.actors
+      @actors_select = Actor.all
+      @evolution = Evolution.new
 
       @evolutions = @characterization.blank? ? [] : @characterization.evolutions
       @data = []
@@ -30,11 +35,19 @@ module Admin
       end
    
       @documents = get_files(params[:id])
+
+      @get_options = get_options
+
+
+
+
     end
 
     def download
       stream_xlsx()
     end
+
+    
   end
 end
 
