@@ -8,23 +8,23 @@
         </button>
       </div>
       <div class="modal-body">
-        <% form_tag("/tools", :method => "POST") %>
+        <%= form_with(url: admin_tools_path, method: "post") do %>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">Herramientas legales utilizadas</label>
-                <%= select_tag('tools[tools_used]', options_for_select(get_options['tools_options']), {class:'custom-select'}) %>
+                <%= select_tag('tool[tools_used]', options_for_select(get_options['tools_options']), {class:'custom-select'}) %>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">¿Se radicó ante la entidad o autoridad a la que iba dirigido?</label>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline1" name="tools[go_entity]" class="custom-control-input">
+                  <input type="radio" id="customRadioInline1" name="tool[go_entity]" class="custom-control-input">
                   <label class="custom-control-label" for="customRadioInline1">Sí</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline2" name="tools[go_entity]" class="custom-control-input">
+                  <input type="radio" id="customRadioInline2" name="tool[go_entity]" class="custom-control-input">
                   <label class="custom-control-label" for="customRadioInline2">No</label>
                 </div>
               </div>
@@ -41,13 +41,13 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Fecha de radicación</label>
-                <input type="date" class="form-control">
+                <input type="date" name="tool[radication_date]" class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Término legal para dar respuesta</label>
-                <input type="date" class="form-control">
+                <input type="date" name="tool[deadline]" class="form-control">
               </div>
             </div>
           </div>
@@ -56,34 +56,35 @@
               <div class="form-group">
                 <label style="min-height: 50px;">¿Entidad o autoridad emitió la respuesta?</label>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                  <label class="custom-control-label" for="customRadioInline1">Sí</label>
+                  <input type="radio" id="have_answer" name="tool[have_answer]" class="custom-control-input">
+                  <label class="custom-control-label" for="have_answer">Sí</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                  <label class="custom-control-label" for="customRadioInline2">No</label>
+                  <input type="radio" id="have_anwswe_no" name="tool[have_answer]" class="custom-control-input">
+                  <label class="custom-control-label" for="have_anwswe_no">No</label>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">Fecha de respuesta</label>
-                <input type="date" class="form-control">
+                <input type="date" name="tool[answer_date]" class="form-control">
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">Subir herramienta</label>
-                <input type="file" class="form-control-file">
+                <input type="file" name="tool[document]" class="form-control-file">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
-              <button type="button" class="btn btn-primary">Agregar herramienta</button>
+              <button type="submit" class="btn btn-primary">Agregar herramienta</button>
             </div>
           </div>
-          <div class="row">
+        <%end %>
+        <div class="row">
             <div class="col-md-12">
               <h5 class="modal-title my-5">Herramientas</h5>
             </div>
@@ -124,6 +125,7 @@
               </table>
             </div>
           </div>
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
