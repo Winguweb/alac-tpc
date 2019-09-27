@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     get 'download_data' => 'main#download', via: :get
   end
 
+  namespace :api do 
+    get '/indicators/:type' => 'indicators#main', :defaults => { :format => 'json' }
+  end
   devise_for :users
   root to: "admin/main#index"
 

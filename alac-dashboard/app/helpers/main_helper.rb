@@ -57,6 +57,11 @@ module MainHelper
     end
   end
 
+  def get_answers
+    query = "SELECT internaltipanswers.answers FROM internaltipanswers"
+    data = run_query(query)
+  end
+
   def get_report_detail(id)
       
     query = "SELECT internaltipanswers.answers FROM internaltipanswers INNER JOIN receivertip ON internaltipanswers.internaltip_id =receivertip.internaltip_id WHERE  receivertip.internaltip_id = '#{id}'"
