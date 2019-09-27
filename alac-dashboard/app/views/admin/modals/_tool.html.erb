@@ -13,22 +13,18 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">Herramientas legales utilizadas</label>
-                <select class="custom-select">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+                <%= select_tag('tools[tools_used]', options_for_select(get_options['tools_options']), {class:'custom-select'}) %>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label style="min-height: 50px;">¿Se radicó ante la entidad o autoridad a la que iba dirigido?</label>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                  <input type="radio" id="customRadioInline1" name="tools[go_entity]" class="custom-control-input">
                   <label class="custom-control-label" for="customRadioInline1">Sí</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                  <input type="radio" id="customRadioInline2" name="tools[go_entity]" class="custom-control-input">
                   <label class="custom-control-label" for="customRadioInline2">No</label>
                 </div>
               </div>
@@ -38,12 +34,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Entidad de destino</label>
-                <select multiple class="custom-select">
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <input type="text" class="form-control mt-3">
+                <%= select_tag('tool[entity]', raw('<option value="fiscalia">Fiscalía</option><option value="procuraduria">Procuraduría</option><option value="contraloria">Contraloría</option><option value="">Otra ¿cual?</option>'),  { class: "selectpicker entity_tools_select"}) %>
+                <input type="text" name="tool[entity]" class="form-control mt-3 hide entity_text">
               </div>
             </div>
             <div class="col-md-4">

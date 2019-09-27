@@ -52,4 +52,12 @@ $(document).ready(function(){
         $('.has-tool-input').removeClass('d-none');
       }
     });
+
+    $('.entity_tools_select').on('change', function(){
+      if(this.value == ''){
+        $('.entity_text').removeClass('hide')
+      }else{
+        $('.entity_text').addClass('hide')
+      }
+    })
 });
