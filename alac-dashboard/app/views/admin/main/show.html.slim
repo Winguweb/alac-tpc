@@ -38,9 +38,9 @@ header.main-content__header.bg-primary.mb-5
     = render partial: 'admin/characterizations/partials/select_form'
   div.border-bottom.border-secondary.my-5
   .py-md-2
-    = render partial: 'admin/advisories/form'
+    = render partial: 'admin/advisories/form', locals: { advisory: @advisory }
     = render partial: 'admin/modals/tool'
-    = render partial: 'admin/advisories/collection'
+    = render partial: 'admin/advisories/collection', locals: { advisoires: @advisories }
   div.border-bottom.border-secondary.my-5
   .py-md-2
     .text-primary.p-3.font-weight-bold Proceso Judicial
