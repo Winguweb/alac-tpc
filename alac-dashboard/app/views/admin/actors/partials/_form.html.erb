@@ -8,7 +8,7 @@
       </div>
       <div class="col">
          <%= label_tag('relationship[participation_type]', "Tipo de participación") %>  
-         <%= select_tag('relationship[participation_type]', options_for_select([['Actor beneficiado'], ['Actor de conocimiento'], ['Actor denunciante'], ['Actor involucrado'], ['No disponible']]), {class: "selectpicker form-control"}) %>
+         <%= select_tag('relationship[participation_type]', options_for_select(participation_options), {class: "selectpicker form-control"}) %>
       </div>
     </div>
     <div class="py-md-2">

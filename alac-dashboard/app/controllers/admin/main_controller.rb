@@ -42,6 +42,7 @@ module Admin
 
       @relationship = Relationship.new
       @get_options = get_options
+      @participation_options = participation_options
 
     end
 
