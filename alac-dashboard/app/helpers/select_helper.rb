@@ -162,5 +162,13 @@ module SelectHelper
     }
   end
 
+  def participation_options
+    participation_select = [
+      'Actor beneficiado', 
+      'Actor de conocimiento', 
+      'Actor denunciante', 
+      'Actor involucrado', 
+      'No disponible'
+    ]
+  end
 end
-

@@ -1,7 +1,6 @@
 header.main-content__header.bg-primary.mb-5
   h1.text-white Caso # #{request.path_parameters[:id]}
 .container-fluid
-
   div.text-primary.p-3.font-weight-bold Identidad del reporte
   table.table.mb-5
     thead
@@ -24,7 +23,6 @@ header.main-content__header.bg-primary.mb-5
       - @documents.each do |doc|
         tr
           td =doc[0]
-  = @characterization.id
   div.border-bottom.border-secondary.my-5
 
   .py-md-2
@@ -33,8 +31,8 @@ header.main-content__header.bg-primary.mb-5
   div.border-bottom.border-secondary.my-5
   .py-md-2
     .text-primary.p-3.font-weight-bold Actores
-    = render partial: 'admin/actors/partials/form'
-    = render partial: 'admin/actors/partials/table'
+    = render partial: 'admin/actors/partials/form', locals: { actors_select: @actors_select, characterization_id: @characterization.id, relationship: @relationship, participation_options: @participation_options }
+    = render partial: 'admin/actors/partials/table', locals: { relationships: @relationships }
   div.border-bottom.border-secondary.my-5
   .py-md-2
     = render partial: 'admin/characterizations/partials/select_form'

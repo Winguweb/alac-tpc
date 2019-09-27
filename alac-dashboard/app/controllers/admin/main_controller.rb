@@ -10,6 +10,8 @@ module Admin
       @reports.each do | report|
         report.push(get_info_report(report[0])[0][0])
         report.push(get_info_report(report[0])[0][1])
+      
+      
       end
       # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
     end
@@ -36,10 +38,11 @@ module Admin
    
       @documents = get_files(params[:id])
 
+      @relationships = Relationship.where(characterization_id: @characterization.id)
+
+      @relationship = Relationship.new
       @get_options = get_options
-
-
-
+      @participation_options = participation_options
 
     end
 
@@ -47,7 +50,6 @@ module Admin
       stream_xlsx()
     end
 
-    
   end
 end
 

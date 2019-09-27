@@ -1,22 +1,18 @@
-<% form_tag("/actors", :method => "POST") %>
+<%= form_with(url: '/admin/relationships', model: relationship, method: "post") do %>
   <div>
-    <div class="py-md-2">
-      <button class="btn btn-primary outline bg-white text-primary px-md-5 mr-md-3">Buscar</button>
-      <button class="btn btn-primary px-md-5 ">Crear</button>
-    </div>
     <div class="row py-md-2">
       <div class="col">
-        <label> nombre</label> 
-        <input type="text" class="form-control" placeholder="Nombre del actor">
+        <%= hidden_field_tag 'relationship[characterization_id]', characterization_id %> 
+        <%= label_tag('relationship[actor_id]', "Nombre") %>        
+        <%= select_tag('relationship[actor_id]', options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker form-control"}) %>
       </div>
       <div class="col">
-        <label>Tipo de participacion </label>
-        <select class="form-control form-control">
-          <option>tipo</option>
-        </select>
+         <%= label_tag('relationship[participation_type]', "Tipo de participación") %>  
+         <%= select_tag('relationship[participation_type]', options_for_select(participation_options), {class: "selectpicker form-control"}) %>
       </div>
     </div>
     <div class="py-md-2">
-      <button class="btn btn-primary">agregar actor</button>
+       <%= submit_tag("Agregar actor") %>
     </div>
   </div>
+<% end %>
