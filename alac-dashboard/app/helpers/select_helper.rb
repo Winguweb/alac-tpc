@@ -158,6 +158,18 @@ module SelectHelper
         'Violación de los topes o límites de gastos en las campañas electorales',
         'Violación del régimen legal o constitucional de inhabilidades e incompatibilidades',
         'Voto fraudulento'
+      ],
+      'tools_options' => [
+        'Derecho de petición',
+        'Queja', 
+        'Denuncia',
+        'Acción de tutela',
+        'Acción de grupo',
+        'Acción popular',
+        'Acción de cumplimiento',
+        'Consulta previa',
+        'Solicitud de Revocatoria directa',
+        'otras ¿Cuáles? Rellenar',
       ]
     }
   end
