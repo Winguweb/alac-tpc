@@ -18,7 +18,7 @@ and renders all form fields for a resource's editable attributes.
 </div>
 
 <section class="main-content__body">
-  <%= form_with(url: '/admin/characterizations', model: characterization, method: "patch") do %>
+  <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch") do %>
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -47,16 +47,11 @@ and renders all form fields for a resource's editable attributes.
           </div>
         </div>
         <div class="form-group d-none select-known-authority">
-          <label>¿Cuál?</label>
-          <select class="form-control known-authority">
-            <option value="fiscalia">Fiscalía</option>
-            <option value="procuraduria">Procuraduría</option>
-            <option value="contraloria">Contraloría</option>
-            <option value="otro">Otra</option>
-          </select>
+          <%= label_tag('characterization[authority]', '¿Cuál?') %>
+          <%= select_tag('characterization[authority]', options_for_select(characterization_form_options['authority_options']), {class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group known-authority-input d-none">
-          <input type="text" class="form-control" placeholder="Detalle cuál">
+          <%= text_field_tag('characterization[authority]', nil, class: 'authority-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
@@ -70,21 +65,11 @@ and renders all form fields for a resource's editable attributes.
           </div>
         </div>
         <div class="form-group has-tool-select d-none">
-          <label>¿Cuál?</label>
-          <select class="form-control has-tool">
-            <option value="queja">Queja</option>
-            <option value="denuncia">Denuncia</option>
-            <option value="accion-de-tutela">Acción de tutela</option>
-            <option value="accion-de-grupo">Acción de grupo</option>
-            <option value="accion-popular">Acción popular</option>
-            <option value="accion-de-cumplimiento">Acción de cumplimiento</option>
-            <option value="consulta-previa">Consulta previa</option>
-             <option value="solicitud-revocatoria-directa">Solicitud de Revocatoria directa</option>
-            <option value="otro">Otra</option>
-          </select>
+          <%= label_tag('characterization[tool]', '¿Cuáles?') %>
+           <%= select_tag('characterization[tool]', options_for_select(characterization_form_options['tools']), {class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group has-tool-input d-none">
-          <input type="text" class="form-control" placeholder="Detalle cuál">
+          <%= text_field_tag('characterization[tool]', nil, class: 'tool-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
@@ -92,6 +77,11 @@ and renders all form fields for a resource's editable attributes.
           <%= label_tag('characterization[scope]', 'Alcance del Caso', style: "min-height: 50px;") %>
            <%= select_tag('characterization[scope]', options_for_select(characterization_form_options['scope_options']), {class: "selectpicker form-control"}) %>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= submit_tag("Guardar", :class =>"btn btn-primary") %>
       </div>
     </div>
   <% end %>

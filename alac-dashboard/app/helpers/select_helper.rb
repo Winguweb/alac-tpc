@@ -203,6 +203,23 @@ module SelectHelper
         'Local',
         'Nacional',
         'Transnacional'
+      ],
+      'authority_options' => [
+        'Fiscalía',
+        'Procuraduría',
+        'Contraloría',
+        'Otro'
+      ],
+      'tools' => [
+        'Queja',
+        'Denuncia',
+        'Acción de tutela',
+        'Acción de grupo',
+        'Acción popular',
+        'Acción de cumplimiento',
+        'Consulta previa',
+        'Solicitud de Revocatoria directa',
+        'Otros'
       ]
     }
   end
