@@ -1,0 +1,56 @@
+<section class="main-content__body">
+  <table class="col-md-12 table mb-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Actor investigador</th>
+        <th scope="col">Tipo de investigación</th>
+        <th scope="col">Etapa procesal</th>
+        <th scope="col">Presunta falta</th>
+        <th scope="col">Presunto delito</th>
+        <th scope="col">Autoridad del conocimiento</th>
+        <th scope="col">Situación del investigado</th>
+        <th scope="col">Fecha de presentación de denuncia</th>
+        <th scope="col">Fecha de sanción</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% evolutions.each.with_index(1) do |e, index| %>
+        <tr>
+          <th scope="row"><%= index %></th>
+          <td><%= e.actor_id %>l</td>
+          <td><%= e.kind_investigation %></td>
+          <td><%= e.stage %></td>
+          <td><%= e.fault %></td>
+          <td><%= e.crime %></td>
+          <td><%= e.authority %></td>
+          <td><%= e.situation %></td>
+          <td><%= e.presentation_date %></td>
+          <td><%= e.sanction_date %></td>
+          <td>
+            <div>
+              <%= link_to(
+                  "Consultar",
+                  admin_evolution_path(e.id),
+                  class: "action-show",
+                ) %>
+              <%= link_to(
+                  "Eliminar",
+                  admin_evolution_path(e.id),
+                  class: "action-edit",
+                  method: :delete,
+                  data: { confirm: t("administrate.actions.confirm") }
+                ) %>
+              <%= link_to(
+                  "Editar",
+                  edit_admin_evolution_path(e.id),
+                  class: "text-color-red",
+                ) %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
