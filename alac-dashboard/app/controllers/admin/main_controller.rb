@@ -36,7 +36,6 @@ module Admin
         @data.push(elements[i])      
       end
       
-      @characterization_id = @characterization.id
       @documents = get_files(params[:id])
 
       @relationships = Relationship.where(characterization_id: @characterization.id)

@@ -38,7 +38,7 @@ header.main-content__header.bg-primary.mb-5
     = render partial: 'admin/characterizations/partials/select_form'
   div.border-bottom.border-secondary.my-5
   .py-md-2
-    = render partial: 'admin/advisories/form', locals: { advisory: @advisory, kind_answer_options: @kind_answer_options, characterization_id: @characterization_id }
+    = render partial: 'admin/advisories/form', locals: { advisory: @advisory, kind_answer_options: @kind_answer_options, characterization_id: @characterization.id }
     = render partial: 'admin/modals/tool'
     = render partial: 'admin/advisories/collection', locals: { advisories: @advisories }
   div.border-bottom.border-secondary.my-5
@@ -46,7 +46,7 @@ header.main-content__header.bg-primary.mb-5
     .text-primary.p-3.font-weight-bold Proceso Judicial
     button.btn.btn-primary.mb-5 data-toggle="modal" data-target="#exampleModalLong"
       = "Agregar investigación"
-    = render partial: 'admin/evolutions/partials/law_process', locals: { evolution: @evolution, characterization_id:@characterization_id, actors_select:@actors_select, get_options: @get_options } 
+    = render partial: 'admin/evolutions/partials/law_process', locals: { evolution: @evolution, characterization_id:@characterization.id, actors_select:@actors_select, get_options: @get_options } 
     = render partial: 'admin/evolutions/partials/table', locals: {evolutions: @evolutions, actors: @actors} 
   div.border-bottom.border-secondary.my-5
       
