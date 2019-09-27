@@ -190,4 +190,20 @@ module SelectHelper
       'Personal'
     ]
   end 
+
+  def characterization_form_options
+    {
+      'status_options' => [
+        'Procede',
+        'No procede',
+        'Archivado',
+        'Duplicado'
+      ],
+      'scope_options' => [
+        'Local',
+        'Nacional',
+        'Transnacional'
+      ]
+    }
+  end
 end

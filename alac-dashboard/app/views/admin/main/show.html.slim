@@ -26,7 +26,7 @@ header.main-content__header.bg-primary.mb-5
   div.border-bottom.border-secondary.my-5
 
   .py-md-2
-    = render partial: 'admin/characterizations/partials/form'
+    = render partial: 'admin/characterizations/partials/form', locals: { characterization: @characterization, characterization_form_options: @characterization_form_options }
 
   div.border-bottom.border-secondary.my-5
   .py-md-2
