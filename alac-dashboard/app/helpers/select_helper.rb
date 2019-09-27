@@ -171,4 +171,11 @@ module SelectHelper
       'No disponible'
     ]
   end
+  def kind_answer_options
+    kind_answer_select = [
+      'Escrita',
+      'Telefónica',
+      'Personal'
+    ]
+  end 
 end
