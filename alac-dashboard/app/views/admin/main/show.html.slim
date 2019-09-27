@@ -49,7 +49,8 @@ header.main-content__header.bg-primary.mb-5
     button.btn.btn-primary.mb-5 data-toggle="modal" data-target="#exampleModalLong"
       = "Agregar investigación"
     = render partial: 'admin/modals/law_process'
-    = render partial: 'admin/evolutions/collection'
+    - evolutions = @evolutions
+    = render partial: 'admin/evolutions/collection', locals: {evolutions: evolutions} 
   div.border-bottom.border-secondary.my-5
       
 

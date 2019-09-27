@@ -17,6 +17,8 @@ module Admin
       @characterization = Characterization.where(case_id: params[:id]).first
       if @characterization.blank?
         @characterization = Characterization.create(case_id: params[:id])
+      else 
+        @evolutions = @characterization.evolutions
       end
 
       @data = []
