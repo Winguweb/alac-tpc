@@ -43,7 +43,7 @@ module Admin
 
       @relationship = Relationship.new
       @get_options = get_options
-      @advisories = Advisory.where(characterization_id: @characterization.id)
+      @advisories = @characterization.blank? ? [] : Advisory.where(characterization_id: @characterization.id)
       @advisory = Advisory.new
       @participation_options = participation_options
 
