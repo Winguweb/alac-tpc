@@ -35,15 +35,18 @@ module Admin
       index.each do |i|
         @data.push(elements[i])      
       end
-   
+      
       @documents = get_files(params[:id])
 
       @relationships = Relationship.where(characterization_id: @characterization.id)
 
       @relationship = Relationship.new
       @get_options = get_options
+      @advisories = @characterization.blank? ? [] : Advisory.where(characterization_id: @characterization.id)
+      @advisory = Advisory.new
       @participation_options = participation_options
 
+      @kind_answer_options = kind_answer_options
     end
 
     def download

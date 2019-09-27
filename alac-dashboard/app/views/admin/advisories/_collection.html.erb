@@ -11,39 +11,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>15/12/1990</td>
-          <td>Escrita</td>
-          <td>Resumen...</td>
-          <td>
-            <button class="btn btn-link" data-toggle="modal" data-target="#toolModal">
-              Agregar herramienta
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>15/12/1990</td>
-          <td>Escrita</td>
-          <td>Resumen...</td>
-          <td>
-            <button class="btn btn-link" data-toggle="modal" data-target="#toolModal">
-              Agregar herramienta
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>15/12/1990</td>
-          <td>Escrita</td>
-          <td>Resumen...</td>
-          <td>
-            <button class="btn btn-link" data-toggle="modal" data-target="#toolModal">
-              Agregar herramienta
-            </button>
-          </td>
-        </tr>
+        <% advisories.each.with_index(1) do |adv, index| %>
+          <tr>
+            <th scope="row"><%= index %></th>
+            <td><%= adv.tracking_date %></td>
+            <td><%= adv.kind_answer %></td>
+            <td><%= adv.summary %></td>
+            <td>
+              <button class="btn btn-link" data-toggle="modal" data-target="#toolModal">
+                Agregar / ver herramientas
+              </button>
+              <%= link_to(
+                  "Eliminar",
+                  admin_advisory_path(adv.id),
+                  class: "action-edit btn btn-link",
+                  method: :delete,
+                  data: { confirm: t("administrate.actions.confirm") }
+                ) %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
