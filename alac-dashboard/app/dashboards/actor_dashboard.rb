@@ -17,7 +17,7 @@ class ActorDashboard < Administrate::BaseDashboard
     category: Field::String,
     subtype: Field::String,
     subtype_2: Field::String,
-    institution: Field::String,
+    institution: Field::Select.with_options(collection: ['opcion1', 'opcion2']),
     public_branch: Field::String,
     position: Field::String,
     entity: Field::String,
@@ -31,10 +31,13 @@ class ActorDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :relationships,
-    :characterizations,
     :id,
     :name,
+    :general_type,
+    :institution,
+    :position,
+    :public_branch,
+    :entity
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

@@ -1,0 +1,18 @@
+<%= form_with(url: '/admin/relationships', model: relationship, method: "post") do %>
+  <div>
+    <div class="row py-md-2">
+      <div class="col">
+        <%= hidden_field_tag 'relationship[characterization_id]', characterization_id %> 
+        <%= label_tag('relationship[actor_id]', "Nombre") %>        
+        <%= select_tag('relationship[actor_id]', options_for_select(actors_select.collect{|x| [x.name,x.id]}), {class: "selectpicker form-control"}) %>
+      </div>
+      <div class="col">
+         <%= label_tag('relationship[participation_type]', "Tipo de participación") %>  
+         <%= select_tag('relationship[participation_type]', options_for_select(participation_options), {class: "selectpicker form-control"}) %>
+      </div>
+    </div>
+    <div class="py-md-2">
+       <%= submit_tag("Agregar actor") %>
+    </div>
+  </div>
+<% end %>

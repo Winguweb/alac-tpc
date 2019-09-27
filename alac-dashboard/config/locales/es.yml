@@ -1,2 +1,16 @@
 es:
-  title: "Centro de Asesoría Legal Anticorrupción de Transparencia por Colombia"
+  title: "Centro de Asesoría Legal Anticorrupción"
+  activerecord:
+    models:
+      actor:
+        one: "Actor"
+        other: "Actores"
+  helpers:
+    label:
+      actor:
+        name: "Nombre"
+        general_type: "Tipo"
+        institution: "Institución"
+        position: "Cargo"
+        public_branch: "Rama del poder público"
+        entity: "Partido"

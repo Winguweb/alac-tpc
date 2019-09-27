@@ -16,7 +16,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     case_id: Field::String,
     summary: Field::Text,
     status: Field::String,
-    known_authotity: Field::Boolean,
+    known_authority: Field::Boolean,
     authority: Field::String,
     has_tool: Field::Boolean,
     tool: Field::String,
@@ -42,6 +42,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :advisories,
     :relationships,
     :actors,
+    :crime
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -55,7 +56,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :case_id,
     :summary,
     :status,
-    :known_authotity,
+    :known_authority,
     :authority,
     :has_tool,
     :tool,
@@ -82,7 +83,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :case_id,
     :summary,
     :status,
-    :known_authotity,
+    :known_authority,
     :authority,
     :has_tool,
     :tool,

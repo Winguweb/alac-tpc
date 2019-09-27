@@ -1,0 +1,35 @@
+<section class="main-content__body">
+  <div class="row">
+    <table class="table" aria-labelledby="advisories-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo de respuesta</th>
+          <th scope="col">Resumen</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% advisories.each.with_index(1) do |adv, index| %>
+          <tr>
+            <th scope="row"><%= index %></th>
+            <td><%= adv.tracking_date %></td>
+            <td><%= adv.kind_answer %></td>
+            <td><%= adv.summary %></td>
+            <td>
+              <%= link_to("Agregar","#myModal", {"data-toggle" => "modal", "data-target" => "#toolModal", "data-id" => adv.id, class: "btn btn-link"} ) %>
+              <%= link_to(
+                  "Eliminar",
+                  admin_advisory_path(adv.id),
+                  class: "action-edit btn btn-link",
+                  method: :delete,
+                  data: { confirm: t("administrate.actions.confirm") }
+                ) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

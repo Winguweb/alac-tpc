@@ -1,0 +1,35 @@
+<table class="table my-md-2">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Tipo de participacion</th>
+      <th scope="col">Institucion</th>
+      <th scope="col">Cargo</th>
+      <th scope="col">Rama del poder</th>
+      <th scope="col">Partido politico</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% relationships.each.with_index(1) do |relationship, index| %>
+      <tr>
+        <th scope="row"><%= index %></th>
+        <td><%= relationship.actor.name %></td>
+        <td><%= relationship.participation_type %></td>
+        <td><%= relationship.actor.institution%></td>
+        <td><%= relationship.actor.position%></td>
+        <td><%= relationship.actor.public_branch%></td>
+        <td><%= relationship.actor.entity%></td>
+        <td>
+          <%= link_to(
+            "Eliminar",
+            admin_relationship_path(relationship.id),
+            class: "action-edit",
+            method: :delete,
+            data: { confirm: t("administrate.actions.confirm") }
+          ) %></td>
+      </tr>
+    <%  end %>
+  </tbody>
+</table>

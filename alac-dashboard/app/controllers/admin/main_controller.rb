@@ -1,120 +1,77 @@
 module Admin
   class MainController < Admin::ApplicationController
-      require 'sqlite3'
+    include MainHelper
+    include SelectHelper
+    include Streamable
 
-      def index
-        @reports = get_index_reports()
-        
-        @reports.each do | report|
-          report.push(get_info_report(report[1])[0][0])
-          report.push(get_info_report(report[1])[0][1])
-        end
-        # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
-
-
+    def index
+      @reports = get_index_reports()
+      
+      @reports.each do | report|
+        report.push(get_info_report(report[0])[0][0])
+        report.push(get_info_report(report[0])[0][1])
+      
+      
       end
+      # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
+    end
 
-      def show
-        data = get_report_detail(params[:id])
-        questions = data[:questions]
-        # @answers = data[:answers]
-        answers = []
-        data[:answers].each do |ans|
-          if ans.class == String 
-            if /([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)/.match(ans).nil?
-              answers.push(ans)
-              
-            else
-              
-              lbl = get_title_option(ans)
-              answers.push((eval(lbl.last.last)[:es]))
-            end
-          else
-            answers.push(ans)
-          end
-        end
-
-        index = answers.each_index.select{|i| answers[i] != '-'} 
-
-        @answers = []
-        @questions = []
-        index.each do |i|
-          @answers.push(answers[i])
-          @questions.push(questions[i])
-        end
+    def show
+      @characterization = Characterization.where(case_id: params[:id]).first
+      @actors = Actor.all
+      if @characterization.blank?
+        @characterization = Characterization.create(case_id: params[:id])
       end
-      private
-    
-      def get_info_report(id)
-        run_query("select status,creation_date from internaltip where id = '#{id}'")
-         # run_query("select id from internaltip Limit 1")
-      end
+      @characterization_id = @characterization.id
+      @actors = @characterization.actors
+      @actors_select = Actor.all
+      @evolution = Evolution.new
 
-      def get_title_option(id)
+      @evolutions = @characterization.blank? ? [] : @characterization.evolutions
+      @data = []
+      elements = get_report_detail(params[:id])
+      index = elements.each_index.select{|i| elements[i][1] != '-'} 
 
-        # /([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)/.match(a)
-        run_query("select label from fieldoption where id = '#{id}'")
-        
+      index.each do |i|
+        @data.push(elements[i])      
       end
       
-      def get_index_reports()
-        run_query("SELECT id , internaltip_id from receivertip")
-      end
-      def get_question_labels(question_ids)
-        questions = []
-        question_ids.each do |id|
-          query = "SELECT field.label FROM field WHERE field.id == '#{id}'"
-          lbl = run_query(query)
-          questions.push(eval(lbl.last.last)[:es])
-        end
-        return questions
-      end
+      @documents = get_files(params[:id])
 
-      def run_query(query)
-        begin
-          
-          db = SQLite3::Database.open '../../var/globaleaks/globaleaks.db'
-          stm = db.prepare query 
-          rs = stm.execute 
-          array = []
-          rs.each do |row|
-            
-            array.push(row)
-          end
-          return array
-       
-        rescue SQLite3::Exception => e 
-       
-          puts "Exception occurred"
-          puts e
-       
-        ensure
-          stm.close if stm
-          db.close if db
-        end
-      end
+      @relationships = Relationship.where(characterization_id: @characterization.id)
 
-      def get_report_detail(id)
-        query = "SELECT internaltipanswers.answers FROM internaltipanswers INNER JOIN receivertip ON internaltipanswers.internaltip_id =receivertip.internaltip_id WHERE  receivertip.internaltip_id = '#{id}'"
-        data = run_query(query)
-        question_ids = []
-        answers = []
-        data.each do |r|
-          report = eval(r.last)
-          report.keys.each do |id|
-            question_ids.push(id)
-          end
-        
-          report.values.each do |x|
-            answer = x[0][:value].nil? ? "-" : x[0][:value]
-            answers.push(answer)
-          end
-        end
-        
-        data = {}
-        data[:questions] = get_question_labels(question_ids)
-        data[:answers] = answers
-        return data
-      end
+      @relationship = Relationship.new
+      @get_options = get_options
+      @advisories = @characterization.blank? ? [] : Advisory.where(characterization_id: @characterization.id)
+      @advisory = Advisory.new
+      @participation_options = participation_options
+
+      @kind_answer_options = kind_answer_options
+    end
+
+    def download
+      stream_xlsx()
+    end
+
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,10 +10,15 @@ Rails.application.routes.draw do
     root to: "main#index"
     # get '/' => 'main#index'
     get '/reports/:id' => 'main#show'
+
+    get 'download_data' => 'main#download', via: :get
   end
 
+  namespace :api do 
+    get '/indicators/:type' => 'indicators#main', :defaults => { :format => 'json' }
+  end
   devise_for :users
-  root 'main#index'
+  root to: "admin/main#index"
 
   # namespace :admin, defaults: { format: 'html' } do
   #   get '/' => 'main#index'

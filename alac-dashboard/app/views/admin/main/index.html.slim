@@ -1,16 +1,25 @@
-table.table.table-striped
+header.main-content__header.bg-primary.d-flex.justify-content-between
+    h1.text-white Listado de casos
+    div
+      = link_to "Descargar", admin_download_data_path(format: "csv"), class: "button btn btn-danger"
+table.table
   thead.thead-dark
     tr
-      th.bg-primary style="width:33%" #
-      th.bg-primary style="width:33%" Estado
-      th.bg-primary style="width:33%" Fecha de creación
+      th.bg-secondary.border-0 style="width:33%" #
+      th.bg-secondary.border-0 style="width:33%" Estado
+      th.bg-secondary.border-0 style="width:33%" Fecha de creación
    
   tbody
     - @reports.each do |report|
       tr 
         td
-          = link_to report[1],admin_path(report[1])
+          = link_to report[0],admin_path(report[0])
         td
-          = link_to report[2],admin_path(report[1])
+          = link_to report[1],admin_path(report[0])
         td
-          = link_to report[3],admin_path(report[1])
+          - date = report[2].to_date 
+          = link_to date.strftime("%d/%m/%Y"),admin_path(report[0])
+
+
+
+
