@@ -66,4 +66,8 @@ $(document).ready(function(){
       
       $('#tool_advisory_id').val(id)
      });
+
+     $('.form-submit').submit(function(){
+       location.reload()
+     })
 });
