@@ -49,6 +49,13 @@ module Admin
       @kind_answer_options = kind_answer_options
 
       @characterization_form_options = characterization_form_options
+
+      @corruption_options = corruption_options
+      @affected_area_options = affected_area_options
+      @affected_sector = affected_sector
+      @rights_violated = rights_violated
+      @kind_responsability = kind_responsability
+      @crime = crime
     end
 
     def download
