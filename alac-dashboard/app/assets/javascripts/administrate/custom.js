@@ -76,6 +76,9 @@ $(document).ready(function(){
        let stringify_options = JSON.stringify(options);
         
        $('#evolution_crime').val(stringify_options)
-       console.log($('#evolution_crime').val())
      })
+
+    //  const crime_json = $('.crime-options-row').html()
+    //  const parse_json = JSON.parse(crime_json)
+    //  const string_to_show = `${parse_json.map(d => d)}`
 });

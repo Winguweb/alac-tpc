@@ -23,6 +23,15 @@
           <td><%= e.kind_investigation %></td>
           <td><%= e.stage %></td>
           <td><%= e.fault %></td>
+          <% unless e.crime.nil?  %>
+          <%  parsed_json = JSON.parse(e.crime) %>
+          <%end%>
+          <td>
+            <%if parsed_json %>
+              <%= parsed_json.join(', <br />').html_safe %>
+              
+            <%end %>
+          <td>
           <td><%= e.authority %></td>
           <td><%= e.situation %></td>
           <td><%= e.presentation_date %></td>
