@@ -68,7 +68,9 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('evolution[crime]', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag('ui-crime', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker crime-select"}) %>
+                <%= hidden_field_tag 'evolution[crime]' %>
+
               </div>
             </div>
           </div>

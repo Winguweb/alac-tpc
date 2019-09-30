@@ -70,4 +70,12 @@ $(document).ready(function(){
      $('.form-submit').submit(function(){
        location.reload()
      })
+
+     $('.crime-select').on('change', function(){
+       let options = $('.crime-select select').val()
+       let stringify_options = JSON.stringify(options);
+        
+       $('#evolution_crime').val(stringify_options)
+       console.log($('#evolution_crime').val())
+     })
 });
