@@ -44,7 +44,6 @@ $(document).ready(function(){
   $('.authority-text-input').on('change', function() {
     var inputValue = this.value;
     var selected = $('#characterization_authority').find('option:selected').val(inputValue);
-    alert(selected.val());
   });
 
     // Show select when has_tool is selected
