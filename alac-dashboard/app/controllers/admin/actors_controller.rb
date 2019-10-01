@@ -1,5 +1,6 @@
 module Admin
   class ActorsController < Admin::ApplicationController
+    include ActorsOptionsHelper
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
@@ -15,6 +16,11 @@ module Admin
     #   Actor.find_by!(slug: param)
     # end
 
+    def new 
+      super 
+      @resources = Actor.new
+      @get_options = get_options
+    end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
   end
