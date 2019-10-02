@@ -1,82 +1,72 @@
-<div class="container-fluid">
-  <div class="row py-md-4">
-    <div class="col-md">
-      <div>
-        <label for="">Tipos de Corrupción</label>
+<section class="main-content__body">
+  <div class="container-fluid">
+    <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch") do %>
+      <div class="row py-md-4">
+        <div class="col-md">
+          <div class="form-group">
+            <div>
+              <%= label_tag('characterization[kind_corruption]', "Tipos de corrupción") %>
+            </div>
+            <%= select_tag('characterization[kind_corruption]', options_for_select(corruption_options), { class: "selectpicker form-control corruption-select"}) %>
+          </div>
+        </div>
+        <div class="col-md">
+          <div>
+            <%= label_tag('characterization[affected_area]', "Ámbito afectado") %>
+          </div>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['administrative_corruption_options']), { class: "selectpicker form-control administrative-corruption-select"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['judicial_corruption_options']), { class: "selectpicker form-control judicial-corruption-select hide"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['political_corruption_options']), { class: "selectpicker form-control political-corruption-select hide"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['private_corruption_options']), { class: "selectpicker form-control private-corruption-select hide"}) %>
+        </div>
+        <div class="col-md">
+          <div>
+            <%= label_tag('characterization[affected_sector]', "Sector afectado") %>
+          </div>
+          <%= select_tag('characterization[affected_sector]', options_for_select(affected_sector), { class: "selectpicker form-control"}) %>
+        </div>
       </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-    <div class="col-md">
-      <div>
-        <label for="">Ambito Afectado</label>
+      <div class="row py-md-4">
+        <div class="col-md">
+          <div>
+            <%= label_tag('characterization[rights_violated]', "Derechos presuntamentes vulnerados", style: "min-height: 70px;") %>
+          </div>
+           <%= select_tag('characterization[rights_violated]', options_for_select(rights_violated), { class: "selectpicker form-control"}) %>
+        </div>
+        <div class="col-md">
+          <div>
+            <%= label_tag('characterization[kind_responsability]', "Clase de presunta responsabilidad", style: "min-height: 70px;") %>
+          </div>
+          <%= select_tag('characterization[kind_responsability]', options_for_select(kind_responsability), { class: "selectpicker form-control"}) %>
+        </div>
+        <div class="col-md">
+          <div>
+           <%= label_tag('characterization[crime]', "Presunto delito", style: "min-height: 70px;") %>
+          </div>
+          <%= select_tag('characterization[crime]', options_for_select(crime), { class: "selectpicker form-control" }) %>
+        </div>
       </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-    <div class="col-md">
-      <div>
-        <label for="">Sector Afectado</label>
-      </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-  </div>
-  <div class="row py-md-4">
-    <div class="col-md">
-      <div>
-        <label for="">Derechos presuntamentes vulnerados</label>
-      </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-    <div class="col-md">
-      <div>
-        <label for="">Clase de presunta responsabilidad</label>
-      </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-    <div class="col-md">
-      <div>
-        <label for="">Presunto delito</label>
-      </div>
-      <select id="corruption-types" class="selectpicker" multiple>
-        <option>Corrupcion Administrativa</option>
-        <option>Corrupcion Gris</option>
-        <option>Corrupcion Judicial</option>
-      </select>  
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="w-30 px-md-3">
-      <p>el material probatorio y/o información enviado por el usuario en el reporte es suficiente para formular la denuncia?</p>
-      <div class="form-check form-check-inline pr-md-5">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-        <label class="form-check-label" for="inlineRadio1">Si</label>
+      <div class="row">
+        <div class="w-30 px-md-3">
+          <div class="form-group">
+            <%= label_tag('characterization[have_material]', "El material probatorio y/o información enviado por el usuario en el reporte es suficiente para formular la denuncia?") %>
+            <div class="form-check form-check-inline">
+              <%= radio_button(:characterization, :have_material, true , class: "form-check-input") %> Sí
+            </div>
+            <div class="form-check form-check-inline">
+              <%= radio_button(:characterization, :have_material, false, class: "form-check-input") %> No
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">No</label>
+      <div class="row">
+        <div class="col-md-4">
+          <%= submit_tag("Guardar", :class =>"btn btn-primary") %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-</div>
+</section>
 
 

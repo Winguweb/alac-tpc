@@ -20,7 +20,6 @@ $(document).ready(function(){
     };
   });
 
-
   // Append custom option to select
   $('#actor_position_custom').on('change', function() {
     var inputValue = this.value;
@@ -30,25 +29,31 @@ $(document).ready(function(){
 
   // Characterizations form
   // Show select when known authority is selected
-  $('#true_known_authority').click(function() {
+  $('#characterization_known_authotity_true').click(function() {
     $('.select-known-authority').removeClass('d-none');
   });
 
-  $('.known-authority').on('change', function() {
+  $('#characterization_authority').on('change', function() {
     const value = this.value;
-    if (value === 'otro') {
+    if (value === 'Otro') {
       $('.known-authority-input').removeClass('d-none');
     }
   });
 
+  // Add custom option to authority
+  $('.authority-text-input').on('change', function() {
+    var inputValue = this.value;
+    var selected = $('#characterization_authority').find('option:selected').val(inputValue);
+  });
+
     // Show select when has_tool is selected
-    $('#true_has_tool').click(function() {
+    $('#characterization_has_tool_true').click(function() {
       $('.has-tool-select').removeClass('d-none');
     });
   
-    $('.has-tool').on('change', function() {
+    $('#characterization_tool').on('change', function() {
       const value = this.value;
-      if (value === 'otro') {
+      if (value === 'Otros') {
         $('.has-tool-input').removeClass('d-none');
       }
     });
@@ -77,8 +82,9 @@ $(document).ready(function(){
         
        $('#evolution_crime').val(stringify_options)
      })
-
-    //  const crime_json = $('.crime-options-row').html()
-    //  const parse_json = JSON.parse(crime_json)
-    //  const string_to_show = `${parse_json.map(d => d)}`
+     
+    $('.tool-text-input').on('change', function() {
+      var inputValue = this.value;
+      var selected = $('#characterization_tool').find('option:selected').val(inputValue);
+    });
 });
