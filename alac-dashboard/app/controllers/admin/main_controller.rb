@@ -3,6 +3,7 @@ module Admin
     include MainHelper
     include SelectHelper
     include Streamable
+    require 'json'
 
     def index
       @reports = get_index_reports()
@@ -28,6 +29,7 @@ module Admin
       @evolution = Evolution.new
 
       @evolutions = @characterization.blank? ? [] : @characterization.evolutions
+
       @data = []
       elements = get_report_detail(params[:id])
       index = elements.each_index.select{|i| elements[i][1] != '-'} 

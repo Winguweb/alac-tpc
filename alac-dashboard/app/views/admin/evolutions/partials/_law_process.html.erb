@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(url: admin_evolutions_path, model: evolution, method: "post") do %>
+        <%= form_with(url: admin_evolutions_path, model: evolution, method: "post", class: 'form-submit') do %>
           <div>
             <%= hidden_field_tag 'evolution[characterization_id]', characterization_id %>
             <div class="row py-md-2">
@@ -68,7 +68,9 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('evolution[crime]', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag('ui-crime', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker crime-select"}) %>
+                <%= hidden_field_tag 'evolution[crime]' %>
+
               </div>
             </div>
           </div>
