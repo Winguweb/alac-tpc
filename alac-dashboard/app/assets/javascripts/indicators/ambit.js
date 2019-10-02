@@ -1,12 +1,11 @@
 const URL = window.location.origin
 
-fetch(`${URL}/api/indicators/age`)
+fetch(`${URL}/api/indicators/ambit`)
   .then(function(response){
     return response.json()
   })
   .then(function(data){
-    // drawChart(data)
-    
+    drawChart(data)
   })
 
 
@@ -20,9 +19,9 @@ function drawChart(data){
     chartData.push(d[key])
   })
 
-  const ctx = document.getElementById('age-chart').getContext('2d');
+  const ctx = document.getElementById('ambit-chart').getContext('2d');
   new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
         labels: keys,
         datasets: [{
