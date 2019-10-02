@@ -48,34 +48,22 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="category">Tipo:</label>
-        <select class="custom-select" name="actor[category]" id="actor_category">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[category]',options_for_select(get_options['individual_actor_types']) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[category]',options_for_select(get_options['collective_actor_types']) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype">Sub-Tipo:</label>
-        <select class="custom-select" name="actor[subtype]" id="actor_subtype">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[subtype]',options_for_select(get_options['individual_first_subtype']) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype]',options_for_select(get_options['collective_first_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype_2">Sub-Tipo 2:</label>
-        <select class="custom-select" name="actor[subtype_2]" id="actor_subtype_2">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[subtype_2]',options_for_select(get_options['individual_second_subtype']) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype_2]',options_for_select(get_options['collective_second_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
   </div>
@@ -83,23 +71,13 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="institution">Institución:</label>
-        <select class="custom-select" name="actor[institution]" id="actor_institution">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[institution]',options_for_select(get_options['actors_institution']) , { class: "selectpicker"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="public_branch">Rama del poder público:</label>
-        <select class="custom-select" name="actor[public_branch]" id="public_branch">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[public_branch]',options_for_select(get_options['actors_public_branch']) , { class: "selectpicker"}) %>
       </div>
     </div>
   </div>
@@ -107,23 +85,13 @@
     <div class="col-md-4 d-none actor-charge-field">
       <div class="form-group">
         <label for="position">Cargo:</label>
-        <select class="custom-select actor-charge-select" name="actor[position]" id="position">
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="otro">Otro</option>
-        </select>
+        <%= select_tag('actor[position]',options_for_select(get_options['actors_position']) , { class: "selectpicker"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="entity">Partido Político:</label>
-        <select class="custom-select" name="actor[entity]" id="entity">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= select_tag('actor[entity]',options_for_select(get_options['actors_entity']) , { class: "selectpicker"}) %>
       </div>
     </div>
   </div>

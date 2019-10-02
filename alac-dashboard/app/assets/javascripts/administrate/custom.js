@@ -5,8 +5,15 @@ $(document).ready(function(){
     var inputValue = $(this).attr('value');
     if (inputValue === 'individual') {
       $('.actor-charge-field').removeClass('d-none');
+      $('.actors-collective-select').addClass('d-none');
+      $('.actors-individual-select').removeClass('d-none');
+
+
     } else {
       $('.actor-charge-field').addClass('d-none');
+      $('.actors-individual-select').addClass('d-none');
+      $('.actors-collective-select').removeClass('d-none');
+
     };
   });
 
