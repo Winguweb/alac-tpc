@@ -68,8 +68,13 @@ $(document).ready(function(){
 
     $('body').on('shown.bs.modal', '#toolModal', function (e) {
       var id = $(e.relatedTarget).data('id');
+      $('#tool_advisory_id').val(id);
+      var tools = $(e.relatedTarget).data('tools');
       
-      $('#tool_advisory_id').val(id)
+      $(tools).each(function(index, value) {
+        var content = '<tr><th scope="row">' + (index + 1) + '</th><td>'+value.document+'</td><td>'+value.entity+'</td><td>'+value.radication_date+'</td><td>'+value.deadline+'</td><td>'+value.have_answer+'</td><td>'+value.answer_date+'</td><td><div class="btn-group" role="group" aria-label="Tools buttons"><a href="/admin/tools/'+ value.id + '/edit" class="action-show btn btn-link">Editar</a><a class="action-edit btn btn-link" data-confirm="¿Estás seguro?" rel="nofollow" data-method="delete" href="/admin/tools/' + value.id +'">Eliminar</a><a href="/admin/tools/'+ value.id + '" class="action-show btn btn-link">Ver</a></div></td></tr>'
+        $('#tool_table > tbody').append(content);
+      });
      });
 
      $('.form-submit').submit(function(){

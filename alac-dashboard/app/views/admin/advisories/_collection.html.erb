@@ -18,7 +18,7 @@
             <td><%= adv.kind_answer %></td>
             <td><%= adv.summary %></td>
             <td>
-              <%= link_to("Agregar","#myModal", {"data-toggle" => "modal", "data-target" => "#toolModal", "data-id" => adv.id, class: "btn btn-link"} ) %>
+              <%= link_to("Agregar","#myModal", {"data-toggle" => "modal", "data-target" => "#toolModal", "data-id" => adv.id, "data-tools" => adv.tools.to_json , class: "btn btn-link"} ) %>
               <%= link_to(
                   "Eliminar",
                   admin_advisory_path(adv.id),
