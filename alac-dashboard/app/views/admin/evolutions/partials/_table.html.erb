@@ -46,14 +46,14 @@
               <%= link_to(
                   "Eliminar",
                   admin_evolution_path(e.id),
-                  class: "action-edit",
+                  class: "text-color-red",
                   method: :delete,
                   data: { confirm: t("administrate.actions.confirm") }
                 ) %>
               <%= link_to(
                   "Editar",
                   edit_admin_evolution_path(e.id),
-                  class: "text-color-red",
+                  class: "action-edit",
                 ) %>
             </div>
           </td>
