@@ -213,6 +213,7 @@ module ActorsOptionsHelper
         'No aplica',
       ],
       'actors_position' => [
+        '---',
         'Abogado',
         'Agente',
         'Alcalde',
