@@ -84,9 +84,6 @@ $(document).ready(function(){
       });
      });
 
-     $('.form-submit').submit(function(){
-       location.reload()
-     })
 
      $('.crime-select').on('change', function(){
        let options = $('.crime-select select').val()
@@ -99,4 +96,12 @@ $(document).ready(function(){
       var inputValue = this.value;
       var selected = $('#characterization_tool').find('option:selected').val(inputValue);
     });
+    $('.form-btn-submit').on('click', function(){
+      console.log('onclick')
+      $('.hide').remove()
+      $('.d-none').remove()
+    })
+    $('.form-submit').on('submit', function(){
+      location.reload()
+    })
 });
