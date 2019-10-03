@@ -1,23 +1,8 @@
-<%#
-# Form Partial
-
-This partial is rendered on a resource's `new` and `edit` pages,
-and renders all form fields for a resource's editable attributes.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Form][1].
-  Contains helper methods to display a form,
-  and knows which attributes should be displayed in the resource's form.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
-%>
-<div class="text-primary p-3 font-weight-bold">
-  Caracterización del Reporte
-</div>
 
 <section class="main-content__body">
+  <div class="text-primary font-weight-bold">
+    Caracterización del Reporte
+  </div>
   <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch", class: 'form-submit') do %>
     <div class="row py-md-4">
       <div class="col">
@@ -85,4 +70,5 @@ and renders all form fields for a resource's editable attributes.
       </div>
     </div>
   <% end %>
+  <div class="border-bottom border-secondary mt-5"></div>
 </section>
