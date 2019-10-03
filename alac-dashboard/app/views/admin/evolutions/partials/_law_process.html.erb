@@ -37,7 +37,7 @@
                 <label>Etapa Procesal</label> 
                 <%= select_tag('evolution[stage]',options_for_select(get_options['penal_stage_options']) , { class: "selectpicker penal_stage_options"}) %>
                 <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker fiscal_stage_options hide"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['disciplinary_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
           </div>
 
           <div class="py-md-3">
-            <%= submit_tag("Agregar investigacion") %>
+            <%= submit_tag("Agregar investigacion", :class =>"form-btn-submit") %>
           </div>
         <% end %>
       </div>

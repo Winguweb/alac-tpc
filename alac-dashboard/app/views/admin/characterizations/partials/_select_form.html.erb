@@ -1,6 +1,6 @@
 <section class="main-content__body">
   <div class="container-fluid">
-    <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch") do %>
+    <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch", class: 'form-submit') do %>
       <div class="row py-md-4">
         <div class="col-md">
           <div class="form-group">
@@ -62,7 +62,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <%= submit_tag("Guardar", :class =>"btn btn-primary") %>
+          <%= submit_tag("Guardar", :class =>"btn btn-primary form-btn-submit") %>
         </div>
       </div>
     <% end %>

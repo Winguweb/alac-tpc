@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190912123931) do
+ActiveRecord::Schema.define(version: 20191003133527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "affected_area"
     t.string "affected_sector"
     t.string "rights_violated"
-    t.boolean "kind_responsability"
+    t.string "kind_responsability"
     t.string "crime"
     t.boolean "have_material"
     t.datetime "created_at", null: false
