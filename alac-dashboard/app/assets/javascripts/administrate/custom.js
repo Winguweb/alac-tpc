@@ -97,11 +97,12 @@ $(document).ready(function(){
       var selected = $('#characterization_tool').find('option:selected').val(inputValue);
     });
     $('.form-btn-submit').on('click', function(){
-      console.log('onclick')
       $('.hide').remove()
       $('.d-none').remove()
     })
     $('.form-submit').on('submit', function(){
-      location.reload()
+      setTimeout(function(){
+        location.reload()
+      }, 500)
     })
 });
