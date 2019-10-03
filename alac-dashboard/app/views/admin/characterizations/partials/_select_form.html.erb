@@ -14,10 +14,10 @@
           <div>
             <%= label_tag('characterization[affected_area]', "Ámbito afectado") %>
           </div>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['administrative_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control administrative-corruption-select"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['judicial_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control judicial-corruption-select hide"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['political_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control political-corruption-select hide"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['private_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control private-corruption-select hide"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['administrative_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control administrative-corruption-select #{ @characterization.kind_corruption != 'Corrupción administrativa' ? 'hide' : ''}"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['judicial_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control judicial-corruption-select #{ @characterization.kind_corruption != 'Corrupción judicial' ? 'hide' : ''}"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['political_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control political-corruption-select #{ @characterization.kind_corruption != 'Corrupción política' ? 'hide' : ''}"}) %>
+          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['private_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control private-corruption-select #{ @characterization.kind_corruption != 'Corrupción privada' ? 'hide' : ''}"}) %>
         </div>
         <div class="col-md">
           <div>
