@@ -19,7 +19,7 @@ and renders all form fields for a resource's editable attributes.
 
 <section class="main-content__body">
   <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch", class: 'form-submit') do %>
-    <div class="row">
+    <div class="row py-md-4">
       <div class="col">
         <div class="form-group">
           <%= label_tag('characterization[summary]', "Resumen del reporte") %>  
@@ -27,7 +27,7 @@ and renders all form fields for a resource's editable attributes.
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-md-4">
       <div class="col-md-4">
         <div class="form-group">
           <%= label_tag('characterization[status]', 'Estado de caso') %>
@@ -35,7 +35,7 @@ and renders all form fields for a resource's editable attributes.
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-md-4">
       <div class="col-md-4">
         <div class="form-group">
           <%= label_tag('characterization[known_authority]', '¿Caso conocido por autoridades con anterioridad al reporte?', style: "min-height: 50px;") %>
@@ -51,7 +51,7 @@ and renders all form fields for a resource's editable attributes.
           <%= select_tag('characterization[authority]', options_for_select(characterization_form_options['authority_options']), {class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group known-authority-input d-none">
-          <%= text_field_tag('characterization[authority]', nil, class: 'authority-text-input') %>
+          <%= text_field_tag('characterization[authority]', @characterization.authority , class: 'authority-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
@@ -69,7 +69,7 @@ and renders all form fields for a resource's editable attributes.
            <%= select_tag('characterization[tool]', options_for_select(characterization_form_options['tools']), {class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group has-tool-input d-none">
-          <%= text_field_tag('characterization[tool]', nil, class: 'tool-text-input') %>
+          <%= text_field_tag('characterization[tool]', @characterization.tool , class: 'tool-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
@@ -79,7 +79,7 @@ and renders all form fields for a resource's editable attributes.
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row  py-md-4">
       <div class="col-md-4">
         <%= submit_tag("Guardar", :class =>"btn btn-primary form-btn-submit") %>
       </div>
