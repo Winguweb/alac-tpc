@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  get 'visualizations/corruption' => 'visualizations#corruption'
+  get 'visualizations/age' => 'visualizations#age'
+  get 'visualizations/ambit' => 'visualizations#ambit'
+  get 'visualizations/sector' => 'visualizations#sector'
+  get 'visualizations/location' => 'visualizations#location'
+  get 'visualizations/gender' => 'visualizations#gender'
+
+
   namespace :admin do
     resources :users
     resources :actors
