@@ -36,9 +36,14 @@ $(document).ready(function(){
 
   // Characterizations form
   // Show select when known authority is selected
-  $('#characterization_known_authority_true').click(function() {
-    $('.select-known-authority').removeClass('d-none');
-  });
+  $("input[type=radio][name='characterization[known_authority]']").click(function() {
+    if (this.value === 'true') {
+      $('.select-known-authority').removeClass('d-none');
+    } else {
+      $('.select-known-authority').addClass('d-none');
+    }
+  })
+
 
   $('#characterization_authority').on('change', function() {
     const value = this.value;
@@ -54,9 +59,13 @@ $(document).ready(function(){
   });
 
     // Show select when has_tool is selected
-    $('#characterization_has_tool_true').click(function() {
-      $('.has-tool-select').removeClass('d-none');
-    });
+    $("input[type=radio][name='characterization[has_tool]']").click(function() {
+      if (this.value === 'true') {
+        $('.has-tool-select').removeClass('d-none');
+      } else {
+        $('.has-tool-select').addClass('d-none');
+      }
+    })
   
     $('#characterization_tool').on('change', function() {
       const value = this.value;
