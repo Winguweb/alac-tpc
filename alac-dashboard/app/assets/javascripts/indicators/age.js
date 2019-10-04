@@ -31,7 +31,7 @@ function drawChart(data){
             backgroundColor: 'rgba(54, 162, 235, 0.8)',
             borderColor: 'rgba(54, 162, 235, 0.8)',
             borderWidth: 1
-        }]
+        }],
     },
     options: {
         scales: {

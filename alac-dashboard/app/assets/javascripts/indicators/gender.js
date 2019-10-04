@@ -5,7 +5,7 @@ fetch(`${URL}/api/indicators/gender`)
     return response.json()
   })
   .then(function(data){
-    drawChart(mockedData)
+    drawChart(data)
   })
 
 
