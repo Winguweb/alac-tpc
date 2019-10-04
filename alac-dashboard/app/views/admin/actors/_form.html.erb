@@ -55,15 +55,15 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype">Sub-Tipo:</label>
-        <%= select_tag('actor[subtype]',options_for_select(get_options['individual_first_subtype']) , { class: "selectpicker actors-individual-select"}) %>
-        <%= select_tag('actor[subtype]',options_for_select(get_options['collective_first_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
+        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['individual_first_subtype']) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['collective_first_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype_2">Sub-Tipo 2:</label>
-        <%= select_tag('actor[subtype_2]',options_for_select(get_options['individual_second_subtype']) , { class: "selectpicker actors-individual-select"}) %>
-        <%= select_tag('actor[subtype_2]',options_for_select(get_options['collective_second_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
+        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['individual_second_subtype']) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['collective_second_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
   </div>
