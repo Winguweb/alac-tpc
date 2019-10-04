@@ -126,7 +126,8 @@ module ActorsOptionsHelper
 
       'collective_actor_types'=> [
         'Actores vinculados a economía ilegal', 	
-        'Empresas privadas	Entidades del Estado',		
+        'Empresas privadas',
+        'Entidades del Estado',		
         'Grupos armados ilegales', 	
         'Instituciones de la Fuerza Pública',	
         'No aplica',	
