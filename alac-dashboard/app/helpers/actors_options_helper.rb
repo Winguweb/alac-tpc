@@ -89,27 +89,37 @@ module ActorsOptionsHelper
         ]
       ],
       'individual_second_subtype' => [
-        'Auditor', 
-        'Contralor', 
-        'Director de Universidad Estatal/Institución técnica y tecnológica',
-        'Gerente del Banco de la República',
-        'Procurador',
-        'Registrador',
-        'Fiscal', 
-        'Juez', 
-        'Magistado',
-        'Asistente de despacho',
-        'Funcionario judicial',
-        'Alto rango',
-        'Raso',
-        'Alto rango',
-        'Raso',
-        'ciudadano que realiza control social',
-        'Miembro de una comunidad  y /o movimiento étnico',
-        'Veedor ciudadano',
-        'Presidente de Junta de Acción Comunal- JAC',
-        'Miembro de comunidad religiosa',
-        'Miembro de medio de comunicación/periodista'
+        ['Organo autónomo', 
+          ['Auditor', 
+          'Contralor', 
+          'Director de Universidad Estatal/Institución técnica y tecnológica',
+          'Gerente del Banco de la República',
+          'Procurador',
+          'Registrador'],
+        ],
+        ['Rama Judicial', 
+          ['Fiscal', 
+          'Juez', 
+          'Magistado',
+          'Asistente de despacho',
+          'Funcionario judicial']
+        ],
+        ['Fuerza Armada', 
+          ['Alto rango',
+          'Raso',
+          'Alto rango',
+          'Raso']
+        ],
+        ['Miembro de sociedad civil organizada', 
+          ['ciudadano que realiza control social',
+          'Miembro de una comunidad  y /o movimiento étnico',
+          'Veedor ciudadano',
+          'Presidente de Junta de Acción Comunal- JAC']
+        ],
+        ['otros', 
+          ['Miembro de comunidad religiosa',
+          'Miembro de medio de comunicación/periodista']
+        ]
       ],
 
       'collective_actor_types'=> [
