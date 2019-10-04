@@ -17,6 +17,7 @@ module ActorsOptionsHelper
       ],
 
       'individual_first_subtype' => [
+        ['subtipo 1', ['no aplica']],
         ['Actor privado con funciones públicas por colaboración', 
           ['Funcionario de la camara de comercio',
           'Notario']
@@ -89,6 +90,7 @@ module ActorsOptionsHelper
         ]
       ],
       'individual_second_subtype' => [
+        ['subtipo 2', ['no aplica']],
         ['Organo autónomo', 
           ['Auditor', 
           'Contralor', 
@@ -138,6 +140,7 @@ module ActorsOptionsHelper
       ],
 
       'collective_first_subtype' => [
+        ['subtipo 1', ['no aplica']],
         ['Actores vinculados a economía ilegal', 
           ['Bandas de minería ilegal',
           'Redes de contrabando',
@@ -181,6 +184,7 @@ module ActorsOptionsHelper
       ],
 
       'collective_second_subtype' => [
+        ['subtipo 2', ['no aplica']],
         ['Órganos autónomos', 
           ['Contraloría General de la República',
           'Contralorías territoriales',
@@ -301,7 +305,7 @@ module ActorsOptionsHelper
         'Magistrado',
         'Miembro de la fuerza pública',
         'Miembro de Junta Directiva',
-        'No Aplica- Este se da cuando responde a actor colectivo que no ocupa cargo',
+        'No Aplica',
         'No Disponible',
         'Otras profesiones ',
         'Personero',
