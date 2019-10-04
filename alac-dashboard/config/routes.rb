@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :visualizations
+  
   get 'visualizations/corruption' => 'visualizations#corruption'
   get 'visualizations/age' => 'visualizations#age'
   get 'visualizations/ambit' => 'visualizations#ambit'
