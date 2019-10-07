@@ -22,6 +22,11 @@ module Admin
       @resources = Actor.new
       
     end
+
+    def edit
+      @get_options = get_options 
+      super
+    end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
   end

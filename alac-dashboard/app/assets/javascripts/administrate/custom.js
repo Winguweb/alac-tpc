@@ -1,5 +1,17 @@
 $(document).ready(function(){
   // Actors form
+  const val = $("input[type=radio][name='actor[general_type]']:checked").val()
+  
+  if (val === 'individual') {
+    $('.actor-charge-field').removeClass('d-none');
+    $('.actors-collective-select').addClass('d-none');
+    $('.actors-individual-select').removeClass('d-none');
+  } else {
+    $('.actor-charge-field').addClass('d-none');
+    $('.actors-individual-select').addClass('d-none');
+    $('.actors-collective-select').removeClass('d-none');
+  }
+
   // Show charge field when individual actor type is selected
   $('.actors-type-checkbox').click(function(){
     var inputValue = $(this).attr('value');
@@ -13,7 +25,6 @@ $(document).ready(function(){
       $('.actor-charge-field').addClass('d-none');
       $('.actors-individual-select').addClass('d-none');
       $('.actors-collective-select').removeClass('d-none');
-
     };
   });
 

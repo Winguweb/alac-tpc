@@ -16,29 +16,29 @@
       </ul>
     </div>
   <% end %>
-
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label for="name">Nombre:</label>
-        <input type="text" class="form-control" id="actor_name" aria-describedby="name" name="actor[name]" placeholder="Completar nombre">
+         <%= text_field_tag('actor[name]', page.resource.name , class: 'form-control', placeholder: "Completar nombre") %>
       </div>
     </div>
      <div class="col-md-4">
       <div class="form-group">
         <label for="last_name">Apellido:</label>
-        <input type="text" class="form-control" id="actor_last_name" aria-describedby="lastName" name="actor[last_name]" placeholder="Completar apellido">
+        <%= text_field_tag('actor[last_name]', page.resource.last_name , class: 'form-control', placeholder: "Completar apellido") %>
       </div>
     </div>
+      <%= debug page.resource.general_type%>
      <div class="col-md-4">
        <label for="general_type">Tipo:</label>
       <div class="form-group">
           <div class="form-check form-check-inline">
-            <input class="form-check-input actors-type-checkbox" type="radio" name="actor[general_type]" id="actor_general_type" value="individual">
+            <%= radio_button(:actor, :general_type, 'individual', :checked => (page.resource.general_type == "individual"), class: "form-check-input actors-type-checkbox", id: "actor_general_type") %>
             <label class="form-check-label" for="individual">Individual</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input actors-type-checkbox" type="radio" name="actor[general_type]" id="actor_general_type" value="colectivo">
+            <%= radio_button(:actor, :general_type, 'colectivo', :checked => (page.resource.general_type == "colectivo") ,class: "form-check-input actors-type-checkbox", id: "actor_general_type") %>
             <label class="form-check-label" for="colectivo">Colectivo</label>
           </div>
       </div>
@@ -48,22 +48,22 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="category">Tipo:</label>
-        <%= select_tag('actor[category]',options_for_select(get_options['individual_actor_types']) , { class: "selectpicker actors-individual-select"}) %>
-        <%= select_tag('actor[category]',options_for_select(get_options['collective_actor_types']) , { class: "selectpicker d-none actors-collective-select"}) %>
+        <%= select_tag('actor[category]',options_for_select(get_options['individual_actor_types'], page.resource.category) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[category]',options_for_select(get_options['collective_actor_types'], page.resource.category) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype">Sub-Tipo:</label>
-        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['individual_first_subtype']) , { class: "selectpicker actors-individual-select"}) %>
-        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['collective_first_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
+        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['individual_first_subtype'], page.resource.subtype) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype]',grouped_options_for_select(get_options['collective_first_subtype'], page.resource.subtype) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="subtype_2">Sub-Tipo 2:</label>
-        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['individual_second_subtype']) , { class: "selectpicker actors-individual-select"}) %>
-        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['collective_second_subtype']) , { class: "selectpicker d-none actors-collective-select"}) %>
+        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['individual_second_subtype'], page.resource.subtype_2) , { class: "selectpicker actors-individual-select"}) %>
+        <%= select_tag('actor[subtype_2]',grouped_options_for_select(get_options['collective_second_subtype'], page.resource.subtype_2) , { class: "selectpicker d-none actors-collective-select"}) %>
       </div>
     </div>
   </div>
@@ -71,13 +71,13 @@
     <div class="col-md-4">
       <div class="form-group">
         <label for="institution">Institución:</label>
-        <%= select_tag('actor[institution]',options_for_select(get_options['actors_institution']) , { class: "selectpicker"}) %>
+        <%= select_tag('actor[institution]',options_for_select(get_options['actors_institution'], page.resource.institution) , { class: "selectpicker"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="public_branch">Rama del poder público:</label>
-        <%= select_tag('actor[public_branch]',options_for_select(get_options['actors_public_branch']) , { class: "selectpicker"}) %>
+        <%= select_tag('actor[public_branch]',options_for_select(get_options['actors_public_branch'], page.resource.public_branch) , { class: "selectpicker"}) %>
       </div>
     </div>
   </div>
@@ -85,27 +85,27 @@
     <div class="col-md-4 d-none actor-charge-field">
       <div class="form-group">
         <label for="position">Cargo:</label>
-        <%= select_tag('actor[position]',options_for_select(get_options['actors_position']) , { class: "selectpicker"}) %>
+        <%= select_tag('actor[position]',options_for_select(get_options['actors_position'], page.resource.position) , { class: "selectpicker"}) %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="entity">Partido Político:</label>
-        <%= select_tag('actor[entity]',options_for_select(get_options['actors_entity']) , { class: "selectpicker"}) %>
+        <%= select_tag('actor[entity]',options_for_select(get_options['actors_entity'], page.resource.entity) , { class: "selectpicker"}) %>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4 d-none actor-charge-input">
       <div class="form-group">
-        <input type="text" class="form-control" id="actor_position_custom" aria-describedby="charge" placeholder="Completar cargo">
+         <%= text_field_tag('actor[position]', page.resource.position , class: 'form-control', placeholder: "Completar cargo") %>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
       <div>
-        <%= f.submit "Crear / Editar actor" %>
+        <%= f.submit "Crear / Editar actor", class: "form-btn-submit" %>
       </div>
     </div>
   </div>
