@@ -94,6 +94,7 @@ $(document).ready(function(){
     })
 
     $('body').on('shown.bs.modal', '#toolModal', function (e) {
+      $("#tool_table > tbody").empty();
       var id = $(e.relatedTarget).data('id');
       $('#tool_advisory_id').val(id);
       var tools = $(e.relatedTarget).data('tools');
