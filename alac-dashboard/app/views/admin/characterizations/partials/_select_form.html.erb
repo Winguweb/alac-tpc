@@ -7,23 +7,20 @@
             <div>
               <%= label_tag('characterization[kind_corruption]', "Tipos de corrupción") %>
             </div>
-            <%= select_tag('characterization[kind_corruption]', options_for_select(corruption_options, @characterization.kind_corruption), { class: "selectpicker form-control corruption-select"}) %>
+            <%= select_tag('characterization[kind_corruption]', options_for_select(corruption_options, @characterization.kind_corruption), { multiple: true, class: "selectpicker form-control corruption-select"}) %>
           </div>
         </div>
         <div class="col-md">
           <div>
             <%= label_tag('characterization[affected_area]', "Ámbito afectado") %>
           </div>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['administrative_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control administrative-corruption-select #{ @characterization.kind_corruption != 'Corrupción administrativa' ? 'hide' : ''}"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['judicial_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control judicial-corruption-select #{ @characterization.kind_corruption != 'Corrupción judicial' ? 'hide' : ''}"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['political_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control political-corruption-select #{ @characterization.kind_corruption != 'Corrupción política' ? 'hide' : ''}"}) %>
-          <%= select_tag('characterization[affected_area]', options_for_select(affected_area_options['private_corruption_options'], @characterization.affected_area), { class: "selectpicker form-control private-corruption-select #{ @characterization.kind_corruption != 'Corrupción privada' ? 'hide' : ''}"}) %>
+          <%= select_tag('characterization[affected_area]', grouped_options_for_select(affected_area_options, @characterization.affected_area), { multiple: true, class: "selectpicker form-control administrative-corruption-select"}) %>
         </div>
         <div class="col-md">
           <div>
             <%= label_tag('characterization[affected_sector]', "Sector afectado") %>
           </div>
-          <%= select_tag('characterization[affected_sector]', options_for_select(affected_sector, @characterization.affected_sector), { class: "selectpicker form-control"}) %>
+          <%= select_tag('characterization[affected_sector]', options_for_select(affected_sector, @characterization.affected_sector), { multiple: true,  class: "selectpicker form-control"}) %>
         </div>
       </div>
       <div class="row py-md-4">
@@ -31,19 +28,19 @@
           <div>
             <%= label_tag('characterization[rights_violated]', "Derechos presuntamentes vulnerados") %>
           </div>
-           <%= select_tag('characterization[rights_violated]', options_for_select(rights_violated, @characterization.rights_violated), { class: "selectpicker form-control"}) %>
+           <%= select_tag('characterization[rights_violated]', options_for_select(rights_violated, @characterization.rights_violated), { multiple: true, class: "selectpicker form-control"}) %>
         </div>
         <div class="col-md">
           <div>
             <%= label_tag('characterization[kind_responsability]', "Clase de presunta responsabilidad") %>
           </div>
-          <%= select_tag('characterization[kind_responsability]', options_for_select(kind_responsability, @characterization.kind_responsability), { class: "selectpicker form-control"}) %>
+          <%= select_tag('characterization[kind_responsability]', options_for_select(kind_responsability, @characterization.kind_responsability), { multiple: true, class: "selectpicker form-control"}) %>
         </div>
         <div class="col-md">
           <div>
            <%= label_tag('characterization[crime]', "Presunto delito") %>
           </div>
-          <%= select_tag('characterization[crime]', options_for_select(crime, @characterization.crime), { class: "selectpicker form-control" }) %>
+          <%= select_tag('characterization[crime]', options_for_select(crime, @characterization.crime), { multiple: true, class: "selectpicker form-control" }) %>
         </div>
       </div>
 

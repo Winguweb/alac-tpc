@@ -14,7 +14,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <%= label_tag("advisory[kind_answer]", "Tipo de respuesta que se dio al reportante:", :style => "min-height: 50px;") %>
-          <%= select_tag("advisory[kind_answer]", options_for_select(kind_answer_options),  { class: "selectpicker"}) %>
+          <%= select_tag("advisory[kind_answer]", options_for_select(kind_answer_options),  { multiple: true, class: "selectpicker"}) %>
         </div>
       </div>
       <div class="col-md-4">

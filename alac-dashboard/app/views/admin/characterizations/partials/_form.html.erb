@@ -33,7 +33,7 @@
         </div>
         <div class="form-group d-none select-known-authority">
           <%= label_tag('characterization[authority]', '¿Cuál?') %>
-          <%= select_tag('characterization[authority]', options_for_select(characterization_form_options['authority_options']), {class: "selectpicker form-control"}) %>
+          <%= select_tag('characterization[authority]', options_for_select(characterization_form_options['authority_options']), { multiple: true, class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group known-authority-input d-none">
           <%= text_field_tag('characterization[authority]', @characterization.authority , class: 'authority-text-input') %>
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group has-tool-select d-none">
           <%= label_tag('characterization[tool]', '¿Cuáles?') %>
-           <%= select_tag('characterization[tool]', options_for_select(characterization_form_options['tools']), {class: "selectpicker form-control"}) %>
+           <%= select_tag('characterization[tool]', options_for_select(characterization_form_options['tools']), { multiple: true, class: "selectpicker form-control"}) %>
         </div>
         <div class="form-group has-tool-input d-none">
           <%= text_field_tag('characterization[tool]', @characterization.tool , class: 'tool-text-input') %>
