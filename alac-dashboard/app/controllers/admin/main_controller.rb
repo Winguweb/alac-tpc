@@ -3,6 +3,7 @@ module Admin
     include MainHelper
     include SelectHelper
     include Streamable
+    require 'json'
 
     def index
       @reports = get_index_reports()
@@ -18,16 +19,17 @@ module Admin
 
     def show
       @characterization = Characterization.where(case_id: params[:id]).first
-      @actors = Actor.all
+
       if @characterization.blank?
         @characterization = Characterization.create(case_id: params[:id])
       end
-      @characterization_id = @characterization.id
+
       @actors = @characterization.actors
       @actors_select = Actor.all
       @evolution = Evolution.new
 
       @evolutions = @characterization.blank? ? [] : @characterization.evolutions
+
       @data = []
       elements = get_report_detail(params[:id])
       index = elements.each_index.select{|i| elements[i][1] != '-'} 
@@ -47,6 +49,15 @@ module Admin
       @participation_options = participation_options
 
       @kind_answer_options = kind_answer_options
+
+      @characterization_form_options = characterization_form_options
+
+      @corruption_options = corruption_options
+      @affected_area_options = affected_area_options
+      @affected_sector = affected_sector
+      @rights_violated = rights_violated
+      @kind_responsability = kind_responsability
+      @crime = crime
     end
 
     def download

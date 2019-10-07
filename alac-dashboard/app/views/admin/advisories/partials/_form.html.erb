@@ -2,7 +2,7 @@
   <div class="text-primary font-weight-bold mb-3">
     Asesoría legal
   </div>
-  <%= form_with(url: '/admin/advisories', model: advisory, method: "post") do %>
+  <%= form_with(url: '/admin/advisories', model: advisory, method: "post", class:'form-submit') do %>
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-             <%= submit_tag("Crear seguimiento", :class =>"btn btn-primary") %>
+             <%= submit_tag("Crear seguimiento", :class =>"btn btn-primary form-btn-submit") %>
       </div>
     </div>
   <% end %>
