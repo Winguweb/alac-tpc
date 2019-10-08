@@ -33,13 +33,80 @@ and renders all form fields for a resource's editable attributes.
     </div>
   <% end %>
 
-  <% page.attributes.each do |attribute| -%>
-    <div class="field-unit field-unit--<%= attribute.html_class %>">
-      <%= render_field attribute, f: f %>
-    </div>
-  <% end -%>
+  <div>
+            <div class="row py-md-2">
+              <div class="col"> 
+                <%= label_tag('evolution[presentation_date]', "Fecha de presentación de la denuncia") %>
+                <%= date_field(:evolution, :presentation_date, value: page.resource.presentation_date) %>  
+              </div>
+              <div class="col">
+                <%= label_tag('evolution[sanction_date]', "Fecha de sanción") %>
+                <%= date_field(:evolution, :sanction_date, value: page.resource.sanction_date) %>  
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Actor investigado</label> 
+                <%= select_tag('evolution[actor_id]', options_for_select(actors_select.collect{|x| [x.name,x.id]}, page.resource.actor_id), {class: "selectpicker"}) %>
+              </div>
+              <div class="col">
+                <label>Tipos de investigacion</label> 
+                <%= select_tag('evolution[kind_investigation]', options_for_select(["fiscal", "penal", "disciplinaria"], page.resource.kind_investigation), {class: "selectpicker kind_investigation"}) %>
+              </div>
+              <div class="col">
+                <label>Etapa Procesal</label> 
+                <%= select_tag('evolution[stage]',options_for_select(get_options['penal_stage_options'], page.resource.stage) , { class: "selectpicker penal_stage_options"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options'], page.resource.stage) , { class: "selectpicker fiscal_stage_options hide"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['disciplinary_stage_options'], page.resource.stage) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Situacion del investigado</label> 
+                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options'], page.resource.situation) , { class: "selectpicker penal_situation_options"}) %>
+                <%= select_tag('evolution[situation]',options_for_select(get_options['penal_situation_options'], page.resource.situation) , { class: "selectpicker fiscal_situation_options hide"}) %>
+                <%= select_tag('evolution[situation]',options_for_select(get_options['disciplinary_situation_options'], page.resource.situation) , { class: "selectpicker disciplinary_situation_options hide"}) %>
+              </div>
+              <div class="col hide fault_select">
+                <div>
+                  <label>Presunta falta</label>
+                </div>
+                <%= select_tag('evolution[fault]', options_for_select([["Leve", "leve"], ["Grave", "grave"], ["Gravísima", "gravisima"]], page.resource.fault),  {class: "selectpicker"}) %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row py-md-2">
+              <div class="col">
+                <label>Autoridad de conocimiento</label> 
+                <%= text_field_tag('evolution[authority]', page.resource.authority) %>
+              </div>
+              <div class="col crime_select">
+                <div>
+                  <label>Presunto delito</label>
+                </div>
+                <%= select_tag('ui-crime', options_for_select(get_options['crime_options'], page.resource.crime),  {multiple:true, class: "selectpicker crime-select"}) %>
+                <%= hidden_field_tag 'evolution[crime]' %>
+
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="">Detalle de la sanción</label>
+            <%= text_area_tag('evolution[details]', page.resource.details, size: "24x6") %>
+          </div>
+          <div>
+            <label for="">Comentarios</label>
+            <%= text_area_tag('evolution[comment]', page.resource.comment, size: "24x6") %>
+          </div>
 
   <div class="form-actions">
-    <%= f.submit %>
+    <%= f.submit "Crear / Editar proceso judicial"%>
   </div>
 <% end %>
