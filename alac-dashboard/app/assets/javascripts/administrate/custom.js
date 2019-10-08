@@ -117,6 +117,14 @@ $(document).ready(function(){
       var inputValue = this.value;
       var selected = $('#characterization_tool').find('option:selected').val(inputValue);
     });
+
+    $('.multiple-select').on('change', function(){
+
+      let options = $(this).val();
+      let id = $(this).data('id')
+      let stringify_options = JSON.stringify(options);
+      $('#'+id).val(stringify_options)
+    });
     $('.form-btn-submit').on('click', function(){
       $('.hide').remove()
       $('.d-none').remove()

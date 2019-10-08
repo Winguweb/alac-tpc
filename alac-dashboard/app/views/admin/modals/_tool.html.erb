@@ -35,7 +35,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Entidad de destino</label>
-                <%= select_tag('tool[entity]', raw('<option value="fiscalia">Fiscalía</option><option value="procuraduria">Procuraduría</option><option value="contraloria">Contraloría</option><option value="">Otra ¿cual?</option>'),  { multiple: true, class: "selectpicker entity_tools_select"}) %>
+                <%= select_tag('ui-entity', raw('<option value="fiscalia">Fiscalía</option><option value="procuraduria">Procuraduría</option><option value="contraloria">Contraloría</option><option value="">Otra ¿cual?</option>'),  { multiple: true, class: "selectpicker entity_tools_select multiple-select", "data-id" => "tool_entity"}) %>
+                <%= hidden_field_tag 'tool[entity]'%>
                 <input type="text" name="tool[entity]" class="form-control mt-3 hide entity_text">
               </div>
             </div>
