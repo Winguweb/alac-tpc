@@ -22,7 +22,7 @@ module Streamable
             haseahble.push(answer[1])
           end
           char_data =  Hash[*haseahble] 
-          
+          binding.pry
           sheet << [
             report[0],
             get_info_report(report[0])[0][0],

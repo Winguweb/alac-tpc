@@ -239,34 +239,34 @@ module SelectHelper
   def affected_area_options
     affected_area_select = [
       ['Corrupción administrativa', [
-        ['Empleo público', 'corrupcion_administrativa->empleo_publico'],
-        ['Contratación', 'corrupcion_administrativa->contratacion'],
-        ['Planeación', 'corrupcion_administrativa->planeacion'],
-        ['Presupuesto y Gasto público', 'corrupcion_administrativa->presupuesto_y_gasto_publico'],
-        ['Regulación, Licenciamiento y Trámites', 'corrupcion_administrativa->regulacion_licenciamiento_y_tramites'],
-        ['Seguridad y Convivencia','corrupcion_administrativa->seguridad_y_convivencia'],
-        ['Bienes y servicios', 'corrupcion_administrativa->bienes_y_servicios']
+        'Empleo público', 
+        'Contratación',
+        'Planeación',
+        'Presupuesto y Gasto público',
+        'Regulación, Licenciamiento y Trámites',
+        'Seguridad y Convivencia',
+        'Bienes y servicios'
       ]],
       ['Corrupción judicial', [
-        ['Empleo y altos cargos', 'corrupcion_judicial->empleo_y_altos_cargos'],
-        ['Funciones jurisdiccionales', 'corrupcion_judicial->funciones_jurisdiccionales'],
-        ['Trámites y servicios judiciales / Acceso a la justicia', 'corrupcion_judicial->tramites_y_servicios_judiciales_acceso_a_la_justicia']
+        'Empleo y altos cargos',
+        'Funciones jurisdiccionales',
+        'Trámites y servicios judiciales / Acceso a la justicia'
       ]],
       ['Corrupción política', [
-        ['Empleo público', 'corrupcion_politica->empleo_publico'],
-        ['Contratación pública',  'corrupcion_politica->contratacion_publica'],
-        ['Planeación',  'corrupcion_politica->planeacion'],
-        ['Presupuesto y Gasto Público', 'corrupcion_politica->presupuesto_y_gasto_publico'],
-        ['Regulación, Licenciamiento y Trámites',  'corrupcion_politica->regulacion_licenciamiento_y_tramites'],
-        ['Bienes y Servicios',  'corrupcion_politica->bienes_y_servicios'],
-        ['Delitos Electorales' 'corrupcion_politica->delitos_electorales'],
+        'Empleo público',
+        'Contratación pública',
+        'Planeación',
+        'Presupuesto y Gasto Público',
+        'Regulación, Licenciamiento y Trámites',
+        'Bienes y Servicios',
+        'Delitos Electorales',
       ]],
       ['Corrupción privada', [
-        ['En relación con entidades públicas', 'corrupcion_privada->en_relacion_con_entidades_publicas'],
-        ['En relación con otras entidades o individuos', 'corrupcion_privada->en_relacion_con_otras_entidades_o_individuos'],
-        ['Financiación de campañas políticas',  'corrupcion_privada->financiacion_de_campañas_politicas'],
-        ['Casos de colusión y/o obstrucción a la libre competencia',  'corrupcion_privada->casos_de_colusion_y/o_obstruccion_a_la_libre_competencia'],
-        ['Lavado de activos, evasión de impuestos y contrabando', 'corrupcion_privada->lavado_de_activos_evasion_de_impuestos_y_contrabando'],
+        'En relación con entidades públicas',
+        'En relación con otras entidades o individuos',
+        'Financiación de campañas políticas',
+        'Casos de colusión y/o obstrucción a la libre competencia',
+        'Lavado de activos, evasión de impuestos y contrabando'
       ]]
     ]
   end
