@@ -21,19 +21,18 @@ module Streamable
             haseahble.push(answer[0])
             haseahble.push(answer[1])
           end
-          char_data =  Hash[*haseahble] 
-          binding.pry
+          char_data =  Hash[*haseahble]
           sheet << [
             report[0],
             get_info_report(report[0])[0][0],
             get_info_report(report[0])[0][1],
             char_data["¿Cuál es el presunto hecho de corrupción que  quieres reportar?"],
             characterization.scope,
-            characterization.affected_sector,
-            characterization.rights_violated,
-            characterization.kind_corruption,
-            characterization.affected_area,
-            characterization.kind_responsability,
+            format_arr(characterization.affected_sector),
+            format_arr(characterization.rights_violated),
+            format_arr(characterization.kind_corruption),
+            format_arr(characterization.affected_area),
+            format_arr(characterization.kind_responsability),
             char_data["Departamento del Hecho"],
             municipio_reporte,
             char_data["Departamento de Residencia"],
@@ -142,5 +141,12 @@ module Streamable
       "¿Está usted dispuesto a presentar esta denuncia ante las autoridades públicas competentes?",
       "Motivos por no estar dispuesto a denunciar",
       "¿Pertenece a alguna de las siguiente poblaciones?"]
+  end
+
+  def format_arr(string)
+    unless string.nil? || string ==''
+      parsed_json = JSON.parse(string)
+      return parsed_json.join(', ').html_safe
+    end
   end
 end
