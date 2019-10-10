@@ -43,7 +43,7 @@ module MainHelper
   def run_query(query)
     begin
       
-      db = SQLite3::Database.open './tmp/globaleaks.db'
+      db = SQLite3::Database.open '../../var/globaleaks/globaleaks.db'
       stm = db.prepare query 
       rs = stm.execute 
       array = []
