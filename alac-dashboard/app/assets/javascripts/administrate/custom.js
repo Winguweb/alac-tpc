@@ -56,17 +56,21 @@ $(document).ready(function(){
   })
 
 
-  $('#characterization_authority').on('change', function() {
+  $('#ui-authority').on('change', function() {
     const value = this.value;
     if (value === 'Otro') {
       $('.known-authority-input').removeClass('d-none');
-    }
+    } else {
+      $('.known-authority-input').addClass('d-none');
+    };
   });
 
   // Add custom option to authority
   $('.authority-text-input').on('change', function() {
     var inputValue = this.value;
-    var selected = $('#characterization_authority').find('option:selected').val(inputValue);
+    console.log(this.value)
+    console.log($('#characterization_authority').val())
+    $('#characterization_authority').val(inputValue);
   });
 
     // Show select when has_tool is selected
@@ -117,7 +121,7 @@ $(document).ready(function(){
      
     $('.tool-text-input').on('change', function() {
       var inputValue = this.value;
-      var selected = $('#characterization_tool').find('option:selected').val(inputValue);
+      var selected = $('#characterization_tool').val(inputValue);
     });
 
     $('.multiple-select').on('change', function(){
