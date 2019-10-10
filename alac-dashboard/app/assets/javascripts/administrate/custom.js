@@ -78,10 +78,12 @@ $(document).ready(function(){
       }
     })
   
-    $('#characterization_tool').on('change', function() {
+    $('#ui-tool').on('change', function() {
       const value = this.value;
       if (value === 'Otros') {
         $('.has-tool-input').removeClass('d-none');
+      } else {
+        $('.has-tool-input').addClass('d-none');
       }
     });
 
