@@ -106,14 +106,14 @@ module MainHelper
               if j.class == Array
                 
                 pre_answer =  j[1].nil? ? nil : j[1]
-                if !pre_answer.nil? 
-                  if /([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)/.match(pre_answer).nil?
-                     
-                      final_answer = pre_answer
-                  else
+                
+                unless pre_answer.nil? 
+                  if /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\z/i.match?(pre_answer.to_s)
                     lbl = get_title_option(pre_answer)
-                   
+                    
                     final_answer = eval(lbl.last.last)[:es]
+                  else
+                    final_answer = pre_answer
                   end
                
                 end
