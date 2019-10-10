@@ -1,6 +1,13 @@
 module MainHelper
   require 'sqlite3'
+  require 'json'
 
+  def parse_stringify_arr(string)
+    unless string.nil? || string == ''
+      JSON.parse(string)
+    end
+  end
+  
   def get_files(id)
     run_query("select name from internalfile where internaltip_id = '#{id}'")
      # run_query("select id from internaltip Limit 1")

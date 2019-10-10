@@ -237,38 +237,38 @@ module SelectHelper
   end
 
   def affected_area_options
-    {
-      'administrative_corruption_options' => [
-        'Empleo público',
+    affected_area_select = [
+      ['Corrupción administrativa', [
+        'Empleo público', 
         'Contratación',
         'Planeación',
         'Presupuesto y Gasto público',
         'Regulación, Licenciamiento y Trámites',
         'Seguridad y Convivencia',
         'Bienes y servicios'
-      ],
-      'judicial_corruption_options' => [
+      ]],
+      ['Corrupción judicial', [
         'Empleo y altos cargos',
         'Funciones jurisdiccionales',
         'Trámites y servicios judiciales / Acceso a la justicia'
-      ],
-      'political_corruption_options' => [
+      ]],
+      ['Corrupción política', [
         'Empleo público',
         'Contratación pública',
         'Planeación',
         'Presupuesto y Gasto Público',
         'Regulación, Licenciamiento y Trámites',
         'Bienes y Servicios',
-        'Delitos Electorales'
-      ],
-      'private_corruption_options' => [
+        'Delitos Electorales',
+      ]],
+      ['Corrupción privada', [
         'En relación con entidades públicas',
         'En relación con otras entidades o individuos',
         'Financiación de campañas políticas',
         'Casos de colusión y/o obstrucción a la libre competencia',
         'Lavado de activos, evasión de impuestos y contrabando'
-      ]
-    }
+      ]]
+    ]
   end
 
   def affected_sector

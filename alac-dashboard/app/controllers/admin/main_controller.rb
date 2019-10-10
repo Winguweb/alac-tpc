@@ -4,6 +4,7 @@ module Admin
     include SelectHelper
     include Streamable
     require 'json'
+    helper_method :parse_stringify_arr
 
     def index
       @reports = get_index_reports()
@@ -58,6 +59,7 @@ module Admin
       @rights_violated = rights_violated
       @kind_responsability = kind_responsability
       @crime = crime
+
     end
 
     def download

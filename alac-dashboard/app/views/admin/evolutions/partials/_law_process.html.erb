@@ -54,7 +54,7 @@
                 <div>
                   <label>Presunta falta</label>
                 </div>
-                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  {class: "selectpicker"}) %>
+                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  { multiple: true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('ui-crime', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker crime-select"}) %>
+                <%= select_tag('ui-crime', options_for_select(get_options['crime_options']),  { multiple:true, class: "selectpicker crime-select"}) %>
                 <%= hidden_field_tag 'evolution[crime]' %>
 
               </div>
