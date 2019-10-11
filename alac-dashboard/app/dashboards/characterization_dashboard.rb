@@ -25,7 +25,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     affected_area: Field::String,
     affected_sector: Field::String,
     rights_violated: Field::String,
-    kind_responsability: Field::Boolean,
+    kind_responsability: Field::String,
     crime: Field::String,
     have_material: Field::Boolean,
     created_at: Field::DateTime,

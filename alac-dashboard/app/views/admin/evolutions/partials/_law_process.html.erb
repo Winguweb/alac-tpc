@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(url: admin_evolutions_path, model: evolution, method: "post") do %>
+        <%= form_with(url: admin_evolutions_path, model: evolution, method: "post", class: 'form-submit') do %>
           <div>
             <%= hidden_field_tag 'evolution[characterization_id]', characterization_id %>
             <div class="row py-md-2">
@@ -37,7 +37,7 @@
                 <label>Etapa Procesal</label> 
                 <%= select_tag('evolution[stage]',options_for_select(get_options['penal_stage_options']) , { class: "selectpicker penal_stage_options"}) %>
                 <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker fiscal_stage_options hide"}) %>
-                <%= select_tag('evolution[stage]',options_for_select(get_options['fiscal_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
+                <%= select_tag('evolution[stage]',options_for_select(get_options['disciplinary_stage_options']) , { class: "selectpicker disciplinary_stage_options hide"}) %>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
                 <div>
                   <label>Presunta falta</label>
                 </div>
-                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  {class: "selectpicker"}) %>
+                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  { multiple: true, class: "selectpicker"}) %>
               </div>
             </div>
           </div>
@@ -68,7 +68,9 @@
                 <div>
                   <label>Presunto delito</label>
                 </div>
-                <%= select_tag('evolution[crime]', options_for_select(get_options['crime_options']),  {multiple:true, class: "selectpicker"}) %>
+                <%= select_tag('ui-crime', options_for_select(get_options['crime_options']),  { multiple:true, class: "selectpicker crime-select"}) %>
+                <%= hidden_field_tag 'evolution[crime]' %>
+
               </div>
             </div>
           </div>
@@ -82,7 +84,7 @@
           </div>
 
           <div class="py-md-3">
-            <%= submit_tag("Agregar investigacion") %>
+            <%= submit_tag("Agregar investigacion", :class =>"form-btn-submit") %>
           </div>
         <% end %>
       </div>

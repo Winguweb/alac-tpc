@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(url: admin_tools_path, method: "post") do %>
+        <%= form_with(url: admin_tools_path, method: "post", class: 'form-submit') do %>
           <%= hidden_field_tag 'tool[advisory_id]' %>
           <div class="row">
             <div class="col-md-4">
@@ -35,7 +35,8 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Entidad de destino</label>
-                <%= select_tag('tool[entity]', raw('<option value="fiscalia">Fiscalía</option><option value="procuraduria">Procuraduría</option><option value="contraloria">Contraloría</option><option value="">Otra ¿cual?</option>'),  { class: "selectpicker entity_tools_select"}) %>
+                <%= select_tag('ui-entity', raw('<option value="fiscalia">Fiscalía</option><option value="procuraduria">Procuraduría</option><option value="contraloria">Contraloría</option><option value="">Otra ¿cual?</option>'),  { multiple: true, class: "selectpicker entity_tools_select multiple-select", "data-id" => "tool_entity"}) %>
+                <%= hidden_field_tag 'tool[entity]'%>
                 <input type="text" name="tool[entity]" class="form-control mt-3 hide entity_text">
               </div>
             </div>
@@ -92,12 +93,11 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <table class="table" aria-labelledby="tools-table">
+              <table class="table" aria-labelledby="tools-table" id="tool_table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Herramienta legal</th>
-                    <th scope="col">Radicación</th>
                     <th scope="col">Entidad de destino</th>
                     <th scope="col">Fecha de radicación</th>
                     <th scope="col">Término legal para dar respuesta</th>
@@ -107,21 +107,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <th scope="row">1</th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <div class="btn-group" role="group" aria-label="Tools buttons">
-                    <button class="btn btn-link">Editar</button>
-                    <button class="btn btn-link">Borrar</button>
-                    <button class="btn btn-link">Ver</button>
-                    </div>
-                  </td>
                 </tbody>
               </table>
             </div>

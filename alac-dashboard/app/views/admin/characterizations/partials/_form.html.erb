@@ -1,108 +1,74 @@
-<%#
-# Form Partial
-
-This partial is rendered on a resource's `new` and `edit` pages,
-and renders all form fields for a resource's editable attributes.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Form][1].
-  Contains helper methods to display a form,
-  and knows which attributes should be displayed in the resource's form.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
-%>
 <div class="text-primary p-3 font-weight-bold">
   Caracterización del Reporte
 </div>
 
 <section class="main-content__body">
-  <%= form_for("characterizations", html: { class: "form" }) do |f| %>
-    <div class="row">
+  <%= form_with(url: admin_characterization_path(@characterization), model: characterization, method: "patch", class: 'form-submit') do %>
+    <div class="row py-md-4">
       <div class="col">
         <div class="form-group">
-          <label for="summary">Resumen del reporte</label>
-          <textarea class="form-control" id="summary" name="characterization[summary]" rows="6"></textarea>
+          <%= label_tag('characterization[summary]', "Resumen del reporte") %>  
+          <%= text_area_tag('characterization[summary]', @characterization.summary , rows: "6", class:"form-control") %>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-md-4">
       <div class="col-md-4">
         <div class="form-group">
-          <label for="status">Estado de caso</label>
-          <select class="form-control" id="status" name="characterization[status]">
-            <option value="procede">Procede</option>
-            <option value="no-procede">No procede</option>
-            <option value="archivado">Archivado</option>
-            <option value="duplicado">Duplicado</option>
-          </select>
+          <%= label_tag('characterization[status]', 'Estado de caso') %>
+          <%= select_tag('characterization[status]', options_for_select(characterization_form_options['status_options'], @characterization.status), {class: "selectpicker form-control"}) %>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row py-md-4">
       <div class="col-md-4">
         <div class="form-group">
-          <label for="known_authority" style="min-height: 50px;">¿Caso conocido por autoridades con anterioridad al reporte?</label>
+          <%= label_tag('characterization[known_authority]', '¿Caso conocido por autoridades con anterioridad al reporte?', style: "min-height: 50px;") %>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="characterization[known_authority]" id="true_known_authority" value=true>
-            <label class="form-check-label" for="true_known_authority">Sí</label>
+            <%= radio_button(:characterization, :known_authority, true ,class: "form-check-input") %> Sí
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="characterization[known_authority]" id="false_known_authority" value=false>
-            <label class="form-check-label" for="false_known_authority">No</label>
+            <%= radio_button(:characterization, :known_authority, false , class: "form-check-input") %> No
           </div>
         </div>
         <div class="form-group d-none select-known-authority">
-          <label>¿Cuál?</label>
-          <select class="form-control known-authority">
-            <option value="fiscalia">Fiscalía</option>
-            <option value="procuraduria">Procuraduría</option>
-            <option value="contraloria">Contraloría</option>
-            <option value="otro">Otra</option>
-          </select>
+          <%= label_tag('characterization[authority]', '¿Cuál?') %>
+          <%= select_tag('ui-authority', options_for_select(characterization_form_options['authority_options']), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_authority"}) %>
+          <%= hidden_field_tag 'characterization[authority]' %>
         </div>
         <div class="form-group known-authority-input d-none">
-          <input type="text" class="form-control" placeholder="Detalle cuál">
+          <%= text_field_tag('characterization[authority]', @characterization.authority , class: 'authority-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label style="min-height: 50px;">Herramientas jurídicas previas al ALAC</label>
+          <%= label_tag('characterization[has_tool]', 'Herramientas jurídicas previas al ALAC', style: "min-height: 50px;  display: block;") %>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="characterization[has_tool]" id="true_has_tool" value=true>
-            <label class="form-check-label" for="true_has_tool">Sí</label>
+            <%= radio_button(:characterization, :has_tool, true , class: "form-check-input") %> Sí
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="characterization[has_tool]" id="false_has_tool" value=false>
-            <label class="form-check-label" for="false_has_tool">No</label>
+            <%= radio_button(:characterization, :has_tool, false, class: "form-check-input") %> No
           </div>
         </div>
         <div class="form-group has-tool-select d-none">
-          <label>¿Cuál?</label>
-          <select class="form-control has-tool">
-            <option value="queja">Queja</option>
-            <option value="denuncia">Denuncia</option>
-            <option value="accion-de-tutela">Acción de tutela</option>
-            <option value="accion-de-grupo">Acción de grupo</option>
-            <option value="accion-popular">Acción popular</option>
-            <option value="accion-de-cumplimiento">Acción de cumplimiento</option>
-            <option value="consulta-previa">Consulta previa</option>
-             <option value="solicitud-revocatoria-directa">Solicitud de Revocatoria directa</option>
-            <option value="otro">Otra</option>
-          </select>
+          <%= label_tag('characterization[tool]', '¿Cuáles?') %>
+           <%= select_tag('ui-tool', options_for_select(characterization_form_options['tools']), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_tool"}) %>
+          <%= hidden_field_tag 'characterization[tool]' %>
         </div>
         <div class="form-group has-tool-input d-none">
-          <input type="text" class="form-control" placeholder="Detalle cuál">
+          <%= text_field_tag('characterization[tool]', @characterization.tool , class: 'tool-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="scope" style="min-height: 50px;">Alcance del Caso</label>
-          <select id="scope" name="characterization[scope]" class="form-control">
-            <option>Local</option>
-          </select>
+          <%= label_tag('characterization[scope]', 'Alcance del Caso', style: "min-height: 50px;") %>
+           <%= select_tag('characterization[scope]', options_for_select(characterization_form_options['scope_options'], @characterization.scope), {class: "selectpicker form-control"}) %>
         </div>
+      </div>
+    </div>
+    <div class="row  py-md-4">
+      <div class="col-md-4">
+        <%= submit_tag("Guardar", :class =>"btn btn-primary form-btn-submit") %>
       </div>
     </div>
   <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190912123931) do
+ActiveRecord::Schema.define(version: 20191007193128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "affected_area"
     t.string "affected_sector"
     t.string "rights_violated"
-    t.boolean "kind_responsability"
+    t.string "kind_responsability"
     t.string "crime"
     t.boolean "have_material"
     t.datetime "created_at", null: false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20190912123931) do
     t.string "participation_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["actor_id", "characterization_id"], name: "index_relationships_on_actor_id_and_characterization_id", unique: true
     t.index ["actor_id"], name: "index_relationships_on_actor_id"
     t.index ["characterization_id"], name: "index_relationships_on_characterization_id"
   end
