@@ -33,11 +33,11 @@
         </div>
         <div class="form-group d-none select-known-authority">
           <%= label_tag('characterization[authority]', '¿Cuál?') %>
-          <%= select_tag('ui-authority', options_for_select(characterization_form_options['authority_options']), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_authority"}) %>
-          <%= hidden_field_tag 'characterization[authority]' %>
+          <%= select_tag('ui-authority', options_for_select(characterization_form_options['authority_options'], @characterization.authority), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_authority"}) %>
+          <%= hidden_field_tag('characterization[authority]',  @characterization.authority) %>
         </div>
         <div class="form-group known-authority-input d-none">
-          <%= text_field_tag('text-authority', @characterization.authority , class: 'authority-text-input') %>
+          <%= text_field_tag('text-authority', '' , class: 'authority-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
@@ -52,11 +52,11 @@
         </div>
         <div class="form-group has-tool-select d-none">
           <%= label_tag('characterization[tool]', '¿Cuáles?') %>
-           <%= select_tag('ui-tool', options_for_select(characterization_form_options['tools']), { multiple: true, class: "selectpicker form-control multiple-select tool-select", "data-id" => "characterization_tool"}) %>
-          <%= hidden_field_tag 'characterization[tool]' %>
+           <%= select_tag('ui-tool', options_for_select(characterization_form_options['tools'], @characterization.tool), { multiple: true, class: "selectpicker form-control multiple-select tool-select", "data-id" => "characterization_tool"}) %>
+          <%= hidden_field_tag('characterization[tool]', @characterization.tool) %>
         </div>
         <div class="form-group has-tool-input d-none">
-          <%= text_field_tag('text-tool', @characterization.tool , class: 'tool-text-input') %>
+          <%= text_field_tag('text-tool', '' , class: 'tool-text-input') %>
         </div>
       </div>
       <div class="col-md-4">

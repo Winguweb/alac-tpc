@@ -42,7 +42,6 @@ $(document).ready(function(){
   $('#actor_position_custom').on('change', function() {
     var inputValue = this.value;
     var selected = $('.actor-charge-select').find('option:selected').val(inputValue);
-    console.log(selected.val());
   });
 
   // Characterizations form
@@ -57,8 +56,9 @@ $(document).ready(function(){
 
 
   $('#ui-authority').on('change', function() {
-    const value = this.value;
-    if (value === 'Otro') {
+    const value = $(this).val();
+
+    if (value === 'Otro' || value.includes('Otro')) {
       $('.known-authority-input').removeClass('d-none');
     } else {
       $('.known-authority-input').addClass('d-none');
@@ -68,8 +68,6 @@ $(document).ready(function(){
   // Add custom option to authority
   $('.authority-text-input').on('change', function() {
     var inputValue = this.value;
-    console.log(this.value)
-    console.log($('#characterization_authority').val())
     $('#characterization_authority').val(inputValue);
   });
 
@@ -83,12 +81,12 @@ $(document).ready(function(){
     })
   
     $('#ui-tool').on('change', function() {
-      const value = this.value;
-      if (value === 'Otros') {
-        $('.has-tool-input').removeClass('d-none');
-      } else {
-        $('.has-tool-input').addClass('d-none');
-      }
+      const value = $(this).val();
+      if (value === 'Otros' || value.includes('Otros')) {
+          $('.has-tool-input').removeClass('d-none');
+        } else {
+          $('.has-tool-input').addClass('d-none');
+        }
     });
 
     $('.entity_tools_select').on('change', function(){
