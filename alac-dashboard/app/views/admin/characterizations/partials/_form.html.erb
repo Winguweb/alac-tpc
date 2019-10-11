@@ -33,7 +33,10 @@
         </div>
         <div class="form-group d-none select-known-authority">
           <%= label_tag('characterization[authority]', '¿Cuál?') %>
-          <%= select_tag('ui-authority', options_for_select(characterization_form_options['authority_options'], @characterization.authority), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_authority"}) %>
+          <% unless @characterization.authority.nil? || @characterization.authority == ''  %>
+          <%  parsed_authority = JSON.parse(@characterization.authority) %>
+          <% end %>
+          <%= select_tag('ui-authority', options_for_select(characterization_form_options['authority_options'], parsed_authority), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_authority"}) %>
           <%= hidden_field_tag('characterization[authority]',  @characterization.authority) %>
         </div>
         <div class="form-group known-authority-input d-none">
@@ -52,7 +55,10 @@
         </div>
         <div class="form-group has-tool-select d-none">
           <%= label_tag('characterization[tool]', '¿Cuáles?') %>
-           <%= select_tag('ui-tool', options_for_select(characterization_form_options['tools'], @characterization.tool), { multiple: true, class: "selectpicker form-control multiple-select tool-select", "data-id" => "characterization_tool"}) %>
+          <% unless @characterization.tool.nil? || @characterization.tool == ''  %>
+          <%  parsed_tool = JSON.parse(@characterization.tool) %>
+          <% end %>
+           <%= select_tag('ui-tool', options_for_select(characterization_form_options['tools'], parsed_tool), { multiple: true, class: "selectpicker form-control multiple-select tool-select", "data-id" => "characterization_tool"}) %>
           <%= hidden_field_tag('characterization[tool]', @characterization.tool) %>
         </div>
         <div class="form-group has-tool-input d-none">
