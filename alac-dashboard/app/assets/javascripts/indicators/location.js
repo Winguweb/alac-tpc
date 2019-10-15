@@ -1,6 +1,6 @@
 const URL = window.location.origin
 
-fetch(`${URL}/api/indicators/gender`)
+fetch(`${URL}/api/indicators/location`)
   .then(function(response){
     return response.json()
   })

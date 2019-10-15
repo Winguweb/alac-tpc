@@ -31,35 +31,78 @@ module Api
     def get_ambit_data
       # es de la caracterizacion
       data = []
-      query = Characterization.all.group_by(&:affected_area)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
+      data_arr = []
+      val = Hash.new(0)
+
+      Characterization.all.each do |c|
+        parsed_array = JSON.parse(c.affected_area)
+        parsed_array.each do |d|
+          data_arr.push(d)
+        end
       end
+
+      data_arr.each do |d|
+        val[d] += 1
+      end
+      
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      
       return data
     end
 
     def get_sector_data
       # es de la caracterizacion
       data = []
-      query = Characterization.all.group_by(&:affected_sector)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
+      data_arr = []
+      val = Hash.new(0)
+
+      Characterization.all.each do |c|
+        parsed_array = JSON.parse(c.affected_sector)
+        parsed_array.each do |d|
+          data_arr.push(d)
+        end
       end
+
+      data_arr.each do |d|
+        val[d] += 1
+      end
+      
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      
       return data
     end
 
     def get_corruption_data
+      # es de la caracterizacion
       data = []
-      query = Characterization.all.group_by(&:kind_corruption)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
+      data_arr = []
+      val = Hash.new(0)
+
+      Characterization.all.each do |c|
+        parsed_array = JSON.parse(c.kind_corruption)
+        parsed_array.each do |d|
+          data_arr.push(d)
+        end
       end
+
+      data_arr.each do |d|
+        val[d] += 1
+      end
+      
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      
       return data
       #characterization kind_corruption
     end
