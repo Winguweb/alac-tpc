@@ -27,41 +27,32 @@ module Api
 
     private 
 
+    def get_data(element)
+
+      data_arr = []
+
+      Characterization.all.each do |c|
+        unless c[element].nil? || c[element] == ''
+          parsed_array = JSON.parse(c[element])
+          parsed_array.each do |d|
+            data_arr.push(d)
+          end
+        end
+      end
+      return data_arr
+    end
 
     def get_ambit_data
       # es de la caracterizacion
-      data = []
-      query = Characterization.all.group_by(&:affected_area)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
+      return convert_arr_to_hash(get_data(:affected_area))
     end
 
     def get_sector_data
-      # es de la caracterizacion
-      data = []
-      query = Characterization.all.group_by(&:affected_sector)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
+      return convert_arr_to_hash(get_data(:affected_sector))
     end
 
     def get_corruption_data
-      data = []
-      query = Characterization.all.group_by(&:kind_corruption)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
-      #characterization kind_corruption
+      return convert_arr_to_hash(get_data(:kind_corruption))
     end
 
     def get_report_location 
@@ -119,6 +110,20 @@ module Api
 
       return result
     end
+    def convert_arr_to_hash(arr)
+      data = []
+      val = Hash.new(0)
 
+      arr.each do |d|
+        val[d] += 1
+      end
+
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      return data
+    end
   end
 end
