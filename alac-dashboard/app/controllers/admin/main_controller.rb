@@ -25,6 +25,7 @@ module Admin
         @characterization = Characterization.create(case_id: params[:id])
       end
 
+      @tool = Tool.new
       @actors = @characterization.actors
       @actors_select = Actor.all
       @evolution = Evolution.new

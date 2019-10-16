@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form_with(url: admin_tools_path, method: "post", class: 'form-submit') do %>
+        <%= form_for @tool, :url => admin_tools_path, :html=> {:multipart => true } do %>
           <%= hidden_field_tag 'tool[advisory_id]' %>
           <div class="row">
             <div class="col-md-4">
