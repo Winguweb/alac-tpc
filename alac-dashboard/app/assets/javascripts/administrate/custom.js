@@ -19,8 +19,6 @@ $(document).ready(function(){
       $('.actor-charge-field').removeClass('d-none');
       $('.actors-collective-select').addClass('d-none');
       $('.actors-individual-select').removeClass('d-none');
-
-
     } else {
       $('.actor-charge-field').addClass('d-none');
       $('.actors-individual-select').addClass('d-none');
@@ -42,7 +40,7 @@ $(document).ready(function(){
   $('#actor_position_custom').on('change', function() {
     var inputValue = this.value;
     var selected = $('.actor-charge-select').find('option:selected').val(inputValue);
-    console.log(selected.val());
+    
   });
 
   // Characterizations form
@@ -68,8 +66,6 @@ $(document).ready(function(){
   // Add custom option to authority
   $('.authority-text-input').on('change', function() {
     var inputValue = this.value;
-    console.log(this.value)
-    console.log($('#characterization_authority').val())
     $('#characterization_authority').val(inputValue);
   });
 
@@ -106,7 +102,8 @@ $(document).ready(function(){
       var tools = $(e.relatedTarget).data('tools');
       
       $(tools).each(function(index, value) {
-        var content = '<tr><th scope="row">' + (index + 1) + '</th><td>'+value.document+'</td><td>'+value.entity+'</td><td>'+value.radication_date+'</td><td>'+value.deadline+'</td><td>'+value.have_answer+'</td><td>'+value.answer_date+'</td><td><div class="btn-group" role="group" aria-label="Tools buttons"><a href="/admin/tools/'+ value.id + '/edit" class="action-show btn btn-link">Editar</a><a class="action-edit btn btn-link" data-confirm="¿Estás seguro?" rel="nofollow" data-method="delete" href="/admin/tools/' + value.id +'">Eliminar</a><a href="/admin/tools/'+ value.id + '" class="action-show btn btn-link">Ver</a></div></td></tr>'
+        
+        var content = '<tr><th scope="row">' + (index + 1) + '</th><td><a href="'+value.document.url+'" target="_blank">'+value.tools_used+'<a/></td><td>'+value.entity+'</td><td>'+value.radication_date+'</td><td>'+value.deadline+'</td><td>'+value.have_answer+'</td><td>'+value.answer_date+'</td><td><div class="btn-group" role="group" aria-label="Tools buttons"><a href="/admin/tools/'+ value.id + '/edit" class="action-show btn btn-link">Editar</a><a class="action-edit btn btn-link" data-confirm="¿Estás seguro?" rel="nofollow" data-method="delete" href="/admin/tools/' + value.id +'">Eliminar</a><a href="/admin/tools/'+ value.id + '" class="action-show btn btn-link">Ver</a></div></td></tr>'
         $('#tool_table > tbody').append(content);
       });
      });
