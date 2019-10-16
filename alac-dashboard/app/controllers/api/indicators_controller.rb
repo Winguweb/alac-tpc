@@ -30,80 +30,49 @@ module Api
 
     def get_ambit_data
       # es de la caracterizacion
-      data = []
       data_arr = []
-      val = Hash.new(0)
 
       Characterization.all.each do |c|
-        parsed_array = JSON.parse(c.affected_area)
-        parsed_array.each do |d|
-          data_arr.push(d)
+        unless c.affected_area.nil? || c.affected_area == ''
+          parsed_array = JSON.parse(c.affected_area)
+          parsed_array.each do |d|
+            data_arr.push(d)
+          end
         end
       end
 
-      data_arr.each do |d|
-        val[d] += 1
-      end
-      
-      val.each do |v|
-        aux = Hash.new
-        aux[v[0]] = v[1]
-        data.push(aux)
-      end
-      
-      return data
+      return convert_arr_to_hash(data_arr)
     end
 
     def get_sector_data
       # es de la caracterizacion
-      data = []
       data_arr = []
-      val = Hash.new(0)
-
       Characterization.all.each do |c|
-        parsed_array = JSON.parse(c.affected_sector)
-        parsed_array.each do |d|
-          data_arr.push(d)
+        unless c.affected_sector.nil? || c.affected_sector == ''
+          parsed_array = JSON.parse(c.affected_sector)
+          parsed_array.each do |d|
+            data_arr.push(d)
+          end
         end
       end
 
-      data_arr.each do |d|
-        val[d] += 1
-      end
-      
-      val.each do |v|
-        aux = Hash.new
-        aux[v[0]] = v[1]
-        data.push(aux)
-      end
-      
-      return data
+      return convert_arr_to_hash(data_arr)
     end
 
     def get_corruption_data
       # es de la caracterizacion
-      data = []
       data_arr = []
-      val = Hash.new(0)
 
       Characterization.all.each do |c|
-        parsed_array = JSON.parse(c.kind_corruption)
-        parsed_array.each do |d|
-          data_arr.push(d)
+        unless c.kind_corruption.nil? || c.kind_corruption == ''
+          parsed_array = JSON.parse(c.kind_corruption)
+          parsed_array.each do |d|
+            data_arr.push(d)
+          end
         end
       end
-
-      data_arr.each do |d|
-        val[d] += 1
-      end
       
-      val.each do |v|
-        aux = Hash.new
-        aux[v[0]] = v[1]
-        data.push(aux)
-      end
-      
-      return data
+      return convert_arr_to_hash(data_arr)
       #characterization kind_corruption
     end
 
@@ -162,6 +131,20 @@ module Api
 
       return result
     end
+    def convert_arr_to_hash(arr)
+      data = []
+      val = Hash.new(0)
 
+      arr.each do |d|
+        val[d] += 1
+      end
+
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      return data
+    end
   end
 end

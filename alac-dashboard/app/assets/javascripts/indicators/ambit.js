@@ -38,6 +38,11 @@ function drawChart(data){
                 ticks: {
                     beginAtZero: true
                 }
+            }],
+            xAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
             }]
         }
     }
