@@ -14,7 +14,7 @@ module Streamable
       reports.each do | report|
         if characterization = Characterization.where(case_id: report[0]).first
           elements = get_report_detail(report[0])
-          hecho =  elements[0]
+          hecho =  elements[0][1]
           haseahble = []
           elements.each do |answer|
             haseahble.push(answer[0])
@@ -24,7 +24,7 @@ module Streamable
           char_data =  Hash[*haseahble]
           final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quiere reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?"] 
           sheet << [
-            report[0][1],
+            report[0],
             get_info_report(report[0])[0][1],
             get_info_report(report[0])[0][0],
             hecho,
