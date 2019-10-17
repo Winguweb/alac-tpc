@@ -1,7 +1,16 @@
 $(document).ready(function(){
   // Actors form
   const val = $("input[type=radio][name='actor[general_type]']:checked").val()
-  
+  let authOptions = $('#ui-authority').val()
+  if(authOptions){
+    authOptions.map( o => {
+      if(o === 'Otro'){
+        $('.known-authority-input').removeClass('d-none')
+      } else {
+        $('.known-authority-input').addClass('d-none')
+      }
+    })
+  }
   if (val === 'individual') {
     $('.actor-charge-field').removeClass('d-none');
     $('.actors-collective-select').addClass('d-none');
@@ -55,18 +64,21 @@ $(document).ready(function(){
 
 
   $('#ui-authority').on('change', function() {
-    const value = this.value;
-    if (value === 'Otro') {
-      $('.known-authority-input').removeClass('d-none');
-    } else {
-      $('.known-authority-input').addClass('d-none');
-    };
+    authOptions = $('#ui-authority').val()
+    console.log(authOptions)
+    authOptions.map( o => {
+      if(o === 'Otro'){
+        $('.known-authority-input').removeClass('d-none')
+      } else {
+        $('.known-authority-input').addClass('d-none')
+      }
+    })
   });
 
   // Add custom option to authority
   $('.authority-text-input').on('change', function() {
     var inputValue = this.value;
-    $('#characterization_authority').val(inputValue);
+    authOptions.push(inputValue)
   });
 
     // Show select when has_tool is selected
@@ -122,7 +134,6 @@ $(document).ready(function(){
     });
 
     $('.multiple-select').on('change', function(){
-
       let options = $(this).val();
       let id = $(this).data('id')
       let stringify_options = JSON.stringify(options);
@@ -136,5 +147,8 @@ $(document).ready(function(){
       setTimeout(function(){
         location.reload()
       }, 500)
+    })
+    $('.characterization-auth-submit').on('click', function(){
+      $('#characterization_authority').val(JSON.stringify(authOptions));
     })
 });
