@@ -22,11 +22,11 @@ module Streamable
           end
           
           char_data =  Hash[*haseahble]
-          final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quieres reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?"] 
+          final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quieres reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?","llaves"] 
           sheet << [
             report[0],
-            get_info_report(report[0])[0][0],
             get_info_report(report[0])[0][1],
+            get_info_report(report[0])[0][0],
             hecho,
             characterization.scope,
             format_arr(characterization.affected_sector),
@@ -45,7 +45,8 @@ module Streamable
             char_data["¿Cual?"],
             char_data["¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?"],
             char_data["¿Por qué?"],
-            char_data[final_keys[0]]
+            char_data[final_keys[0]],
+            final_keys[0]
           ]
         end
       end
