@@ -14,14 +14,7 @@ module Streamable
       reports.each do | report|
         if characterization = Characterization.where(case_id: report[0]).first
           elements = get_report_detail(report[0])
-          
           hecho =  elements[0]
-          municipio_reporte = elements[16]
-          if elements[20][0] == "¿A cuál organización pertenece?"
-            municipio_residente = elements[19]
-          else
-            municipio_residente = elements[20]
-          end
           haseahble = []
           elements.each do |answer|
             haseahble.push(answer[0])
@@ -41,10 +34,10 @@ module Streamable
             format_arr(characterization.kind_corruption),
             format_arr(characterization.affected_area),
             format_arr(characterization.kind_responsability),
+            char_data["Departamento del Hecho"],
             char_data[final_keys[1]],
-            municipio_reporte,
+            char_data["Departamento de Residencia"],
             char_data[final_keys[2]],
-            municipio_residente,
             char_data["Edad"],
             char_data["Ocupación"],
             char_data["¿Es usted lider social o defensor de derechos humanos?"],
