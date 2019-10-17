@@ -38,7 +38,6 @@ $(document).ready(function(){
           'Otros'
         ].includes(o)){
           toolOpts.push(o)
-          console.log(o)
           $('.tool-text-input').val(o)
         }else{
           $('.tool-text-input').val('')
@@ -226,8 +225,6 @@ $(document).ready(function(){
     $('.characterization-auth-submit').on('click', function(){
       changeToolText()
       changeAuthorityText()
-      console.log(JSON.stringify(toolOpts))
-      console.log(JSON.stringify(authOptions))
       $('#characterization_tool').val(JSON.stringify(toolOpts))
       $('#characterization_authority').val(JSON.stringify(authOptions));
     })
