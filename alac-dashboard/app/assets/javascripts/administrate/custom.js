@@ -4,7 +4,15 @@ $(document).ready(function(){
   let authOptions = $('#ui-authority').val()
   let toolOpts = $('#ui-tool').val()
   if($('.authority-text-input').val()){
-    authOptions.push($('.authority-text-input').val())
+    authOptionsCopy = JSON.parse($('.authority-text-input').val())
+    authOptionsCopy.map( o => {
+      if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+        authOptions.push(o)
+        $('.authority-text-input').val(o)
+      }else{
+        $('.authority-text-input').val('')
+      }
+    })
   }
   if(authOptions){
     authOptions.map( o => {
@@ -106,20 +114,6 @@ $(document).ready(function(){
     })
   });
 
-  // Add custom option to authority
-  $('.authority-text-input').on('change', function() {
-    var inputValue = this.value;
-    authOptions.map( o => {
-      if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
-        const index = authOptions.indexOf(o)
-
-        if(index > -1){
-          authOptions.splice(index, 1)
-        }
-      }
-    })
-    authOptions.push(inputValue)
-  });
 
     // Show select when has_tool is selected
     $("input[type=radio][name='characterization[has_tool]']").click(function() {
@@ -192,6 +186,20 @@ $(document).ready(function(){
       toolOpts.push(inputValue)
     }
 
+    function changeAuthorityText(){
+      var inputValue = $('.authority-text-input').val()
+      authOptions.map( o => {
+        if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+          const index = authOptions.indexOf(o)
+  
+          if(index > -1){
+            authOptions.splice(index, 1)
+          }
+        }
+      })
+      authOptions.push(inputValue)
+    }
+
     $('.multiple-select').on('change', function(){
       let options = $(this).val();
       let id = $(this).data('id')
@@ -209,6 +217,7 @@ $(document).ready(function(){
     })
     $('.characterization-auth-submit').on('click', function(){
       changeToolText()
+      changeAuthorityText()
       console.log(JSON.stringify(toolOpts))
       console.log(JSON.stringify(authOptions))
       $('#characterization_tool').val(JSON.stringify(toolOpts))
