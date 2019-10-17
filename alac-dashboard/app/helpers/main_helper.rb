@@ -7,6 +7,24 @@ module MainHelper
       JSON.parse(string)
     end
   end
+
+  def authority_other_option(opts)
+    if opts
+      opts.each do |o|
+        return o if !['Fiscalía', 'Procuraduría', 'Contraloría', 'Otro'].include?(o)
+      end
+    end
+  end
+
+  def tool_other_option(opts)
+    binding.pry
+    if opts
+      opts.each do |o|
+        return o if !['Queja','Denuncia','Acción de tutela','Acción de grupo','Acción popular','Acción de cumplimiento','Consulta previa','Solicitud de Revocatoria directa','Otros'].include?(o)
+      end
+    end
+
+  end
   
   def get_files(id)
     run_query("select name from internalfile where internaltip_id = '#{id}'")

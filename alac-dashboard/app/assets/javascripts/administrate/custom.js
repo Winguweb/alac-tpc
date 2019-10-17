@@ -1,7 +1,59 @@
 $(document).ready(function(){
   // Actors form
   const val = $("input[type=radio][name='actor[general_type]']:checked").val()
-  
+  let authOptions = $('#ui-authority').val()
+  let toolOpts = $('#ui-tool').val()
+  if($('.authority-text-input').val()){
+    authOptionsCopy = JSON.parse($('.authority-text-input').val())
+    if(authOptionsCopy){
+      authOptionsCopy.map( o => {
+        if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+          authOptions.push(o)
+          $('.authority-text-input').val(o)
+        }else{
+          $('.authority-text-input').val('')
+        }
+      })
+    }
+  }
+  if(authOptions){
+    authOptions.map( o => {
+      if(o === 'Otro'){
+        $('.known-authority-input').removeClass('d-none')
+      }
+    })
+  }
+
+  if($('.tool-text-input').val()){
+    toolsOptsCopy = JSON.parse($('.tool-text-input').val())
+    if(toolsOptsCopy){
+      toolsOptsCopy.map( o => {
+        if(!['Queja','Denuncia',
+          'Acción de tutela',
+          'Acción de grupo',
+          'Acción popular',
+          'Acción de cumplimiento',
+          'Consulta previa',
+          'Solicitud de Revocatoria directa',
+          'Otros'
+        ].includes(o)){
+          toolOpts.push(o)
+          $('.tool-text-input').val(o)
+        }else{
+          $('.tool-text-input').val('')
+        }
+      })
+    }
+    
+    // toolOpts.push($('.tool-text-input').val())
+  }
+  if(toolOpts){
+    toolOpts.map(o => {
+      if (o === 'Otros') {
+        $('.has-tool-input').removeClass('d-none');
+      }
+    })
+  }
   if (val === 'individual') {
     $('.actor-charge-field').removeClass('d-none');
     $('.actors-collective-select').addClass('d-none');
@@ -55,19 +107,16 @@ $(document).ready(function(){
 
 
   $('#ui-authority').on('change', function() {
-    const value = this.value;
-    if (value === 'Otro') {
-      $('.known-authority-input').removeClass('d-none');
-    } else {
-      $('.known-authority-input').addClass('d-none');
-    };
+    authOptions = $('#ui-authority').val()
+    authOptions.map( o => {
+      if(o === 'Otro'){
+        $('.known-authority-input').removeClass('d-none')
+      } else {
+        $('.known-authority-input').addClass('d-none')
+      }
+    })
   });
 
-  // Add custom option to authority
-  $('.authority-text-input').on('change', function() {
-    var inputValue = this.value;
-    $('#characterization_authority').val(inputValue);
-  });
 
     // Show select when has_tool is selected
     $("input[type=radio][name='characterization[has_tool]']").click(function() {
@@ -79,12 +128,14 @@ $(document).ready(function(){
     })
   
     $('#ui-tool').on('change', function() {
-      const value = this.value;
-      if (value === 'Otros') {
-        $('.has-tool-input').removeClass('d-none');
-      } else {
-        $('.has-tool-input').addClass('d-none');
-      }
+      toolOpts = $('#ui-tool').val()
+      toolOpts.map( o => {
+        if (o === 'Otros') {
+          $('.has-tool-input').removeClass('d-none');
+        } else {
+          $('.has-tool-input').addClass('d-none');
+        }
+      })
     });
 
     $('.entity_tools_select').on('change', function(){
@@ -116,13 +167,47 @@ $(document).ready(function(){
        $('#evolution_crime').val(stringify_options)
      })
      
-    $('.tool-text-input').on('change', function() {
-      var inputValue = this.value;
-      var selected = $('#characterization_tool').val(inputValue);
-    });
+    function changeToolText() {
+      var inputValue = $('.tool-text-input').val()
+      if(toolOpts){
+        toolOpts.map( o => {
+          if(!['Queja','Denuncia',
+            'Acción de tutela',
+            'Acción de grupo',
+            'Acción popular',
+            'Acción de cumplimiento',
+            'Consulta previa',
+            'Solicitud de Revocatoria directa',
+            'Otros'
+          ].includes(o)){
+            const index = toolOpts.indexOf(o)
+    
+            if(index > -1){
+              toolOpts.splice(index, 1)
+            }
+          }
+        })
+        toolOpts.push(inputValue)
+      }
+    }
+
+    function changeAuthorityText(){
+      var inputValue = $('.authority-text-input').val()
+      if(authOptions){
+        authOptions.map( o => {
+          if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+            const index = authOptions.indexOf(o)
+    
+            if(index > -1){
+              authOptions.splice(index, 1)
+            }
+          }
+        })
+        authOptions.push(inputValue)
+      }
+    }
 
     $('.multiple-select').on('change', function(){
-
       let options = $(this).val();
       let id = $(this).data('id')
       let stringify_options = JSON.stringify(options);
@@ -136,5 +221,11 @@ $(document).ready(function(){
       setTimeout(function(){
         location.reload()
       }, 500)
+    })
+    $('.characterization-auth-submit').on('click', function(){
+      changeToolText()
+      changeAuthorityText()
+      $('#characterization_tool').val(JSON.stringify(toolOpts))
+      $('#characterization_authority').val(JSON.stringify(authOptions));
     })
 });
