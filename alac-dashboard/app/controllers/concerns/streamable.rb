@@ -49,7 +49,6 @@ module Streamable
           ]
         end
       end
-      char_data["Municipios de Residencia - #{char_data["Departamento de Residencia"]}"]
 
       # Characterization.all.each do |characterization|
       #   sheet << [characterization.scope,characterization.affected_sector,characterization.rights_violated,characterization.kind_corruption,characterization.affected_area,characterization.kind_responsability]
