@@ -3,7 +3,6 @@ $(document).ready(function(){
   const val = $("input[type=radio][name='actor[general_type]']:checked").val()
   let authOptions = $('#ui-authority').val()
   let toolOpts = $('#ui-tool').val()
-  console.log(toolOpts)
   if($('.authority-text-input').val()){
     authOptions.push($('.authority-text-input').val())
   }
@@ -16,7 +15,26 @@ $(document).ready(function(){
   }
 
   if($('.tool-text-input').val()){
-    toolOpts.push($('.tool-text-input').val())
+    toolsOptsCopy = JSON.parse($('.tool-text-input').val())
+    toolsOptsCopy.map( o => {
+      if(!['Queja','Denuncia',
+        'Acción de tutela',
+        'Acción de grupo',
+        'Acción popular',
+        'Acción de cumplimiento',
+        'Consulta previa',
+        'Solicitud de Revocatoria directa',
+        'Otros'
+      ].includes(o)){
+        toolOpts.push(o)
+        console.log(o)
+        $('.tool-text-input').val(o)
+      }else{
+        $('.tool-text-input').val('')
+      }
+    })
+    
+    // toolOpts.push($('.tool-text-input').val())
   }
   if(toolOpts){
     toolOpts.map(o => {
@@ -152,8 +170,8 @@ $(document).ready(function(){
        $('#evolution_crime').val(stringify_options)
      })
      
-    $('.tool-text-input').on('change', function() {
-      var inputValue = this.value;
+    function changeToolText() {
+      var inputValue = $('.tool-text-input').val()
       toolOpts.map( o => {
         if(!['Queja','Denuncia',
           'Acción de tutela',
@@ -172,7 +190,7 @@ $(document).ready(function(){
         }
       })
       toolOpts.push(inputValue)
-    });
+    }
 
     $('.multiple-select').on('change', function(){
       let options = $(this).val();
@@ -190,6 +208,7 @@ $(document).ready(function(){
       }, 500)
     })
     $('.characterization-auth-submit').on('click', function(){
+      changeToolText()
       console.log(JSON.stringify(toolOpts))
       console.log(JSON.stringify(authOptions))
       $('#characterization_tool').val(JSON.stringify(toolOpts))

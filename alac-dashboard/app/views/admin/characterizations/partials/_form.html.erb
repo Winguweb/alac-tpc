@@ -55,7 +55,7 @@
           <%= hidden_field_tag 'characterization[tool]' %>
         </div>
         <div class="form-group has-tool-input d-none">
-          <%= text_field_tag('text-tool', tool_other_option(parse_stringify_arr(@characterization.tool)) , class: 'tool-text-input') %>
+          <%= text_field_tag('text-tool', @characterization.tool , class: 'tool-text-input') %>
         </div>
       </div>
       <div class="col-md-4">
