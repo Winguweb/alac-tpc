@@ -5,14 +5,16 @@ $(document).ready(function(){
   let toolOpts = $('#ui-tool').val()
   if($('.authority-text-input').val()){
     authOptionsCopy = JSON.parse($('.authority-text-input').val())
-    authOptionsCopy.map( o => {
-      if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
-        authOptions.push(o)
-        $('.authority-text-input').val(o)
-      }else{
-        $('.authority-text-input').val('')
-      }
-    })
+    if(authOptionsCopy){
+      authOptionsCopy.map( o => {
+        if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+          authOptions.push(o)
+          $('.authority-text-input').val(o)
+        }else{
+          $('.authority-text-input').val('')
+        }
+      })
+    }
   }
   if(authOptions){
     authOptions.map( o => {
@@ -24,23 +26,25 @@ $(document).ready(function(){
 
   if($('.tool-text-input').val()){
     toolsOptsCopy = JSON.parse($('.tool-text-input').val())
-    toolsOptsCopy.map( o => {
-      if(!['Queja','Denuncia',
-        'Acción de tutela',
-        'Acción de grupo',
-        'Acción popular',
-        'Acción de cumplimiento',
-        'Consulta previa',
-        'Solicitud de Revocatoria directa',
-        'Otros'
-      ].includes(o)){
-        toolOpts.push(o)
-        console.log(o)
-        $('.tool-text-input').val(o)
-      }else{
-        $('.tool-text-input').val('')
-      }
-    })
+    if(toolsOptsCopy){
+      toolsOptsCopy.map( o => {
+        if(!['Queja','Denuncia',
+          'Acción de tutela',
+          'Acción de grupo',
+          'Acción popular',
+          'Acción de cumplimiento',
+          'Consulta previa',
+          'Solicitud de Revocatoria directa',
+          'Otros'
+        ].includes(o)){
+          toolOpts.push(o)
+          console.log(o)
+          $('.tool-text-input').val(o)
+        }else{
+          $('.tool-text-input').val('')
+        }
+      })
+    }
     
     // toolOpts.push($('.tool-text-input').val())
   }
@@ -166,38 +170,42 @@ $(document).ready(function(){
      
     function changeToolText() {
       var inputValue = $('.tool-text-input').val()
-      toolOpts.map( o => {
-        if(!['Queja','Denuncia',
-          'Acción de tutela',
-          'Acción de grupo',
-          'Acción popular',
-          'Acción de cumplimiento',
-          'Consulta previa',
-          'Solicitud de Revocatoria directa',
-          'Otros'
-        ].includes(o)){
-          const index = toolOpts.indexOf(o)
-  
-          if(index > -1){
-            toolOpts.splice(index, 1)
+      if(toolOpts){
+        toolOpts.map( o => {
+          if(!['Queja','Denuncia',
+            'Acción de tutela',
+            'Acción de grupo',
+            'Acción popular',
+            'Acción de cumplimiento',
+            'Consulta previa',
+            'Solicitud de Revocatoria directa',
+            'Otros'
+          ].includes(o)){
+            const index = toolOpts.indexOf(o)
+    
+            if(index > -1){
+              toolOpts.splice(index, 1)
+            }
           }
-        }
-      })
-      toolOpts.push(inputValue)
+        })
+        toolOpts.push(inputValue)
+      }
     }
 
     function changeAuthorityText(){
       var inputValue = $('.authority-text-input').val()
-      authOptions.map( o => {
-        if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
-          const index = authOptions.indexOf(o)
-  
-          if(index > -1){
-            authOptions.splice(index, 1)
+      if(authOptions){
+        authOptions.map( o => {
+          if(!['Fiscalía','Procuraduría','Contraloría','Otro'].includes(o)){
+            const index = authOptions.indexOf(o)
+    
+            if(index > -1){
+              authOptions.splice(index, 1)
+            }
           }
-        }
-      })
-      authOptions.push(inputValue)
+        })
+        authOptions.push(inputValue)
+      }
     }
 
     $('.multiple-select').on('change', function(){
