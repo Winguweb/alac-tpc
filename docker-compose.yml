@@ -25,9 +25,9 @@ services:
       - ./alac-dashboard:/data/alac
     environment:
       DB_PORT: 5432
-      AWS_KEY: AKIASP5UVE556LUBKIEP
-      AWS_ACCESS: 2xI4h9Zrp8waIxOMwjzXf0QuE4cYoMjTUbykgGsQ
-      AWS_BUCKET: alact
+      AWS_KEY: ${AWS_KEY}
+      AWS_ACCESS: ${AWS_ACCESS}
+      AWS_BUCKET: ${AWS_BUCKET}
     ports:
       - 5000:5000
       - 3000:3000
