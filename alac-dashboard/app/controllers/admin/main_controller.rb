@@ -4,7 +4,7 @@ module Admin
     include SelectHelper
     include Streamable
     require 'json'
-    helper_method :parse_stringify_arr
+    helper_method :parse_stringify_arr, :authority_other_option, :tool_other_option
 
     def index
       @reports = get_index_reports()
@@ -25,6 +25,7 @@ module Admin
         @characterization = Characterization.create(case_id: params[:id])
       end
 
+      @tool = Tool.new
       @actors = @characterization.actors
       @actors_select = Actor.all
       @evolution = Evolution.new

@@ -5,7 +5,7 @@ fetch(`${URL}/api/indicators/age`)
     return response.json()
   })
   .then(function(data){
-    // drawChart(data)
+    drawChart(data)
     
   })
 
@@ -14,10 +14,9 @@ fetch(`${URL}/api/indicators/age`)
 function drawChart(data){
   let keys = []
   let chartData = []
-  data.map( d => {
-    const key = Object.keys(d)[0]
+  Object.keys(data).map(key => {
     keys.push(key)
-    chartData.push(d[key])
+    chartData.push(data[key])
   })
 
   const ctx = document.getElementById('age-chart').getContext('2d');

@@ -59,7 +59,7 @@ class ToolDashboard < Administrate::BaseDashboard
     :deadline,
     :have_answer,
     :answer_date,
-    :document,
+
   ].freeze
 
   # Overwrite this method to customize how tools are displayed

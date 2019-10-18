@@ -4,3 +4,4 @@ alac-gl
 /alac-gl/*
 .DS_Store 
 **/.DS_Store
+/public/uploads/*

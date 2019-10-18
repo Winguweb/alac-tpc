@@ -22,6 +22,8 @@ gem 'xlsxtream'
 gem 'pry', '~> 0.12.2'
 gem "better_errors"
 gem "binding_of_caller"
+gem 'carrierwave', '~> 2.0'
+gem 'carrierwave-aws'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara', '~> 2.13' # Adds support for Capybara system testing and selenium driver

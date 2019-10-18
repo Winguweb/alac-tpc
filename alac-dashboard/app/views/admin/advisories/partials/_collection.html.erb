@@ -15,15 +15,18 @@
           <tr>
             <th scope="row"><%= index %></th>
             <td><%= adv.tracking_date %></td>
-            <td><%= adv.kind_answer %></td>
+            <% unless adv.kind_answer.nil? || adv.kind_answer == ''%>
+            <% parsed_json = JSON.parse(adv.kind_answer) %>
+            <%end%>
+            <td>
+            <%if parsed_json %>
+              <%= parsed_json.join(', <br />').html_safe %>
+            <%end %>
+            </td>
+            
             <td><%= adv.summary %></td>
             <td>
               <%= link_to("Agregar herramienta","#myModal", {"data-toggle" => "modal", "data-target" => "#toolModal", "data-id" => adv.id, "data-tools" => adv.tools.to_json , class: "btn btn-link"} ) %>
-              <%= link_to(
-                  "Editar",
-                  edit_admin_advisory_path(adv.id),
-                  class: "action-edit btn btn-link",
-                ) %>
               <%= link_to(
                   "Eliminar",
                   admin_advisory_path(adv.id),

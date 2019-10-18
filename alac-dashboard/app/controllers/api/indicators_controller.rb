@@ -4,7 +4,7 @@ module Api
     def main
 
       respond_to do |format|
-        p params
+       
         case params[:type] 
         when "age"    
           format.json { render json: get_age_data}
@@ -27,41 +27,32 @@ module Api
 
     private 
 
+    def get_data(element)
+
+      data_arr = []
+
+      Characterization.all.each do |c|
+        unless c[element].nil? || c[element] == ''
+          parsed_array = JSON.parse(c[element])
+          parsed_array.each do |d|
+            data_arr.push(d)
+          end
+        end
+      end
+      return data_arr
+    end
 
     def get_ambit_data
       # es de la caracterizacion
-      data = []
-      query = Characterization.all.group_by(&:affected_area)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
+      return convert_arr_to_hash(get_data(:affected_area))
     end
 
     def get_sector_data
-      # es de la caracterizacion
-      data = []
-      query = Characterization.all.group_by(&:affected_sector)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
+      return convert_arr_to_hash(get_data(:affected_sector))
     end
 
     def get_corruption_data
-      data = []
-      query = Characterization.all.group_by(&:kind_corruption)
-      query.keys.each do |key|
-        val = Hash.new
-        val[key]= query[key].count
-        data.push(val)
-      end
-      return data
-      #characterization kind_corruption
+      return convert_arr_to_hash(get_data(:kind_corruption))
     end
 
     def get_report_location 
@@ -91,7 +82,59 @@ module Api
     end
 
     def get_age_data
-      return get_personal_data(:"04a822ac-076a-4b03-bdeb-9b5b65aee7d2")
+      
+
+      ranges = {}
+      
+      ranges["18-24"] = 0 
+      ranges["25-29"] = 0 
+      ranges["30-34"] = 0 
+      ranges["35-39"] = 0 
+      ranges["40-44"] = 0 
+      ranges["45-49"] = 0 
+      ranges["50-54"] = 0 
+      ranges["55-59"] = 0 
+      ranges["60-64"] = 0 
+      ranges["65-70 o más"] = 0 
+
+      ages = get_personal_data(:"04a822ac-076a-4b03-bdeb-9b5b65aee7d2")
+      ages.each do |age| 
+        a = age[0].to_i
+        case a
+
+        when 18..24   
+          total =  ranges["18-24"] + age[1]
+          ranges["18-24"] = total
+        when 25..29
+          total =  ranges["25-29"] + age[1]
+          ranges["25-29"] = total
+        when 30..34   
+          total =  ranges["30-34"] + age[1]
+          ranges["30-34"] = total
+        when 35..39  
+          total =  ranges["35-39"] + age[1]
+          ranges["35-39"] = total
+        when 40..44 
+          total =  ranges["40-44"] + age[1]
+          ranges["40-44"] = total
+        when 45..49
+          total =  ranges["45-49"] + age[1]
+          ranges["45-49"] = total
+        when 50..54
+          total =  ranges["50-54"] + age[1]
+          ranges["50-54"] = total
+        when 55..59
+          total =  ranges["55-59"] + age[1]
+          ranges["55-59"] = total
+        when 60..64
+          total =  ranges["60-64"] + age[1]
+          ranges["60-64"] = total
+        else
+          total =  ranges["65-70 o más"] + age[1]
+          ranges["65-70 o más"] = total
+        end
+      end
+      return ranges
     end
 
     def get_personal_data(id)
@@ -119,6 +162,20 @@ module Api
 
       return result
     end
+    def convert_arr_to_hash(arr)
+      data = []
+      val = Hash.new(0)
 
+      arr.each do |d|
+        val[d] += 1
+      end
+
+      val.each do |v|
+        aux = Hash.new
+        aux[v[0]] = v[1]
+        data.push(aux)
+      end
+      return data
+    end
   end
 end
