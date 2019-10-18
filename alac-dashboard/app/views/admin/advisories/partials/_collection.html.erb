@@ -28,11 +28,6 @@
             <td>
               <%= link_to("Agregar herramienta","#myModal", {"data-toggle" => "modal", "data-target" => "#toolModal", "data-id" => adv.id, "data-tools" => adv.tools.to_json , class: "btn btn-link"} ) %>
               <%= link_to(
-                  "Editar",
-                  edit_admin_advisory_path(adv.id),
-                  class: "action-edit btn btn-link",
-                ) %>
-              <%= link_to(
                   "Eliminar",
                   admin_advisory_path(adv.id),
                   class: "action-edit btn btn-link text-danger",
