@@ -5,7 +5,7 @@ fetch(`${URL}/api/indicators/age`)
     return response.json()
   })
   .then(function(data){
-    // drawChart(data)
+    drawChart(data)
     
   })
 
