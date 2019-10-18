@@ -19,6 +19,10 @@ function drawChart(data){
     keys.push(key)
     chartData.push(d[key])
   })
+  Object.keys(data).map(key => {
+    keys.push(key)
+    chartData.push(data[key])
+  })
 
   const ctx = document.getElementById('age-chart').getContext('2d');
   new Chart(ctx, {
