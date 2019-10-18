@@ -14,11 +14,6 @@ fetch(`${URL}/api/indicators/age`)
 function drawChart(data){
   let keys = []
   let chartData = []
-  data.map( d => {
-    const key = Object.keys(d)[0]
-    keys.push(key)
-    chartData.push(d[key])
-  })
   Object.keys(data).map(key => {
     keys.push(key)
     chartData.push(data[key])
