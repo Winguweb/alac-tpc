@@ -228,4 +228,18 @@ $(document).ready(function(){
       $('#characterization_tool').val(JSON.stringify(toolOpts))
       $('#characterization_authority').val(JSON.stringify(authOptions));
     })
+    $('.characterization-select-form').on('click', function(){
+      const uiAffectedArea = JSON.stringify($('#ui-affected-area').val())
+      const uiKindCorruption = JSON.stringify($('#ui-kind-corruption').val())
+      const uiAffectedSector = JSON.stringify($('#ui-affected-sector').val())
+      const uiRightsViolated = JSON.stringify($('#ui-rights-violated').val())
+      const uiKindResponsability = JSON.stringify($('#ui-kind-responsability').val())
+      const uiCrime = JSON.stringify($('#ui-crime').val())
+      $('#characterization_kind_corruption').val(uiKindCorruption)
+      $('#characterization_affected_area').val(uiAffectedArea)
+      $('#characterization_affected_sector').val(uiAffectedSector)
+      $('#characterization_rights_violated').val(uiRightsViolated)
+      $('#characterization_kind_responsability').val(uiKindResponsability)
+      $('#characterization_crime').val(uiCrime)
+    })
 });
