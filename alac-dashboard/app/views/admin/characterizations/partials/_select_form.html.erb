@@ -22,7 +22,7 @@
           <div>
             <%= label_tag('characterization[affected_sector]', "Sector afectado") %>
           </div>
-          <%= select_tag('ui-affected-sector]', options_for_select(affected_sector, parse_stringify_arr(@characterization.affected_sector)), { multiple: true,  class: "selectpicker form-control multiple-select", "data-id" => "characterization_affected_sector"}) %>
+          <%= select_tag('ui-affected-sector', options_for_select(affected_sector, parse_stringify_arr(@characterization.affected_sector)), { multiple: true,  class: "selectpicker form-control multiple-select", "data-id" => "characterization_affected_sector"}) %>
           <%= hidden_field_tag 'characterization[affected_sector]' %>
         </div>
       </div>
@@ -31,7 +31,7 @@
           <div>
             <%= label_tag('characterization[rights_violated]', "Derechos presuntamentes vulnerados") %>
           </div>
-           <%= select_tag('ui-rights-violated]', options_for_select(rights_violated, parse_stringify_arr(@characterization.rights_violated)), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_rights_violated"}) %>
+           <%= select_tag('ui-rights-violated', options_for_select(rights_violated, parse_stringify_arr(@characterization.rights_violated)), { multiple: true, class: "selectpicker form-control multiple-select", "data-id" => "characterization_rights_violated"}) %>
           <%= hidden_field_tag 'characterization[rights_violated]' %>
         </div>
         <div class="col-md">
