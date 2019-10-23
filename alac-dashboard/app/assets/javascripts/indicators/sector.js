@@ -13,10 +13,14 @@ fetch(`${URL}/api/indicators/sector`)
 function drawChart(data){
   let keys = []
   let chartData = []
+  let colorBars = []
+
   data.map( d => {
     const key = Object.keys(d)[0]
+    const color = data.indexOf(d) % 2 === 0 ? '#5472d2' : '#00c1cf'
     keys.push(key)
     chartData.push(d[key])
+    colorBars.push(color)
   })
 
   const ctx = document.getElementById('sector-chart').getContext('2d');
@@ -25,23 +29,36 @@ function drawChart(data){
     data: {
         labels: keys,
         datasets: [{
-            label: '# of Votes',
+            label: '',
             data: chartData,
-            backgroundColor: 'rgba(54, 162, 235, 0.8)',
-            borderColor: 'rgba(54, 162, 235, 0.8)',
+            backgroundColor: colorBars,
+            borderColor: colorBars,
             borderWidth: 1
         }]
     },
     options: {
+      legend: {
+        display: false,
+        labels: {
+          fontSize: 24
+        }
+      },
+      tooltips: {
+        titleFontSize: 24,
+        bodyFontSize: 24
+      },
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    fontSize: 24,
+                    fontStyle: 'bold'
                 }
             }],
             xAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                fontSize: 24
               }
             }]
         }
