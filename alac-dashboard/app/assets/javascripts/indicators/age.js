@@ -6,7 +6,6 @@ fetch(`${URL}/api/indicators/age`)
   })
   .then(function(data){
     drawChart(data)
-    
   })
 
 
@@ -25,20 +24,39 @@ function drawChart(data){
     data: {
         labels: keys,
         datasets: [{
-            label: '# of Votes',
             data: chartData,
-            backgroundColor: 'rgba(54, 162, 235, 0.8)',
-            borderColor: 'rgba(54, 162, 235, 0.8)',
+            backgroundColor: ['#5472d2', '#00c1cf', '#75d69c', '#5472d2', '#00c1cf', '#75d69c', '#5472d2', '#00c1cf', '#75d69c', '#5472d2'],
+            borderColor: ['#5472d2', '#00c1cf', '#75d69c', '#5472d2', '#00c1cf', '#75d69c', '#5472d2', '#00c1cf', '#75d69c', '#5472d2'],
             borderWidth: 1
         }],
     },
     options: {
+      legend: {
+        display: false,
+        labels: {
+          fontSize: 16
+        }
+      },
+      tooltips: {
+        titleFontSize: 16,
+        bodyFontSize: 16
+      },
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                  fontSize: 16,
+                  beginAtZero: true,
+                  padding: 1
                 }
-            }]
+            }],
+            xAxes: [{
+              barThickness: 'flex',
+              barPercentage: 0.9,
+              categoryPercentage: 1,
+              ticks: {
+                fontSize: 16
+              }
+          }]
         }
     }
 });
