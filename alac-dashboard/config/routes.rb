@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'visualizations/sector' => 'visualizations#sector'
   get 'visualizations/location' => 'visualizations#location'
   get 'visualizations/gender' => 'visualizations#gender'
+  get 'visualizations/rights' => 'visualizations#rights'
 
 
   namespace :admin do
