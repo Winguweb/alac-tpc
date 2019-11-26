@@ -15,6 +15,7 @@ Rails.application.config.assets.precompile += [
   'indicators/location.js',
   'indicators/gender.js',
   'indicators/sector.js',
+  'indicators/occupation.js'
 ]
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

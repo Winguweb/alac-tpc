@@ -18,6 +18,8 @@ module Api
           format.json { render json: get_sector_data }
         when "gender"    
           format.json { render json: get_gender_data }
+        when "occupation"
+          format.json { render json: get_occupation_data }
         else
           format.json { render json: "Wrong Params" }
         end
@@ -40,6 +42,7 @@ module Api
         end
       end
       return data_arr
+
     end
 
     def get_ambit_data
@@ -73,12 +76,30 @@ module Api
         end
       end
       result = data.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
-
       return result
     end
 
     def get_gender_data
       return get_personal_data(:"a9cb9e02-7687-4144-8ed6-c646149263f8")
+    end
+
+    def get_occupation_data
+      data = []
+      get_answers.each do |ans|
+        report = eval(ans.last)
+        report.each do |el|
+          if el[1].count > 0
+            if el[0] == :"4e6ee90e-308a-493b-bdb1-1817175809cb"
+              el[1][0].delete(:required_status)
+              lbl = get_title_option(el[1][0][:value])
+              final_answer = eval(lbl.last.last)[:es]
+              data.push(final_answer)
+            end
+          end
+        end
+      end
+      result = data.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+      return result
     end
 
     def get_age_data
@@ -146,10 +167,11 @@ module Api
         report.each do |el|
           if el[1].count > 0 
             if el[0] == :"1f3280af-91af-415c-9b73-c0f7b2a58488"
+  
               if /([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)\-([a-zA-Z0-9_\-\.]+)/.match(el[1][0][id][0][:value]).nil?
+                
                 data.push(el[1][0][id][0][:value])
               else
-                
                 lbl = get_title_option(el[1][0][id][0][:value])
                 final_answer = eval(lbl.last.last)[:es]
                 data.push(final_answer)
