@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'visualizations/location' => 'visualizations#location'
   get 'visualizations/gender' => 'visualizations#gender'
   get 'visualizations/occupation' => 'visualizations#occupation'
+  get 'visualizations/rights' => 'visualizations#rights'
+
 
   namespace :admin do
     resources :users
