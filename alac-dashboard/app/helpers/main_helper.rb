@@ -95,29 +95,34 @@ module MainHelper
     question_ids = []
     answers = []
     agregado = []
+  
     data.each do |r|
       report = eval(r.last)
+   
 
-
-      report.each do |el|
+      report.each do |el|  
+        
         reporte_individual = []
         reporte_individual.push(el[0])
         if el[1].count > 0 
           el[1][0].delete(:required_status)
+         #aca de be estar la magia , aunque solo manda el primero 
           reporte_individual.push(el[1][0])
+         
           sin_proceso.push(reporte_individual)
         end
       end
       
       sin_proceso.each do |x|
         elemento_procesado = []
+      
         query = "SELECT field.label FROM field WHERE field.id == '#{x[0]}'"
         lbl = run_query(query)
     
         elemento_procesado.push(eval(lbl.last.last)[:es])
       
         if !x[1].nil?
-          if !x[1][:value].nil?
+          if !x[1][:value].nil? #aca las multichoice no pasan 
             final_answer = "carlos"
             x[1].each do |j|
               if j.class == Array
@@ -139,13 +144,16 @@ module MainHelper
             end
             answer = final_answer
           else
-
+           
             sin_proceso_espacial = []
+            anterior = x[0]
+            multi = ""
             x[1].each do |el|
               especial_individual = []
               especial_individual.push(el[0])
-             
+        
               if el[1].class == Array
+               
                 if el[1].count > 0 
                   el[1][0].delete(:required_status)
                   especial_individual.push(el[1][0])
@@ -153,7 +161,19 @@ module MainHelper
               
                   
                 end
+              else 
+                if x[0] == anterior
+               
+                lbl = get_title_option(el[0])
+                multi = multi  +   eval(lbl.last.last)[:es]+ " , "
+                end
+        
               end
+            
+            end
+            if multi != ""
+                
+              elemento_procesado.push(multi[0...-2])
             end
             sin_proceso_espacial.each do |ans|
               agregado.push(ans[1][:value])
