@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :api do 
     get '/indicators/:type' => 'indicators#main', :defaults => { :format => 'json' }
+    get '/reports' => 'reports#index', :defaults => { :format => 'json' }
   end
   devise_for :users
   root to: "admin/main#index"
