@@ -60,15 +60,14 @@ module MainHelper
 
   def run_query(query)
     begin
-      
       db = SQLite3::Database.open '../../var/globaleaks/globaleaks.db'
       stm = db.prepare query 
       rs = stm.execute 
       array = []
       rs.each do |row|
-        
         array.push(row)
       end
+
       return array
    
     rescue SQLite3::Exception => e 
