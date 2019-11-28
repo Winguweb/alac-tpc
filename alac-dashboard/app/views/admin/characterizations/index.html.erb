@@ -47,25 +47,25 @@ It renders the `_table` partial to display details about the resources.
       <div class="col-md-2">
         <div class="form-group">
           <%= label_tag("status", "Estado") %>
-          <%= select_tag "status", options_for_select(characterization_form_options['status_options']), {class: "selectpicker form-control"} %>
+          <%= select_tag "status", options_for_select(characterization_form_options['status_options'], @status), {class: "selectpicker form-control"} %>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <%= label_tag("scope", "Alcance") %>
-          <%= select_tag('scope', options_for_select(characterization_form_options['scope_options']), {class: "selectpicker form-control"}) %>
+          <%= select_tag('scope', options_for_select(characterization_form_options['scope_options'], @scope), {class: "selectpicker form-control"}) %>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <%= label_tag("kind_corruption", "tipo de corrupcion") %>
-          <%= select_tag('kind_corruption', options_for_select(corruption_options), {class: "selectpicker form-control"}) %>
+          <%= select_tag('kind_corruption', options_for_select(corruption_options, @kind_corruption), {class: "selectpicker form-control"}) %>
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <%= label_tag("rights_violated", "Derechos Vulnerados") %>
-          <%= select_tag('rights_violated', options_for_select(rights_violated), { class: "selectpicker form-control multiple-select"}) %>
+          <%= select_tag('rights_violated', options_for_select(rights_violated, @rights_violated), { class: "selectpicker form-control multiple-select"}) %>
         </div>
       </div>
       <div class="col-md-2">

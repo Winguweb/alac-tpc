@@ -7,9 +7,12 @@ module Admin
     # you can overwrite any of the RESTful actions. For example:
     #
     def index
-      super
       allowed_params = allowed_index_params
-      binding.pry
+      @status = allowed_params[:status]
+      @scope = allowed_params[:scope]
+      @kind_corruption = allowed_params[:kind_corruption]
+      @rights_violated = allowed_params[:rights_violated]
+      super
         @resources = Characterization.
           page(params[:page]).
           per(10)
