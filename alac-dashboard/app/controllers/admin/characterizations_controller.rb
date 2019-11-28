@@ -30,6 +30,7 @@ module Admin
       @characterizations_filter = @characterizations
       @characterizations_filter = filter_by_status if @status
       @characterizations_filter = filter_by_scope if @scope
+      @characterizations_filter = filter_by_kind_corruption if @kind_corruption
       @characterizations_filter
     end
 
@@ -39,6 +40,10 @@ module Admin
 
     def filter_by_scope
       @characterizations_filter.where(scope: @scope)
+    end
+
+    def filter_by_kind_corruption
+      @characterizations_filter.where("kind_corruption like ?", "%#{@kind_corruption}%")
     end
 
 

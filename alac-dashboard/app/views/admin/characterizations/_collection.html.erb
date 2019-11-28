@@ -70,7 +70,7 @@ to display a collection of resources in an HTML table.
                  class="action-show"
                  >
                 <% if [:kind_corruption, :rights_violated, :affected_sector, :kind_responsability, :crime].include?(attribute.attribute)%>
-                  <%if !attribute.data.nil? || !attribute.data == '' %>
+                  <%if !attribute.data.nil? && attribute.data != 'null' && attribute.data != '' %>
                     <%= JSON.parse(attribute.data).join(', ').html_safe %>
                   <%else%>
                     <span>---</span>
