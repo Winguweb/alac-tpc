@@ -12,6 +12,8 @@ module Admin
       @scope = allowed_params[:scope]
       @kind_corruption = allowed_params[:kind_corruption]
       @rights_violated = allowed_params[:rights_violated]
+      @affected_sector = allowed_params[:affected_sector]
+      @crime = allowed_params[:crime]
       @characterizations = Characterization.all
       @resources = characterization_finder
       @resources.page(params[:page]).per(10)
@@ -22,7 +24,7 @@ module Admin
     private
 
     def allowed_index_params
-      allowed_params = params.permit(:status, :scope, :kind_corruption, :rights_violated)
+      allowed_params = params.permit(:status, :scope, :kind_corruption, :rights_violated, :affected_sector, :crime)
       allowed_params.reject{ |_, v| v.blank? }
     end
 
@@ -32,6 +34,8 @@ module Admin
       @characterizations_filter = filter_by_scope if @scope
       @characterizations_filter = filter_by_kind_corruption if @kind_corruption
       @characterizations_filter = filter_by_rights_violated if @rights_violated
+      @characterizations_filter = filter_by_affected_sector if @affected_sector
+      @characterizations_filter = filter_by_crime if @crime
       @characterizations_filter
     end
 
@@ -49,6 +53,14 @@ module Admin
 
     def filter_by_rights_violated
       @characterizations_filter.where("rights_violated like ?", "%#{@rights_violated}%")
+    end
+
+    def filter_by_affected_sector
+      @characterizations_filter.where("affected_sector like ?", "%#{@affected_sector}%" )
+    end
+
+    def filter_by_crime
+      @characterizations_filter.where("crime like ?", "%#{@crime}%" )
     end
 
 
