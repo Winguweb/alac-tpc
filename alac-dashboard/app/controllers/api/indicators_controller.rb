@@ -18,6 +18,8 @@ module Api
           format.json { render json: get_sector_data }
         when "gender"    
           format.json { render json: get_gender_data }
+        when "rights_violated"
+          format.json { render json: get_rights_violated}
         else
           format.json { render json: "Wrong Params" }
         end
@@ -53,6 +55,10 @@ module Api
 
     def get_corruption_data
       return convert_arr_to_hash(get_data(:kind_corruption))
+    end
+
+    def get_rights_violated 
+      return convert_arr_to_hash(get_data(:rights_violated))
     end
 
     def get_report_location 
