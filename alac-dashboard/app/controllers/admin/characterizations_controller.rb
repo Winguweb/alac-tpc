@@ -2,7 +2,7 @@ module Admin
   class CharacterizationsController < Admin::ApplicationController
     include MainHelper
     include SelectHelper
-    helper_method :characterization_form_options, :corruption_options, :rights_violated
+    helper_method :characterization_form_options, :corruption_options, :rights_violated, :crime, :affected_sector
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
@@ -31,6 +31,7 @@ module Admin
       @characterizations_filter = filter_by_status if @status
       @characterizations_filter = filter_by_scope if @scope
       @characterizations_filter = filter_by_kind_corruption if @kind_corruption
+      @characterizations_filter = filter_by_rights_violated if @rights_violated
       @characterizations_filter
     end
 
@@ -44,6 +45,10 @@ module Admin
 
     def filter_by_kind_corruption
       @characterizations_filter.where("kind_corruption like ?", "%#{@kind_corruption}%")
+    end
+
+    def filter_by_rights_violated
+      @characterizations_filter.where("rights_violated like ?", "%#{@rights_violated}%")
     end
 
 

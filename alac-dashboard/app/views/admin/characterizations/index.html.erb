@@ -70,6 +70,18 @@ It renders the `_table` partial to display details about the resources.
       </div>
       <div class="col-md-2">
         <div class="form-group">
+          <%= label_tag("affected_sector", "Sector Afectado") %>
+          <%= select_tag('affected_sector', options_for_select(affected_sector, @affected_sector), class: "selectpicker form-control multiple-select", include_blank: 'Todas') %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <%= label_tag("crime", "crimen") %>
+          <%= select_tag('crime', options_for_select(crime, @crime), class: "selectpicker form-control multiple-select", include_blank: 'Todas') %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
           <%= submit_tag 'buscar', name:nil %>
         </div>
       </div>
