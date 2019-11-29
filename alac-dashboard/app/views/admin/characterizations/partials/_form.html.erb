@@ -64,6 +64,19 @@
            <%= select_tag('characterization[scope]', options_for_select(characterization_form_options['scope_options'], @characterization.scope), {class: "selectpicker form-control"}) %>
         </div>
       </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag("characterization[start_year]", "Año inicial del hecho:", :style => "min-height: 50px;") %>
+          <%= select_year(@characterization.start_year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => :start_year, :prefix => :characterization}, {class: "selectpicker form-control"})   %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag("characterization[end_year]", "Año final del hecho:", :style => "min-height: 50px;") %>
+          <%= select_year(@characterization.end_year, {:start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => :end_year, :prefix => :characterization}, {class: "selectpicker form-control"})  %>
+        </div>
+      </div>
     </div>
     <div class="row  py-md-4">
       <div class="col-md-4">

@@ -30,6 +30,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     rights_violated: Field::String,
     kind_responsability: Field::String,
     crime: Field::String,
+    start_year: Field::Number,
+    end_year: Field::Number,
     have_material: Field::Boolean.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false)
@@ -58,7 +60,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :evolutions,
     :advisories,
     :relationships,
-    :actors,
+    :actors, 
     :id,
     :case_id,
     :summary,
@@ -75,6 +77,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :kind_responsability,
     :crime,
     :have_material,
+    :start_year,
+    :end_year,
     :created_at,
     :updated_at,
   ].freeze
@@ -102,6 +106,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :kind_responsability,
     :crime,
     :have_material,
+    :start_year,
+    :end_year,
   ].freeze
 
   # Overwrite this method to customize how characterizations are displayed
