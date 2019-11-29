@@ -28,8 +28,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     kind_responsability: Field::String,
     crime: Field::String,
     have_material: Field::Boolean,
-    start_year: Field::String,
-    end_year: Field::String,
+    start_year: Field::Number,
+    end_year: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
