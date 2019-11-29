@@ -104,10 +104,6 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :have_material,
   ].freeze
 
-  COLLECTION_FILTERS = {
-    prueba: ->(resources) { resources.where(status: "procede") }
-  }.freeze
-
   # Overwrite this method to customize how characterizations are displayed
   # across all pages of the admin dashboard.
   #
