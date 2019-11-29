@@ -14,9 +14,10 @@ module Admin
       @rights_violated = allowed_params[:rights_violated]
       @affected_sector = allowed_params[:affected_sector]
       @crime = allowed_params[:crime]
+      @page = allowed_params[:page]
       @characterizations = Characterization.all
-      @resources = characterization_finder
-      @resources.page(params[:page]).per(10)
+      @characterizations = characterization_finder
+      @characterizations = @characterizations.order(created_at: :desc).page(params[:page]).per(10)
       super
 
     end
@@ -24,7 +25,7 @@ module Admin
     private
 
     def allowed_index_params
-      allowed_params = params.permit(:status, :scope, :kind_corruption, :rights_violated, :affected_sector, :crime)
+      allowed_params = params.permit(:status, :scope, :kind_corruption, :rights_violated, :affected_sector, :crime, :page)
       allowed_params.reject{ |_, v| v.blank? }
     end
 

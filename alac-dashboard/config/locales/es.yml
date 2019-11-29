@@ -28,4 +28,10 @@ es:
         kind_responsability: "Tipo de responsabilidad"
         crime: "Crimen"
         tool: "Tipo de herramienta"
+  views: 
+    pagination:
+      first: "Primera Pagina"
+      last: "Ultima pagina"
+      previous: "<"
+      next: ">"
 
