@@ -8,9 +8,9 @@ as defined by the routes in the `admin/` namespace
 %>
 
 <nav class="navigation" role="navigation">
-  <%= link_to('Reportes',admin_root_path) %> 
+  <%= link_to('Reportes', admin_root_path, class: "navigation__link")  %> 
   <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
-    <% if resource.resource.in?(['actors']) %>
+    <% if resource.resource.in?(['actors', 'characterizations']) %>
        <%= link_to(
         display_resource_name(resource),
         [namespace, resource_index_route_key(resource)],
@@ -19,5 +19,4 @@ as defined by the routes in the `admin/` namespace
      
     <% end %>
   <% end %>
-
 </nav>
