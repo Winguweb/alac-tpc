@@ -5,6 +5,7 @@ es:
       actor:
         one: "Actor"
         other: "Actores"
+      characterizations:
   helpers:
     label:
       actor:
