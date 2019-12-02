@@ -8,18 +8,21 @@ class CharacterizationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    evolutions: Field::HasMany,
-    advisories: Field::HasMany,
-    relationships: Field::HasMany,
-    actors: Field::HasMany,
+    evolutions: Field::HasMany.with_options(searchable: false),
+    advisories: Field::HasMany.with_options(searchable: false),
+    relationships: Field::HasMany.with_options(searchable: false),
+    actors: Field::HasMany.with_options(
+      searchable: true,
+      searchable_field: 'last_name',
+    ),
     id: Field::String.with_options(searchable: false),
-    case_id: Field::String,
-    summary: Field::Text,
+    case_id: Field::String.with_options(searchable: false),
+    summary: Field::Text.with_options(searchable: false),
     status: Field::String,
-    known_authority: Field::Boolean,
-    authority: Field::String,
-    has_tool: Field::Boolean,
-    tool: Field::String,
+    known_authority: Field::Boolean.with_options(searchable: false),
+    authority: Field::String.with_options(searchable: false),
+    has_tool: Field::Boolean.with_options(searchable: false),
+    tool: Field::String.with_options(searchable: false),
     scope: Field::String,
     kind_corruption: Field::String,
     affected_area: Field::String,
@@ -27,10 +30,13 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     rights_violated: Field::String,
     kind_responsability: Field::String,
     crime: Field::String,
-    have_material: Field::Boolean,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    start_year: Field::Number,
+    end_year: Field::Number,
+    have_material: Field::Boolean.with_options(searchable: false),
+    created_at: Field::DateTime.with_options(searchable: false),
+    updated_at: Field::DateTime.with_options(searchable: false)
   }.freeze
+
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -38,10 +44,13 @@ class CharacterizationDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :evolutions,
-    :advisories,
-    :relationships,
+    :status,
+    :scope,
     :actors,
+    :kind_corruption,
+    :rights_violated,
+    :affected_sector,
+    :kind_responsability,
     :crime
   ].freeze
 
@@ -51,7 +60,7 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :evolutions,
     :advisories,
     :relationships,
-    :actors,
+    :actors, 
     :id,
     :case_id,
     :summary,
@@ -68,6 +77,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :kind_responsability,
     :crime,
     :have_material,
+    :start_year,
+    :end_year,
     :created_at,
     :updated_at,
   ].freeze
@@ -95,6 +106,8 @@ class CharacterizationDashboard < Administrate::BaseDashboard
     :kind_responsability,
     :crime,
     :have_material,
+    :start_year,
+    :end_year,
   ].freeze
 
   # Overwrite this method to customize how characterizations are displayed

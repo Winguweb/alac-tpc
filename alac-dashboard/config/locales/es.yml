@@ -5,6 +5,7 @@ es:
       actor:
         one: "Actor"
         other: "Actores"
+      characterizations:
   helpers:
     label:
       actor:
@@ -14,3 +15,24 @@ es:
         position: "Cargo"
         public_branch: "Rama del poder público"
         entity: "Partido"
+    label:
+      characterization:
+        name: "Buscador de caracterizaciones"
+        status: "Estado"
+        summary: "Resumen"
+        actors: "Actores"
+        scope: "Alcance"
+        kind_corruption: "Tipo de corrupción"
+        rights_violated: "Derechos vulnerados"
+        affected_area: "Área afectada"
+        affected_sector: "Sector afectado"
+        kind_responsability: "Tipo de responsabilidad"
+        crime: "Crimen"
+        tool: "Tipo de herramienta"
+  views: 
+    pagination:
+      first: "Primera Pagina"
+      last: "Ultima pagina"
+      previous: "<"
+      next: ">"
+

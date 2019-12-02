@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191007193128) do
+ActiveRecord::Schema.define(version: 20191126161621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20191007193128) do
     t.boolean "have_material"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "end_year"
+    t.integer "start_year"
   end
 
   create_table "evolutions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

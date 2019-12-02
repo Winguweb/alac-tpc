@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'visualizations/sector' => 'visualizations#sector'
   get 'visualizations/location' => 'visualizations#location'
   get 'visualizations/gender' => 'visualizations#gender'
+  get 'visualizations/occupation' => 'visualizations#occupation'
+  get 'visualizations/rights' => 'visualizations#rights'
 
 
   namespace :admin do
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :api do 
     get '/indicators/:type' => 'indicators#main', :defaults => { :format => 'json' }
+    get '/reports' => 'reports#index', :defaults => { :format => 'json' }
   end
   devise_for :users
   root to: "admin/main#index"

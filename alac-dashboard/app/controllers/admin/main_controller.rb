@@ -15,7 +15,8 @@ module Admin
       
       
       end
-      # @resources = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
+      @reports = Kaminari.paginate_array(@reports).page(params[:page]).per(10)
+      
     end
 
     def show

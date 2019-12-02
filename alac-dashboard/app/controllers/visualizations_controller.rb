@@ -5,4 +5,5 @@ class VisualizationsController < ApplicationController
   def sector; end
   def location; end
   def gender; end
+  def rights; end
 end
