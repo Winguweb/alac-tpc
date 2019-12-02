@@ -1,5 +1,5 @@
 module Api
-  class IndicatorsController < Admin::ApplicationController
+  class IndicatorsController < ApplicationController
     include MainHelper
     def main
 
