@@ -1,5 +1,5 @@
 module Api
-  class ReportsController < Admin::ApplicationController
+  class ReportsController  < ApplicationController
     include MainHelper
     
     def index
