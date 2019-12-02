@@ -12,7 +12,6 @@ fetch(`${URL}/api/indicators/rights_violated`)
 
 
 function drawChart(data) {
-  console.log(data);
   let keys = []
   let chartData = []
   let totalCases = 0
