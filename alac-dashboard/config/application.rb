@@ -15,6 +15,9 @@ module ALAC
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
 
     config.i18n.default_locale = :es
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
 
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
