@@ -118,7 +118,6 @@ module MainHelper
       
         query = "SELECT field.label FROM field WHERE field.id == '#{x[0]}'"
         lbl = run_query(query)
-        binding.pry_remote
         elemento_procesado.push(eval(lbl.last.last)[:es])
       
         if !x[1].nil?
@@ -132,7 +131,7 @@ module MainHelper
                 unless pre_answer.nil? 
                   if /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\z/i.match?(pre_answer.to_s)
                     lbl = get_title_option(pre_answer)
-                    
+                    binding.pry_remote
                     final_answer = eval(lbl.last.last)[:es]
                   else
                     final_answer = pre_answer
