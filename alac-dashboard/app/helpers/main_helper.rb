@@ -118,7 +118,7 @@ module MainHelper
       
         query = "SELECT field.label FROM field WHERE field.id == '#{x[0]}'"
         lbl = run_query(query)
-    
+        binding.pry_remote
         elemento_procesado.push(eval(lbl.last.last)[:es])
       
         if !x[1].nil?
