@@ -145,7 +145,7 @@ module Streamable
   end
 
   def format_arr(string)
-    unless string.nil? || string ==''
+    unless string.nil? || string =='' || string == 'null'
       parsed_json = JSON.parse(string)
       return parsed_json.join(', ').html_safe
     end
