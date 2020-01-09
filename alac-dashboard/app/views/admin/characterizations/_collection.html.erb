@@ -59,14 +59,11 @@ to display a collection of resources in an HTML table.
     <% resources.each do |resource| %>
       <tr class="js-table-row"
           tabindex="0"
-          <% if valid_action? :show, collection_presenter.resource_name %>
-            <%= %(role=link data-url=#{polymorphic_path([namespace, resource])}) %>
-          <% end %>
           >
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
             <% if show_action? :show, resource -%>
-              <a href="<%= admin_path(resource.case_id) %>" 
+              <a  
                  class="action-show"
                  >
                 <% if [:kind_corruption, :rights_violated, :affected_sector, :kind_responsability, :crime].include?(attribute.attribute)%>
