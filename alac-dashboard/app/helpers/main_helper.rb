@@ -135,7 +135,7 @@ module MainHelper
                 unless pre_answer.nil? 
                   if /\A[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\z/i.match?(pre_answer.to_s)
                     lbl = get_title_option(pre_answer)
-                    if !lbl.empty
+                    if !lbl.empty?
                       if !lbl.last.nil?
                         final_answer = eval(lbl.last.last)[:es]
                       end
