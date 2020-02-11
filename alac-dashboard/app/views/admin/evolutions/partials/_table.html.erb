@@ -19,7 +19,7 @@
       <% evolutions.each.with_index(1) do |e, index| %>
         <tr>
           <th scope="row"><%= index %></th>
-          <td><%= e.actor_id %>l</td>
+          <td><%= e.actor.name %></td>
           <td><%= e.kind_investigation %></td>
           <td><%= e.stage %></td>
           <td><%= e.fault %></td>
@@ -29,9 +29,8 @@
           <td>
             <%if parsed_json %>
               <%= parsed_json.join(', <br />').html_safe %>
-              
-            <%end %>
-          <td>
+            <%end%>
+          </td>
           <td><%= e.authority %></td>
           <td><%= e.situation %></td>
           <td><%= e.presentation_date %></td>
@@ -58,6 +57,7 @@
             </div>
           </td>
         </tr>
+
       <% end %>
     </tbody>
   </table>
