@@ -26,7 +26,7 @@ module Streamable
           sheet << [
             report[0],
             get_info_report(report[0])[0][1],
-            get_info_report(report[0])[0][0],
+            characterization.status,
             hecho,
             characterization.scope,
             format_arr(characterization.affected_sector),
@@ -34,6 +34,7 @@ module Streamable
             format_arr(characterization.kind_corruption),
             format_arr(characterization.affected_area),
             format_arr(characterization.kind_responsability),
+            format_arr(characterization.crime),
             char_data["Departamento del Hecho"],
             char_data[final_keys[1]],
             char_data["Departamento de Residencia"],
@@ -45,7 +46,9 @@ module Streamable
             char_data["¿Cual?"],
             char_data["¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?"],
             char_data["¿Por qué?"],
-            char_data[final_keys[0]]
+            char_data[final_keys[0]],
+            characterization.start_year,
+            characterization.end_year
           ]
         end
       end
@@ -128,8 +131,8 @@ module Streamable
       "Derecho presuntamente  Vulnerado",
       "Tipo Corrupción",
       "Ámbito de la gestión pública Afectado",
-      "Clase de presunta responsabilidad Presunto Delito",
-
+      "Clase de presunta responsabilidad", 
+      "Presunto Delito",
       "Departamento de los hechos", 
       "Municipio de los hechos",
       "Departamento de Ubicación del reportante", 
@@ -141,7 +144,9 @@ module Streamable
       "¿Ha presentado este caso ante alguna autoridad?", 
       "¿Está usted dispuesto a presentar esta denuncia ante las autoridades públicas competentes?",
       "Motivos por no estar dispuesto a denunciar",
-      "¿Pertenece a alguna de las siguiente poblaciones?"]
+      "¿Pertenece a alguna de las siguiente poblaciones?",
+      "Año inicial del hecho",
+      "Año final del hecho"]
   end
 
   def format_arr(string)
