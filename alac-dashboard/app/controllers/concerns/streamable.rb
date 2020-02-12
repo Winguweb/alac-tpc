@@ -22,7 +22,6 @@ module Streamable
           end
           char_data =  Hash[*haseahble]
           final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quiere reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?"]
-          binding.remote_pry
           sheet << [
             report[0],
             get_info_report(report[0])[0][1],
@@ -35,18 +34,18 @@ module Streamable
             format_arr(characterization.affected_area),
             format_arr(characterization.kind_responsability),
             format_arr(characterization.crime),
-            char_data["Departamento del Hecho"],
-            char_data[final_keys[1]],
-            char_data["Departamento de Residencia"],
-            char_data[final_keys[2]],
+            char_data["Departamento del hecho"],
+            char_data[final_keys[4]],
+            char_data["Departamento de residencia"],
+            char_data[final_keys[7]],
             char_data["Edad"],
             char_data["Ocupación"],
             char_data["¿Es usted lider social o defensor de derechos humanos?"],
             char_data["¿A cuál organización pertenece?"],
-            char_data["¿Cual?"],
+            char_data["¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?"],
             char_data["¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?"],
             char_data["¿Por qué?"],
-            char_data[final_keys[0]],
+            char_data[final_keys[2]],
             characterization.start_year,
             characterization.end_year
           ]
@@ -125,7 +124,6 @@ module Streamable
       "Fecha de ingreso del Reporte al ALAC", 
       "Estado del Caso", 
       "Hechos", 
-      
       "Nacional/Transnacional",
       "Sector Afectado",
       "Derecho presuntamente  Vulnerado",
