@@ -54,7 +54,7 @@
                 <div>
                   <label>Presunta falta</label>
                 </div>
-                <%= select_tag('evolution[fault]', raw('<option value="leve">Leve</option><option value="grave">Grave</option><option value="gravisima">Gravísima</option>'),  { multiple: true, class: "selectpicker"}) %>
+                <%= select_tag('evolution[fault]', options_for_select([["Leve", "leve"], ["Grave", "grave"], ["Gravísima", "gravisima"]]),  {class: "selectpicker"}) %>
               </div>
             </div>
           </div>
