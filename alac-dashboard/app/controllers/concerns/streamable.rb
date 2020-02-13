@@ -37,7 +37,7 @@ module Streamable
             char_data["Departamento del hecho"],
             char_data[final_keys[4]],
             char_data["Departamento de residencia"],
-            char_data[final_keys[7]],
+            char_data[final_keys[6]],
             char_data["Edad"],
             char_data["Ocupación"],
             char_data["¿Es usted lider social o defensor de derechos humanos?"],
