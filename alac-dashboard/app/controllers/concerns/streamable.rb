@@ -20,13 +20,12 @@ module Streamable
             haseahble.push(answer[0])
             haseahble.push(answer[1])
           end
-          
           char_data =  Hash[*haseahble]
-          final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quiere reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?"] 
+          final_keys = char_data.keys - ["Edad/Género","Edad","Genero","¿Cuál es el presunto hecho de corrupción que  quiere reportar?","Departamento del Hecho","¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?","¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?","Adjuntar Evidencias","Nombre(s)","Apellido(s)","Correo Electrónico","Teléfono de Contacto","Nivel de escolaridad","Ocupación","Tipo de Persona","Departamento de Residencia","¿Es usted lider social o defensor de derechos humanos?","Terminos","¿Por qué?","¿Cual?","¿A cuál organización pertenece?"]
           sheet << [
             report[0],
             get_info_report(report[0])[0][1],
-            get_info_report(report[0])[0][0],
+            characterization.status,
             hecho,
             characterization.scope,
             format_arr(characterization.affected_sector),
@@ -34,18 +33,21 @@ module Streamable
             format_arr(characterization.kind_corruption),
             format_arr(characterization.affected_area),
             format_arr(characterization.kind_responsability),
-            char_data["Departamento del Hecho"],
-            char_data[final_keys[1]],
-            char_data["Departamento de Residencia"],
-            char_data[final_keys[2]],
+            format_arr(characterization.crime),
+            char_data["Departamento del hecho"],
+            char_data[final_keys[4]],
+            char_data["Departamento de residencia"],
+            char_data[final_keys[6]],
             char_data["Edad"],
             char_data["Ocupación"],
             char_data["¿Es usted lider social o defensor de derechos humanos?"],
             char_data["¿A cuál organización pertenece?"],
-            char_data["¿Cual?"],
+            char_data["¿Ha denunciado ante alguna autoridad o algún medio de comunicación el hecho que está reportando?"],
             char_data["¿Con el fin de formalizar su denuncia, estaría dispuesto (a) a acudir ante la autoridad competente para denunciar el hecho de presunta corrupción para el cual está solicitando nuestra asesoría?"],
             char_data["¿Por qué?"],
-            char_data[final_keys[0]]
+            char_data[final_keys[2]],
+            characterization.start_year,
+            characterization.end_year
           ]
         end
       end
@@ -122,14 +124,13 @@ module Streamable
       "Fecha de ingreso del Reporte al ALAC", 
       "Estado del Caso", 
       "Hechos", 
-      
       "Nacional/Transnacional",
       "Sector Afectado",
       "Derecho presuntamente  Vulnerado",
       "Tipo Corrupción",
       "Ámbito de la gestión pública Afectado",
-      "Clase de presunta responsabilidad Presunto Delito",
-
+      "Clase de presunta responsabilidad", 
+      "Presunto Delito",
       "Departamento de los hechos", 
       "Municipio de los hechos",
       "Departamento de Ubicación del reportante", 
@@ -141,7 +142,9 @@ module Streamable
       "¿Ha presentado este caso ante alguna autoridad?", 
       "¿Está usted dispuesto a presentar esta denuncia ante las autoridades públicas competentes?",
       "Motivos por no estar dispuesto a denunciar",
-      "¿Pertenece a alguna de las siguiente poblaciones?"]
+      "¿Pertenece a alguna de las siguiente poblaciones?",
+      "Año inicial del hecho",
+      "Año final del hecho"]
   end
 
   def format_arr(string)
