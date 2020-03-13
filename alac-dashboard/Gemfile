@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'webpacker' # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 gem 'sqlite3'
-gem "administrate", '~> 0.12.0'
+gem "administrate", '~> 0.13.0'
 gem 'kaminari'
 gem 'xlsxtream'
 gem 'pry', '~> 0.12.2'
